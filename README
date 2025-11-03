@@ -1,1 +1,44 @@
-cs171 README instructions. blah
+Is Social Media Getting Shorter? (CS171 Final Project)
+
+Team: Xiaoman Xu, Lingjie Pan, Paul Jeon
+
+Harvard Fall 2025 CS171 Visualization
+
+This project investigates how short-form video (YouTube Shorts) factors into channel performance. We collect video-level data from the YouTube Data API, classify uploads as Shorts vs. Normal, and aggregate engagement metrics to compare across top creators and media brands. Our final visualization focuses on total views per channel and the share of those views coming from Shorts.
+
+
+Data & scope
+
+Source: YouTube Data API v3
+
+Channels analyzed (two sets):
+
+Top creators: @MrBeast, @TSeries, @CoComelon, @SETIndia, @VladandNiki
+
+Media brands: @NBA, @ESPN, @HouseofHighlights, @Vox, @nytimes, @Veritasium, @theoffice
+
+Time window: 2024-01-01 -> 2024-12-31; 2025-01-01 -> 2025-10-31
+
+Granularity: Video-level → monthly & YTD aggregations
+
+⚠️ Notes/limits
+
+The public Data API does not expose “shares”; we use engagement_per_1k_views = (likes + comments)/views × 1000 as a proxy.
+
+Like/comment counts can be disabled or delayed by creators; treat engagement rates as approximate.
+
+View counts are dynamic (change over time). Analyses are a snapshot at collection time.
+
+Shorts classification (our heuristic)
+
+YouTube Shorts have platform-specific rules and UI cues, but the API doesn’t flag “Shorts” directly. We classify a video as Short if:
+
+It contains #Shorts in the title or description, or
+
+Duration threshold:
+
+Before 2024-10-15: ≤ 61 seconds
+
+On/after 2024-10-15: ≤ 181 seconds (reflecting YouTube's policy changes and longer short-form allowance on the platform)
+
+We also store a check called is_short_by_duration (threshold-only) for sensitivity analysis.
