@@ -1,0 +1,174 @@
+/* TikTok & YouTube Visualization - Main Styles */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
+/* Body Styling */
+body {
+    background-color: #393A4C;
+    font-family: 'Architects Daughter', cursive;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Main Container */
+main {
+    padding: 5vh 5vw;
+}
+
+/* Full Height Section */
+.full-height {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5vh;
+}
+
+/* Section Container with Hand-drawn Border */
+.section-container {
+    position: relative;
+    height: 85vh;
+    width: 90%;
+    border: solid 10px #fff4d6;
+    background-color: #2F2F4C;
+    border-top-left-radius: 37px 140px;
+    border-top-right-radius: 23px 130px;
+    border-bottom-left-radius: 110px 19px;
+    border-bottom-right-radius: 120px 24px;
+    transform: rotate(-0.5deg);
+    box-shadow: 3px 15px 8px -10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in;
+}
+
+.section-container:hover {
+    transform: translateY(-5px) rotate(0.5deg);
+    box-shadow: 5px 20px 15px -10px rgba(0, 0, 0, 0.4);
+}
+
+/* Navigation Dots */
+.navigation_dots {
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    right: 2%;
+    list-style: none;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+}
+
+.navigation_dots li {
+    width: 1.2vw;
+    height: 1.2vw;
+    background: #2F2F4C;
+    border: 0.3vw solid #fff4d6;
+    border-radius: 50%;
+    margin-top: 2vw;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.navigation_dots li:hover,
+.navigation_dots li.selected {
+    transform: scale(1.8);
+    background: #fff4d6;
+}
+
+/* Title Styling */
+h3 {
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    font-size: 2.5vw;
+    color: #fff4d6;
+    font-weight: bold;
+    z-index: 10;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Placeholder for Visualization */
+.placeholder {
+    position: absolute;
+    top: 12%;
+    left: 0;
+    width: 100%;
+    height: 88%;
+    background-color: #2F2F4C;
+    overflow: hidden;
+}
+
+/* Section Subtitle */
+.section-subtitle {
+    text-align: center;
+    margin: 20px 0;
+    padding: 0 40px;
+}
+
+.section-subtitle p {
+    color: #fff4d6;
+    font-size: 16px;
+    margin: 0;
+}
+
+.section-subtitle em {
+    font-style: italic;
+    color: rgba(255, 244, 214, 0.8);
+}
+
+.section-subtitle strong {
+    color: #ff6b6b;
+    font-weight: bold;
+}
+
+/* Loading Animation */
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff4d6;
+    font-size: 24px;
+    text-align: center;
+}
+
+.loading::after {
+    content: '...';
+    animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60% { content: '...'; }
+    80%, 100% { content: ''; }
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h3 {
+        font-size: 4vw;
+    }
+
+    .section-container {
+        width: 95%;
+        height: 80vh;
+    }
+
+    .navigation_dots li {
+        width: 2vw;
+        height: 2vw;
+    }
+
+    .section-subtitle p {
+        font-size: 14px;
+    }
+}

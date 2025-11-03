@@ -1,0 +1,84 @@
+/* YouTube Channels Visualization Styles */
+
+#youtubeChart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#chart-area {
+    width: 100%;
+    height: calc(100% - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Circle styles - TikTok theme */
+.channel-circle {
+    fill: #ff6b6b;
+    stroke: #fff4d6;
+    stroke-width: 3;
+    cursor: grab;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 4px 12px rgba(255, 107, 107, 0.3));
+}
+
+.channel-circle:hover {
+    fill: #ff8888;
+    stroke: #fff4d6;
+    stroke-width: 4;
+    filter: drop-shadow(0 6px 20px rgba(255, 107, 107, 0.5));
+}
+
+.channel-circle:active {
+    cursor: grabbing;
+}
+
+.channel-label {
+    text-anchor: middle;
+    pointer-events: none;
+    font-size: 14px;
+    fill: white;
+    font-weight: 600;
+    font-family: 'Architects Daughter', cursive;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Pie chart styles */
+.pie-slice {
+    cursor: pointer;
+    stroke: #fff4d6;
+    stroke-width: 2;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.shorts-slice {
+    fill: #ff6b6b;
+}
+
+.regular-slice {
+    fill: #4ecdc4;
+}
+
+.pie-label {
+    text-anchor: middle;
+    pointer-events: none;
+    font-size: 13px;
+    font-weight: 600;
+    fill: white;
+    font-family: 'Architects Daughter', cursive;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .channel-label {
+        font-size: 11px;
+    }
+
+    .pie-label {
+        font-size: 10px;
+    }
+}

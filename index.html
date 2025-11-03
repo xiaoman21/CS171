@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok & YouTube Global Visualization</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS Files -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/globe.css">
+    <link rel="stylesheet" href="css/youtube.css">
+</head>
+<body>
+    <!-- Scroll Navigation Dots -->
+    <ul class="navigation_dots">
+        <li class="selected"></li>
+        <li></li>
+    </ul>
+
+    <main>
+        <!-- Section 1: TikTok Globe Visualization -->
+        <div class="row full-height">
+            <div class="col-12 d-flex align-items-center justify-content-center">
+                <div class="section-container section1">
+                    <h3>TikTok Users Worldwide 2025</h3>
+                    <div id="tiktokGlobe" class="placeholder"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: YouTube Channels Visualization -->
+        <div class="row full-height">
+            <div class="col-12 d-flex align-items-center justify-content-center">
+                <div class="section-container section2">
+                    <h3>YouTube Channels Media Analysis (2024)</h3>
+                    <div id="youtubeChart" class="placeholder">
+                        <div class="section-subtitle">
+                            <p><em>Circle size represents total uploads. <strong>Click on any channel</strong> to see the breakdown of Shorts vs Regular content.</em></p>
+                        </div>
+                        <div id="chart-area"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JS libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- D3.js and Geo libraries -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
+    <script src="https://d3js.org/d3-geo.v1.min.js"></script>
+
+    <!-- Custom JS Files (order matters!) -->
+    <script src="js/navigation.js"></script>
+    <script src="js/tiktok-globe.js"></script>
+    <script src="js/youtube-chart.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
