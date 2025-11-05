@@ -18,6 +18,7 @@
     <ul class="navigation_dots">
         <li class="selected"></li>
         <li></li>
+        <li></li> <!-- Page 3: YouTube Top 5 -->
     </ul>
 
     <main>
@@ -45,6 +46,22 @@
                 </div>
             </div>
         </div>
+
+        <!-- Section 3: YouTube Top 5 Channels -->
+        <div class="row full-height">
+          <div class="col-12 d-flex align-items-center justify-content-center">
+            <div class="section-container section3">
+              <h3>Top 5 YouTube Channels (2024 – 2025)</h3>
+              <p class="section-subtitle">
+                Showing how leading creators adapt to changing viewer behavior.
+              </p>
+
+              <!-- Container where your D3 visualization will render -->
+              <div id="youtubeTop5" class="placeholder"></div>
+            </div>
+          </div>
+        </div>
+
     </main>
 
     <!-- JS libraries -->
@@ -60,6 +77,8 @@
     <script src="js/navigation.js"></script>
     <script src="js/tiktok-globe.js"></script>
     <script src="js/youtube-chart.js"></script>
+    <script src="js/youtube-top5.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>
