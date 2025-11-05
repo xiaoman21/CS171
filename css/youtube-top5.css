@@ -1,0 +1,94 @@
+#youtubeTop5 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80vh;
+    background-color: #2f2f4c; /* same container tone as other sections */
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+/* SVG container */
+#youtubeTop5 svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Axis styles */
+.axis path,
+.axis line {
+    stroke: #fff4d6;
+}
+
+.axis text {
+    fill: #fff4d6;
+    font-family: 'Architects Daughter', cursive;
+    font-size: 13px;
+}
+
+/* Line colors — same palette as page 2 */
+.line {
+    fill: none;
+    stroke-width: 3;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2));
+}
+
+.line:nth-child(1) { stroke: #ff6b6b; }   /* Coral red */
+.line:nth-child(2) { stroke: #4ecdc4; }   /* Turquoise */
+.line:nth-child(3) { stroke: #ffe66d; }   /* Yellow accent */
+.line:nth-child(4) { stroke: #1a535c; }   /* Deep teal */
+.line:nth-child(5) { stroke: #ff9f1c; }   /* Warm orange */
+
+/* Avatar icons */
+.avatar {
+    clip-path: circle(18px);
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
+    transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.3);
+}
+
+/* Tooltip styling */
+.tip {
+    position: fixed;
+    pointer-events: none;
+    background: #fff4d6;
+    color: #2f2f4c;
+    border: 2px solid #ff6b6b;
+    border-radius: 10px;
+    font-family: 'Architects Daughter', cursive;
+    font-size: 13px;
+    padding: 8px 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* Section heading */
+.section3 h3 {
+    font-family: 'Architects Daughter', cursive;
+    color: #fff4d6;
+    text-align: center;
+    margin-bottom: 8px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.section3 .section-subtitle {
+    text-align: center;
+    color: #ff6b6b;
+    font-family: 'Architects Daughter', cursive;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #youtubeTop5 {
+        height: 70vh;
+    }
+}
