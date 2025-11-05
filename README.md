@@ -54,25 +54,36 @@ We also store a check called is_short_by_duration (threshold-only) for sensitivi
   - Click to see Shorts vs Regular content breakdown
   - Interactive drag-and-drop layout
 
+- **Page 3**: Top 5 YouTube Channels (2024)
+  - Animated D3 line chart showing total monthly views per channel
+  - Clear x-axis (Month 2024) and y-axis (Total Views in Billions)
+  - Left-aligned bubble legend with profile avatars and channel names
+  - Moving avatars that travel along each channel’s line to show changing performance
+  - Interactive tooltips on hover displaying channel and view information
+
 ## 📁 Project Structure
 
 ```
 CS171/
-├── 📄 index.html                       # Main entry point - START HERE!
-├── 📄 README.md                        # This file
-├── 📄 tiktok-users-by-country-2025.csv # TikTok data
-├── 📄 top2024_annual_summary.csv       # YouTube data
+├── index.html                       # Main entry point (Sections 1–3)
+├── README.md                        # Documentation
 │
-├── 📁 css/                            # All stylesheets organized here
-│   ├── main.css                       # Core styles (layout, navigation, common)
-│   ├── globe.css                      # Section 1: TikTok globe styles
-│   └── youtube.css                    # Section 2: YouTube chart styles
+├── tiktok-users-by-country-2025.csv # TikTok user data
+├── top_channels_2024_monthly_summary.csv  # YouTube Top 5 monthly data
+├── top2024_annual_summary.csv       # YouTube annual data
 │
-└── 📁 js/                             # All JavaScript files organized here
-    ├── navigation.js                  # Navigation system (dots, scroll)
-    ├── tiktok-globe.js               # Section 1: TikTok globe visualization
-    ├── youtube-chart.js              # Section 2: YouTube chart visualization
-    └── main.js                        # Data loading & initialization
+├── css/
+│   ├── main.css                     # Core layout + navigation
+│   ├── globe.css                    # Section 1: TikTok Globe
+│   ├── youtube.css                  # Section 2: Channel composition
+│   └── youtube-top5.css             # Section 3: Top 5 YouTube Channels
+│
+└── js/
+    ├── navigation.js                # Scroll + dot navigation
+    ├── tiktok-globe.js              # Section 1 visualization
+    ├── youtube-chart.js             # Section 2 visualization
+    ├── youtube-top5.js              # Section 3 Top 5 chart (NEW)
+    └── main.js                      # Global data loading + initialization
 ```
 
 ### 🔗 File Dependencies
@@ -80,16 +91,18 @@ CS171/
 ```
 index.html
     ├── CSS
-    │   ├── css/main.css (required)
-    │   ├── css/globe.css (for section 1)
-    │   └── css/youtube.css (for section 2)
+    │   ├── css/main.css           (required – global layout & theme)
+    │   ├── css/globe.css          (for Section 1: TikTok Globe)
+    │   ├── css/youtube.css        (for Section 2: YouTube Composition)
+    │   └── css/youtube-top5.css   (for Section 3: Top 5 YouTube Channels)
     │
     └── JavaScript (load order matters!)
         ├── D3.js libraries (CDN)
-        ├── js/navigation.js
-        ├── js/tiktok-globe.js
-        ├── js/youtube-chart.js
-        └── js/main.js (must be last)
+        ├── js/navigation.js        (scroll navigation & section control)
+        ├── js/tiktok-globe.js      (Section 1: TikTok 3D Globe)
+        ├── js/youtube-chart.js     (Section 2: Channel Composition)
+        ├── js/youtube-top5.js      (Section 3: Top 5 YouTube Channels)
+        └── js/main.js              (data loading & initialization – must be last)
 ```
 
 ## 🚀 Getting Started
@@ -197,7 +210,7 @@ The project follows a cohesive design inspired by hand-drawn aesthetics:
   - Contains user counts for 2023, 2024, and 2025
   - Includes country codes and names
 
-- **YouTube Data**: `top2024_annual_summary.csv`
+- **YouTube Data**: `top2024_annual_summary.csv`, `top_channels_2024_monthly_summary.csv`
   - Top YouTube channels in 2024
   - Metrics: total uploads, shorts, regular videos, views
 
@@ -326,5 +339,6 @@ This project is for educational purposes.
 
 ---
 
-**Last Updated**: 2025-11-03
-**Version**: 1.0
+**Last Updated**: 2025-11-05
+
+**Version**: 1.1
