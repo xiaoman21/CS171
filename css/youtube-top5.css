@@ -1,94 +1,164 @@
+/* ===============================
+   YouTube Top 5 Visualization CSS
+   =============================== */
+
+/* --- Section Flex Layout --- */
+.youtube-flex {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- Bubble list (left column) --- */
+#youtubeBubbles {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+  align-items: flex-start;
+}
+
+.bubble-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bubble-item img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+.bubble-item span {
+  font-family: 'Architects Daughter', cursive;
+  color: #fff4d6;
+  font-size: 14px;
+}
+
+/* --- Main Visualization Container --- */
 #youtubeTop5 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 80vh;
-    background-color: #2f2f4c; /* same container tone as other sections */
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    position: relative;
+  flex: 1;
+  height: 80vh;
+  background-color: #2f2f4c;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  position: relative;
 }
 
-/* SVG container */
 #youtubeTop5 svg {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
-/* Axis styles */
+/* --- Axes --- */
 .axis path,
 .axis line {
-    stroke: #fff4d6;
+  stroke: #ffffff;
 }
 
 .axis text {
-    fill: #fff4d6;
-    font-family: 'Architects Daughter', cursive;
-    font-size: 13px;
+  fill: #fff4d6;
+  font-family: 'Architects Daughter', cursive;
+  font-size: 13px;
 }
 
-/* Line colors — same palette as page 2 */
+/* --- Lines --- */
 .line {
-    fill: none;
-    stroke-width: 3;
-    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2));
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.95;
+  mix-blend-mode: screen;
+  transition: stroke-width 0.2s ease;
 }
 
-.line:nth-child(1) { stroke: #ff6b6b; }   /* Coral red */
-.line:nth-child(2) { stroke: #4ecdc4; }   /* Turquoise */
-.line:nth-child(3) { stroke: #ffe66d; }   /* Yellow accent */
-.line:nth-child(4) { stroke: #1a535c; }   /* Deep teal */
-.line:nth-child(5) { stroke: #ff9f1c; }   /* Warm orange */
+.line:hover {
+  stroke-width: 6;
+}
 
-/* Avatar icons */
+/* --- Avatar icons --- */
 .avatar {
-    clip-path: circle(18px);
-    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
-    transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease;
+  clip-path: circle(18px);
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
+  transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease;
 }
 
 .avatar:hover {
-    transform: scale(1.3);
+  transform: scale(1.3);
 }
 
-/* Tooltip styling */
+/* --- Tooltip --- */
 .tip {
-    position: fixed;
-    pointer-events: none;
-    background: #fff4d6;
-    color: #2f2f4c;
-    border: 2px solid #ff6b6b;
-    border-radius: 10px;
-    font-family: 'Architects Daughter', cursive;
-    font-size: 13px;
-    padding: 8px 10px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
-    opacity: 0;
-    transition: opacity 0.2s ease;
+  position: fixed;
+  pointer-events: none;
+  background: #fff4d6;
+  color: #2f2f4c;
+  border: 2px solid #ff6b6b;
+  border-radius: 10px;
+  font-family: 'Architects Daughter', cursive;
+  font-size: 13px;
+  padding: 8px 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
-/* Section heading */
+/* Section 3 title and subtitle alignment */
 .section3 h3 {
-    font-family: 'Architects Daughter', cursive;
-    color: #fff4d6;
-    text-align: center;
-    margin-bottom: 8px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  font-family: 'Architects Daughter', cursive;
+  color: #fff4d6;
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .section3 .section-subtitle {
-    text-align: center;
-    color: #ff6b6b;
-    font-family: 'Architects Daughter', cursive;
-    margin-bottom: 20px;
-    font-size: 16px;
+  text-align: center;
+  color: #fff4d6;
+  margin-bottom: 22px;
 }
 
-/* Responsive */
+.section3 .section-subtitle p {
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.3;
+  font-family: 'Architects Daughter', cursive;
+}
+
+/* --- Responsive --- */
 @media (max-width: 768px) {
-    #youtubeTop5 {
-        height: 70vh;
-    }
+  .youtube-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #youtubeTop5 {
+    height: 70vh;
+    width: 95%;
+  }
+
+  #youtubeBubbles {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .bubble-item img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .bubble-item span {
+    font-size: 12px;
+  }
 }

@@ -3,7 +3,7 @@
 // =====================================================
 
 const navigationDots = document.querySelectorAll('.navigation_dots li');
-const sections = document.querySelectorAll('.section1, .section2');
+const sections = document.querySelectorAll('.section1, .section2, .section3');
 const totalHeight = document.documentElement.scrollHeight;
 
 // Reset the navigation dots on each scroll

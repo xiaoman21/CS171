@@ -19,6 +19,9 @@ Promise.all([
     // Initialize YouTube Chart
     initYouTubeVis(youtubeData);
 
+    // Initialize YouTube Top 5 Visualization   
+    initYouTubeTop5();  
+
 }).catch(error => {
     console.error('Error loading data:', error);
     d3.select("#tiktokGlobe").append("div")

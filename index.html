@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
     <link rel="stylesheet" href="css/youtube.css">
     <link rel="stylesheet" href="css/youtube-top5.css">
 </head>
+
 <body>
     <!-- Scroll Navigation Dots -->
     <ul class="navigation_dots">
@@ -40,7 +42,8 @@
                     <h3>YouTube Channels Media Analysis (2024)</h3>
                     <div id="youtubeChart" class="placeholder">
                         <div class="section-subtitle">
-                            <p><em>Circle size represents total uploads. <strong>Click on any channel</strong> to see the breakdown of Shorts vs Regular content.</em></p>
+                            <p><em>Circle size represents total uploads. <strong>Click on any channel</strong> to see
+                                    the breakdown of Shorts vs Regular content.</em></p>
                         </div>
                         <div id="chart-area"></div>
                     </div>
@@ -50,17 +53,23 @@
 
         <!-- Section 3: YouTube Top 5 Channels -->
         <div class="row full-height">
-          <div class="col-12 d-flex align-items-center justify-content-center">
-            <div class="section-container section3">
-              <h3>Top 5 YouTube Channels (2024 – 2025)</h3>
-              <p class="section-subtitle">
-                Showing how leading creators adapt to changing viewer behavior.
-              </p>
+            <div class="col-12 d-flex align-items-center justify-content-center">
+                <section class="section-container section3" id="section-youtube" aria-labelledby="youtube-top5-title">
 
-              <!-- Container where your D3 visualization will render -->
-              <div id="youtubeTop5" class="placeholder"></div>
+                    <!-- Title + Subtitle -->
+                    <h3 id="youtube-top5-title">Top 5 YouTube Channels (2024)</h3>
+                
+                    <!-- Flex row: left bubbles + right visualization -->
+                    <div class="youtube-flex d-flex align-items-start" style="gap:24px;">
+                        <!-- Left: compact bubble list -->
+                        <div id="youtubeBubbles" class="bubble-list" aria-hidden="false"></div>
+
+                        <!-- Right: main D3 visualization -->
+                        <div id="youtubeTop5" class="placeholder" role="img"
+                            aria-label="YouTube top channels time series"></div>
+                    </div>
+                </section>
             </div>
-          </div>
         </div>
 
     </main>
@@ -83,4 +92,3 @@
 </body>
 
 </html>
-
