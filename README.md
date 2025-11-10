@@ -2,7 +2,7 @@
 
 Team: Xiaoman Xu, Lingjie Pan, Paul Jeon
 
-Harvard Fall 2025 CS171 Visualization
+Harvard Fall 2025 CS171 Visualizations
 
 This project investigates how short-form video (YouTube Shorts) factors into channel performance. We collect video-level data from the YouTube Data API, classify uploads as Shorts vs. Normal, and aggregate engagement metrics to compare across top creators and media brands. Our final visualization focuses on total views per channel and the share of those views coming from Shorts.
 
@@ -342,3 +342,4 @@ This project is for educational purposes.
 **Last Updated**: 2025-11-05
 
 **Version**: 1.1
+
