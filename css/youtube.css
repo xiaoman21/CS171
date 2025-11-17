@@ -1,4 +1,4 @@
-/* YouTube Channels Visualization Styles */
+/* YouTube Channels Visualization Styles - Updated for new design system */
 
 #youtubeChart {
     display: flex;
@@ -9,27 +9,28 @@
 
 #chart-area {
     width: 100%;
-    height: calc(100% - 80px);
+    min-height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Circle styles - TikTok theme */
+/* Circle styles - Updated to match new design */
 .channel-circle {
-    fill: #ff6b6b;
-    stroke: #fff4d6;
-    stroke-width: 3;
+    fill: var(--accent, #7C9CFF);
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 2;
     cursor: grab;
     transition: all 0.3s ease;
-    filter: drop-shadow(0 4px 12px rgba(255, 107, 107, 0.3));
+    filter: drop-shadow(0 4px 12px rgba(124, 156, 255, 0.3));
 }
 
 .channel-circle:hover {
-    fill: #ff8888;
-    stroke: #fff4d6;
-    stroke-width: 4;
-    filter: drop-shadow(0 6px 20px rgba(255, 107, 107, 0.5));
+    fill: #8FA8FF;
+    stroke: rgba(255, 255, 255, 0.4);
+    stroke-width: 3;
+    filter: drop-shadow(0 6px 20px rgba(124, 156, 255, 0.5));
+    transform: scale(1.05);
 }
 
 .channel-circle:active {
@@ -40,26 +41,27 @@
     text-anchor: middle;
     pointer-events: none;
     font-size: 14px;
-    fill: white;
+    fill: var(--text, #EDEFF3);
     font-weight: 600;
-    font-family: 'Architects Daughter', cursive;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-family: Verdana, sans-serif;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 /* Pie chart styles */
 .pie-slice {
     cursor: pointer;
-    stroke: #fff4d6;
+    stroke: rgba(255, 255, 255, 0.1);
     stroke-width: 2;
     filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+    transition: opacity 0.2s ease;
 }
 
 .shorts-slice {
-    fill: #ff6b6b;
+    fill: var(--accent, #7C9CFF);
 }
 
 .regular-slice {
-    fill: #4ecdc4;
+    fill: var(--accent-2, #34D399);
 }
 
 .pie-label {
@@ -67,9 +69,9 @@
     pointer-events: none;
     font-size: 13px;
     font-weight: 600;
-    fill: white;
-    font-family: 'Architects Daughter', cursive;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    fill: var(--text, #EDEFF3);
+    font-family: Verdana, sans-serif;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 /* Responsive Design */
@@ -80,5 +82,9 @@
 
     .pie-label {
         font-size: 10px;
+    }
+    
+    #chart-area {
+        min-height: 400px;
     }
 }

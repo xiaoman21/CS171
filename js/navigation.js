@@ -1,45 +1,43 @@
-// =====================================================
-// NAVIGATION SYSTEM (Based on MBTI-Music)
-// =====================================================
+// navigation.js
+(function(){
+  const sections = Array.from(document.querySelectorAll('section.slide-section'));
+  const dots = Array.from(document.querySelectorAll('.navigation_dots li'));
+  const progress = document.querySelector('.scroll-progress');
 
-const navigationDots = document.querySelectorAll('.navigation_dots li');
-const sections = document.querySelectorAll('.section1, .section2, .section3, .section4');
-const totalHeight = document.documentElement.scrollHeight;
-
-// Reset the navigation dots on each scroll
-function resetNavigationDots() {
-    navigationDots.forEach(dot => {
-        dot.classList.remove('selected');
+  // Map dots to sections by order
+  dots.forEach((dot, i)=>{
+    dot.tabIndex = 0;
+    dot.addEventListener('click', ()=>{
+      sections[i].scrollIntoView({ behavior:'smooth', block:'start' });
     });
-}
-
-window.addEventListener('scroll', function() {
-    const windowHeight = window.innerHeight;
-    const scrollTop = window.scrollY;
-
-    resetNavigationDots();
-
-    // Check each section
-    sections.forEach((section, index) => {
-        const nextSectionTop = (index < sections.length - 1)
-            ? sections[index + 1].offsetTop - windowHeight / 2
-            : totalHeight;
-
-        if (scrollTop >= section.offsetTop - windowHeight / 2 && scrollTop < nextSectionTop) {
-            navigationDots[index].classList.add('selected');
-        }
+    dot.addEventListener('keydown', (e)=>{
+      if (e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        sections[i].scrollIntoView({ behavior:'smooth', block:'start' });
+      }
     });
-});
+  });
 
-// Click navigation
-navigationDots.forEach((dot, index) => {
-    dot.addEventListener('click', function() {
-        const buffer = 50;
-        const targetTop = Math.max(0, sections[index].offsetTop - buffer);
-
-        window.scrollTo({
-            top: targetTop,
-            behavior: 'smooth'
-        });
+  // Active dot via IntersectionObserver
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach((entry)=>{
+      if (entry.isIntersecting){
+        const idx = sections.indexOf(entry.target);
+        dots.forEach(d=>d.classList.remove('selected'));
+        if (dots[idx]) dots[idx].classList.add('selected');
+      }
     });
-});
+  }, { root:null, threshold:0.6 });
+
+  sections.forEach(s=>io.observe(s));
+
+  // Scroll progress (of main container)
+  const main = document.querySelector('main');
+  function updateProgress(){
+    const max = main.scrollHeight - main.clientHeight;
+    const scrolled = Math.max(0, Math.min(1, main.scrollTop / max));
+    if (progress) progress.style.width = `${scrolled * 100}%`;
+  }
+  main.addEventListener('scroll', updateProgress, { passive:true });
+  updateProgress();
+})();

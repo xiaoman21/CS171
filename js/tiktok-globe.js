@@ -363,6 +363,7 @@ class TikTokGlobeVis {
                     vis.path = d3.geoPath().projection(vis.projection);
                     vis.svg.selectAll(".country").attr("d", vis.path);
                     vis.svg.selectAll(".graticule").attr("d", vis.path);
+                    vis.sphere.attr("d", vis.path);
                 })
         );
     }

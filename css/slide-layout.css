@@ -1,0 +1,92 @@
+/* Scroll container uses viewport snapping */
+main{
+  height:100svh;               /* mobile-safe vh */
+  overflow-y:auto;
+  scroll-snap-type:y mandatory;
+  overscroll-behavior:contain;
+}
+
+/* Each slide fills the screen and snaps at start */
+.slide-section{
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  scroll-snap-align:start;
+  padding: 8vh 0;              /* generous vertical breathing room inside the viewport */
+  position:relative;
+}
+
+/* Content column with max measure for minimal, airy feel */
+.slide-container{
+  width:100%;
+  max-width:var(--max-prose);
+  margin:0 auto;
+  padding:0 24px;
+}
+
+/* Channel Performance section needs wider container for charts */
+.slide5 .slide-container{
+  max-width:1400px;
+}
+
+/* Large, elegant titles */
+.slide-title{
+  font-size: clamp(40px, 6.2vw, 88px);
+  line-height:1.05;
+  letter-spacing:-0.02em;
+  margin-bottom: 24px;
+}
+
+/* Roomy body text */
+.slide-body{
+  display:grid;
+  gap: 14px;
+  font-size: clamp(18px, 2.0vw, 22px);
+  line-height:1.6;
+  color: rgba(255,255,255,.92);
+  margin-bottom: 28px;
+}
+
+/* Subtitle styling */
+.slide-subtitle{
+  font-size: clamp(14px, 1.5vw, 16px);
+  line-height:1.5;
+  color: var(--muted);
+  margin-bottom: 28px;
+  font-style: italic;
+}
+
+/* Viz frames — responsive aspect iframes */
+.viz-frame{
+  margin-top: 28px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  background: var(--panel);
+  position: relative;
+  overflow: hidden;
+}
+.viz-frame iframe{
+  display:block; width:100%; height:60vh; border:0;
+}
+
+/* Placeholder panels */
+.viz-placeholder{
+  height:60vh;
+  background: var(--panel);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ---------- Reveal animations ---------- */
+.reveal{ opacity:0; transform: translateY(16px); }
+.reveal.is-visible{ opacity:1; transform:none; transition: opacity .6s ease, transform .6s ease; }
+
+/* Staggered children inside .slide-body */
+.slide-body p.reveal{ transition-delay: var(--stagger, 0ms); }
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .reveal, .reveal.is-visible{
+    opacity:1 !important; transform:none !important; transition:none !important;
+  }
+}

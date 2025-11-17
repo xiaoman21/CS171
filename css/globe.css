@@ -8,21 +8,21 @@
 
 /* Country Paths */
 .country {
-    stroke: rgba(255, 244, 214, 0.3);
+    stroke: rgba(164, 173, 189, 0.3);
     stroke-width: 0.5px;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .country:hover {
-    stroke: #fff4d6;
+    stroke: var(--accent, #7C9CFF);
     stroke-width: 2px;
 }
 
 /* Graticule (Globe Sphere) */
 .graticule {
     fill: none;
-    stroke: rgba(255, 244, 214, 0.2);
+    stroke: rgba(164, 173, 189, 0.2);
     stroke-width: 0.5px;
 }
 
@@ -30,20 +30,20 @@
 .globe-tooltip {
     position: absolute;
     padding: 15px 20px;
-    background-color: rgba(255, 244, 214, 0.95);
-    border: 3px solid #393A4C;
-    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-    color: #393A4C;
+    background-color: var(--panel, #15171B);
+    border: 2px solid var(--accent, #7C9CFF);
+    border-radius: var(--r-lg, 16px);
+    color: var(--text, #EDEFF3);
     font-size: 14px;
     pointer-events: none;
     z-index: 1000;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-soft, 0 10px 30px rgba(0, 0, 0, 0.25));
     max-width: 250px;
 }
 
 .globe-tooltip strong {
     font-size: 16px;
-    color: #2F2F4C;
+    color: var(--accent, #7C9CFF);
     display: block;
     margin-bottom: 8px;
 }
@@ -63,12 +63,12 @@
 
 .year-selector select {
     padding: 10px 15px;
-    font-family: 'Architects Daughter', cursive;
+    font-family: Verdana, sans-serif;
     font-size: 16px;
-    background-color: #fff4d6;
-    border: 3px solid #393A4C;
-    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-    color: #393A4C;
+    background-color: var(--panel, #15171B);
+    border: 2px solid var(--accent, #7C9CFF);
+    border-radius: var(--r-lg, 16px);
+    color: var(--text, #EDEFF3);
     cursor: pointer;
     outline: none;
     transition: all 0.3s ease;
@@ -76,12 +76,13 @@
 
 .year-selector select:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(255, 244, 214, 0.5);
+    box-shadow: 0 0 15px rgba(124, 156, 255, 0.5);
+    border-color: var(--accent-2, #34D399);
 }
 
 .year-selector label {
     display: block;
-    color: #fff4d6;
+    color: var(--text, #EDEFF3);
     font-size: 14px;
     margin-bottom: 8px;
     text-align: center;
@@ -89,16 +90,16 @@
 
 /* Legend Styling */
 .legend {
-    font-family: 'Architects Daughter', cursive;
+    font-family: Verdana, sans-serif;
 }
 
 .legend text {
-    fill: #fff4d6;
+    fill: var(--text, #EDEFF3);
     font-size: 12px;
 }
 
 .legend-title {
-    fill: #fff4d6;
+    fill: var(--text, #EDEFF3);
     font-size: 14px;
     font-weight: bold;
 }
@@ -108,32 +109,34 @@
     position: absolute;
     top: 15%;
     left: 3%;
-    background-color: rgba(47, 47, 76, 0.9);
-    border: 3px solid #fff4d6;
-    border-radius: 15px;
+    background-color: var(--panel, #15171B);
+    border: 2px solid var(--accent, #7C9CFF);
+    border-radius: var(--r-lg, 16px);
     padding: 20px;
-    color: #fff4d6;
+    color: var(--text, #EDEFF3);
     max-width: 300px;
     z-index: 50;
+    box-shadow: var(--shadow-soft, 0 10px 30px rgba(0, 0, 0, 0.25));
 }
 
 .info-panel h4 {
     margin-top: 0;
     font-size: 20px;
-    color: #fff4d6;
-    border-bottom: 2px solid #fff4d6;
+    color: var(--text, #EDEFF3);
+    border-bottom: 2px solid var(--accent, #7C9CFF);
     padding-bottom: 10px;
 }
 
 .info-panel p {
     margin: 8px 0;
     font-size: 14px;
+    color: var(--muted, #A4ADBD);
 }
 
 .info-panel .stat-number {
     font-size: 24px;
     font-weight: bold;
-    color: #ff6b6b;
+    color: var(--accent, #7C9CFF);
 }
 
 /* Responsive Design */

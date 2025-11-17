@@ -3,13 +3,24 @@
 // =====================================================
 
 function initYouTubeVis(data) {
+    // Map channel names to profile picture paths
+    const profilePics = {
+        'MrBeast': 'assets/profile_pics/MrBeast.png',
+        'TSeries': 'assets/profile_pics/TSeries.png',
+        'CoComelon': 'assets/profile_pics/CoComelon.png',
+        'SETIndia': 'assets/profile_pics/SETIndia.png',
+        'VladandNiki': 'assets/profile_pics/VladandNiki.png'
+    };
+
     const channels = data.map(d => ({
         name: d.channelKey.replace('@', ''),
+        channelKey: d.channelKey,
         total_uploads: +d.total_uploads,
         shorts_uploads: +d.shorts_uploads,
         regular_uploads: +d.total_uploads - +d.shorts_uploads,
         total_views: +d.total_views,
-        shorts_share: +d.uploads_shorts_share
+        shorts_share: +d.uploads_shorts_share,
+        profilePic: profilePics[d.channelKey] || null
     }));
 
     const filteredChannels = channels.filter(d => d.total_uploads > 0).slice(0, 12);
@@ -22,6 +33,9 @@ function initYouTubeVis(data) {
         .attr('height', '100%')
         .attr('viewBox', `0 0 ${width} ${height}`)
         .attr('preserveAspectRatio', 'xMidYMid meet');
+
+    // Add defs for clipPaths
+    const defs = svg.append('defs');
 
     const maxUploads = d3.max(filteredChannels, d => d.total_uploads);
     const minUploads = d3.min(filteredChannels, d => d.total_uploads);
@@ -46,10 +60,38 @@ function initYouTubeVis(data) {
         .attr('class', 'channel-group')
         .attr('transform', d => `translate(${d.x}, ${d.y})`);
 
-    channelGroups.append('circle')
-        .attr('class', 'channel-circle')
-        .attr('r', d => radiusScale(d.total_uploads))
-        .attr('data-state', 'circle');
+    // Add circle with optional profile picture
+    channelGroups.each(function(d) {
+        const group = d3.select(this);
+        const radius = radiusScale(d.total_uploads);
+        const clipId = `clip-${d.name.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '')}`;
+        
+        // Add circle
+        group.append('circle')
+            .attr('class', 'channel-circle')
+            .attr('r', radius)
+            .attr('data-state', 'circle');
+        
+        // Add clipPath to defs if profile pic exists (only once per channel)
+        if (d.profilePic && defs.select(`#${clipId}`).empty()) {
+            defs.append('clipPath')
+                .attr('id', clipId)
+                .append('circle')
+                .attr('r', radius - 3);
+        }
+        
+        if (d.profilePic) {
+            group.append('image')
+                .attr('xlink:href', d.profilePic)
+                .attr('x', -radius + 3)
+                .attr('y', -radius + 3)
+                .attr('width', (radius - 3) * 2)
+                .attr('height', (radius - 3) * 2)
+                .attr('clip-path', `url(#${clipId})`)
+                .attr('class', 'channel-image')
+                .style('opacity', 0.9);
+        }
+    });
 
     channelGroups.each(function(d) {
         const group = d3.select(this);
@@ -133,6 +175,11 @@ function initYouTubeVis(data) {
                 .style('opacity', 0);
 
             group.select('.label-group').transition()
+                .duration(300)
+                .style('opacity', 0);
+            
+            // Hide profile image when transitioning to pie
+            group.select('.channel-image').transition()
                 .duration(300)
                 .style('opacity', 0);
 
@@ -227,10 +274,15 @@ function initYouTubeVis(data) {
                 .remove();
 
             setTimeout(() => {
-                circle.transition()
-                    .duration(300)
-                    .attr('r', radius)
-                    .style('opacity', 1);
+            circle.transition()
+                .duration(300)
+                .attr('r', radius)
+                .style('opacity', 1);
+            
+            // Show profile image when transitioning back to circle
+            group.select('.channel-image').transition()
+                .duration(300)
+                .style('opacity', 0.9);
 
                 group.select('.label-group').transition()
                     .duration(300)

@@ -127,9 +127,9 @@ def build_figure(df: pd.DataFrame, platforms: list[str]) -> go.Figure:
             dict(
                 type="buttons",
                 direction="right",
-                x=0.5,
-                xanchor="center",
-                y=1.15,
+                x=0.02,
+                xanchor="left",
+                y=0.98,
                 yanchor="top",
                 buttons=[
                     dict(
@@ -193,7 +193,9 @@ def main():
     fig = build_figure(df, args.platforms)
 
     args.out.parent.mkdir(parents=True, exist_ok=True)
-    fig.write_html(args.out, include_plotlyjs="cdn", full_html=True)
+    # Disable modebar (navigation bar)
+    config = {"displayModeBar": False, "displaylogo": False}
+    fig.write_html(args.out, include_plotlyjs="cdn", full_html=True, config=config)
     print(f"Wrote interactive HTML → {args.out.resolve()}")
 
 
