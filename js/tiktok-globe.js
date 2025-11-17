@@ -227,6 +227,28 @@ class TikTokGlobeVis {
                         .attr('stroke-width', '2px')
                         .attr('stroke', '#fff4d6');
 
+                    // Get mouse position relative to the container
+                    const containerRect = vis.mainContainer.node().getBoundingClientRect();
+                    const mouseX = event.clientX - containerRect.left;
+                    const mouseY = event.clientY - containerRect.top;
+                    
+                    // Position tooltip near cursor but keep it within bounds
+                    const tooltipWidth = 250;
+                    const tooltipHeight = 120;
+                    let tooltipX = mouseX + 15;
+                    let tooltipY = mouseY - 60;
+                    
+                    // Adjust if tooltip would go off screen
+                    if (tooltipX + tooltipWidth > containerRect.width) {
+                        tooltipX = mouseX - tooltipWidth - 15;
+                    }
+                    if (tooltipY < 0) {
+                        tooltipY = mouseY + 15;
+                    }
+                    if (tooltipY + tooltipHeight > containerRect.height) {
+                        tooltipY = containerRect.height - tooltipHeight - 10;
+                    }
+                    
                     vis.tooltip
                         .style("opacity", 1)
                         .html(`
@@ -235,8 +257,8 @@ class TikTokGlobeVis {
                             ${countryData.users2024 > 0 ? `<p><strong>2024 Users:</strong> ${(countryData.users2024 / 1000000).toFixed(2)}M</p>` : ''}
                             ${countryData.users2023 > 0 ? `<p><strong>2023 Users:</strong> ${(countryData.users2023 / 1000000).toFixed(2)}M</p>` : ''}
                         `)
-                        .style("left", `${event.pageX + 10}px`)
-                        .style("top", `${event.pageY - 50}px`);
+                        .style("left", `${tooltipX}px`)
+                        .style("top", `${tooltipY}px`);
                 }
             })
             .on('mouseout', function() {

@@ -9,11 +9,14 @@ main{
 /* Each slide fills the screen and snaps at start */
 .slide-section{
   min-height:100svh;
+  height:100svh;
   display:flex;
   align-items:center;
   scroll-snap-align:start;
-  padding: 8vh 0;              /* generous vertical breathing room inside the viewport */
+  padding: 4vh 0;              /* reduced padding to fit content */
   position:relative;
+  overflow:hidden;              /* prevent content from spilling to next slide */
+  box-sizing:border-box;
 }
 
 /* Content column with max measure for minimal, airy feel */
@@ -22,6 +25,9 @@ main{
   max-width:var(--max-prose);
   margin:0 auto;
   padding:0 24px;
+  max-height:92vh;              /* ensure container fits in slide */
+  overflow-y:auto;              /* allow scrolling within slide if needed */
+  box-sizing:border-box;
 }
 
 /* Channel Performance section needs wider container for charts */
@@ -31,11 +37,22 @@ main{
 
 /* Add spacing between visualizations in slide 5 */
 .slide5 .viz-placeholder{
-  margin-bottom: 32px;
+  margin-bottom: 24px;
+  height: 50vh;
+  max-height: 50vh;
 }
 
 .slide5 .youtube-flex{
-  margin-top: 48px;
+  margin-top: 24px;
+  height: 45vh;
+  max-height: 45vh;
+  overflow: hidden;
+}
+
+/* Slide 5 needs more vertical space management */
+.slide5 .slide-container{
+  max-height: 95vh;
+  padding: 2vh 24px;
 }
 
 /* Large, elegant titles */
@@ -73,23 +90,47 @@ main{
   background: var(--panel);
   position: relative;
   overflow: hidden;
+  height:60vh;
+  max-height: 60vh;
+  flex-shrink: 0;
 }
 .viz-frame iframe{
-  display:block; width:100%; height:75vh; border:0;
+  display:block; width:100%; height:100%; border:0;
 }
 
 /* Placeholder panels */
 .viz-placeholder{
-  height:75vh;
-  min-height: 600px;
+  height:60vh;
+  min-height: 500px;
+  max-height: 60vh;
   background: var(--panel);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
+  overflow:hidden;
+  flex-shrink: 0;
 }
 
 /* Slide 6 (Pew Research) needs wider container */
 .slide6 .slide-container{
   max-width:1600px;
+  max-height: 95vh;
+  padding: 2vh 24px;
+}
+
+.slide6 .viz-frame{
+  height: 55vh;
+  max-height: 55vh;
+}
+
+/* Slide 2 (TikTok Globe) needs proper sizing */
+.slide2 .slide-container{
+  max-height: 95vh;
+  padding: 2vh 24px;
+}
+
+.slide2 .viz-placeholder{
+  height: 65vh;
+  max-height: 65vh;
 }
 
 /* ---------- Reveal animations ---------- */
