@@ -94,8 +94,8 @@ if (!window.youtubeTop5Loaded) {
 
       // --- Draw main D3 chart ---
       const svg = container.append("svg")
-        .attr("width", 900)
-        .attr("height", 500);
+        .attr("width", 1100)
+        .attr("height", 600);
 
       const width = +svg.attr("width");
       const height = +svg.attr("height");

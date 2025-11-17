@@ -99,30 +99,47 @@ def build_figure(df: pd.DataFrame, platforms: list[str]) -> go.Figure:
 
     source_note = dict(
         x=0,
-        y=-0.2,
+        y=-0.15,
         xref="paper",
         yref="paper",
         showarrow=False,
         text="Source: Pew Research Center",
         xanchor="left",
         yanchor="top",
+        font=dict(size=12, color="#A4ADBD"),
     )
 
     fig = go.Figure(data=traces)
     fig.update_layout(
-        title="U.S. Adults Who Regularly Get News on Each Platform (2020–2025)",
+        title=dict(
+            text="U.S. Adults Who Regularly Get News on Each Platform (2020–2025)",
+            x=0.5,
+            xanchor="center",
+            font=dict(size=20, color="#EDEFF3"),
+            y=0.98,
+            yanchor="top"
+        ),
         xaxis=dict(
-            title="Year",
+            title=dict(text="Year", font=dict(size=16, color="#EDEFF3")),
             tick0=YEAR_START,
             dtick=1,
             range=[YEAR_START - 0.5, YEAR_END + 0.5],
+            tickfont=dict(color="#A4ADBD"),
+            gridcolor="rgba(164, 173, 189, 0.2)",
         ),
-        yaxis=dict(title="% of U.S. adults"),
+        yaxis=dict(
+            title=dict(text="% of U.S. adults", font=dict(size=16, color="#EDEFF3")),
+            tickfont=dict(color="#A4ADBD"),
+            gridcolor="rgba(164, 173, 189, 0.2)",
+        ),
         legend=dict(
-            orientation="h", yanchor="bottom", y=1.02, xanchor="center", x=0.5
+            orientation="h", yanchor="bottom", y=1.02, xanchor="center", x=0.5,
+            font=dict(color="#EDEFF3")
         ),
-        margin=dict(l=40, r=20, t=70, b=80),
+        margin=dict(l=60, r=30, t=100, b=100),
         annotations=[source_note],
+        plot_bgcolor="#15171B",
+        paper_bgcolor="#0E0F12",
         updatemenus=[
             dict(
                 type="buttons",
@@ -138,14 +155,27 @@ def build_figure(df: pd.DataFrame, platforms: list[str]) -> go.Figure:
                         args=[
                             {"visible": [True] * len(platforms) + [False]},
                             {
-                                "title": "U.S. Adults Who Regularly Get News on Each Platform (2020–2025)",
+                                "title": dict(
+                                    text="U.S. Adults Who Regularly Get News on Each Platform (2020–2025)",
+                                    x=0.5,
+                                    xanchor="center",
+                                    font=dict(size=20, color="#EDEFF3"),
+                                    y=0.98,
+                                    yanchor="top"
+                                ),
                                 "xaxis": {
-                                    "title": "Year",
+                                    "title": dict(text="Year", font=dict(size=16, color="#EDEFF3")),
                                     "tick0": YEAR_START,
                                     "dtick": 1,
                                     "range": [YEAR_START - 0.5, YEAR_END + 0.5],
+                                    "tickfont": dict(color="#A4ADBD"),
+                                    "gridcolor": "rgba(164, 173, 189, 0.2)",
                                 },
-                                "yaxis": {"title": "% of U.S. adults"},
+                                "yaxis": {
+                                    "title": dict(text="% of U.S. adults", font=dict(size=16, color="#EDEFF3")),
+                                    "tickfont": dict(color="#A4ADBD"),
+                                    "gridcolor": "rgba(164, 173, 189, 0.2)",
+                                },
                                 "annotations": [source_note],
                             },
                         ],
@@ -156,9 +186,24 @@ def build_figure(df: pd.DataFrame, platforms: list[str]) -> go.Figure:
                         args=[
                             {"visible": [False] * len(platforms) + [True]},
                             {
-                                "title": "Change in Regular News Use by Platform (percentage points), 2020→2025",
-                                "xaxis": {"title": "Platform"},
-                                "yaxis": {"title": "pp change"},
+                                "title": dict(
+                                    text="Change in Regular News Use by Platform (percentage points), 2020→2025",
+                                    x=0.5,
+                                    xanchor="center",
+                                    font=dict(size=20, color="#EDEFF3"),
+                                    y=0.98,
+                                    yanchor="top"
+                                ),
+                                "xaxis": {
+                                    "title": dict(text="Platform", font=dict(size=16, color="#EDEFF3")),
+                                    "tickfont": dict(color="#A4ADBD"),
+                                    "gridcolor": "rgba(164, 173, 189, 0.2)",
+                                },
+                                "yaxis": {
+                                    "title": dict(text="pp change", font=dict(size=16, color="#EDEFF3")),
+                                    "tickfont": dict(color="#A4ADBD"),
+                                    "gridcolor": "rgba(164, 173, 189, 0.2)",
+                                },
                                 "annotations": [source_note],
                             },
                         ],

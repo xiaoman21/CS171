@@ -26,7 +26,16 @@ main{
 
 /* Channel Performance section needs wider container for charts */
 .slide5 .slide-container{
-  max-width:1400px;
+  max-width:1600px;
+}
+
+/* Add spacing between visualizations in slide 5 */
+.slide5 .viz-placeholder{
+  margin-bottom: 32px;
+}
+
+.slide5 .youtube-flex{
+  margin-top: 48px;
 }
 
 /* Large, elegant titles */
@@ -66,15 +75,21 @@ main{
   overflow: hidden;
 }
 .viz-frame iframe{
-  display:block; width:100%; height:60vh; border:0;
+  display:block; width:100%; height:75vh; border:0;
 }
 
 /* Placeholder panels */
 .viz-placeholder{
-  height:60vh;
+  height:75vh;
+  min-height: 600px;
   background: var(--panel);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
+}
+
+/* Slide 6 (Pew Research) needs wider container */
+.slide6 .slide-container{
+  max-width:1600px;
 }
 
 /* ---------- Reveal animations ---------- */

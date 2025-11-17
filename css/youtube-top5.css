@@ -9,8 +9,9 @@
   align-items: flex-start;
   gap: 40px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
+  margin-top: 32px;
 }
 
 /* --- Bubble list (left column) --- */
@@ -45,7 +46,8 @@
 /* --- Main Visualization Container --- */
 #youtubeTop5 {
   flex: 1;
-  height: 80vh;
+  min-height: 500px;
+  height: 70vh;
   background-color: transparent;
   border-radius: var(--r-lg, 16px);
   padding: 20px;

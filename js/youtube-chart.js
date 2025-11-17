@@ -25,8 +25,8 @@ function initYouTubeVis(data) {
 
     const filteredChannels = channels.filter(d => d.total_uploads > 0).slice(0, 12);
 
-    const width = 1200;
-    const height = 550;
+    const width = 1400;
+    const height = 700;
     const svg = d3.select('#chart-area')
         .append('svg')
         .attr('width', '100%')
