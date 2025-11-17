@@ -38,10 +38,8 @@
           initYouTubeVis(youtubeData);
       }
 
-      // Initialize YouTube Top 5 Visualization (if exists)
-      if (typeof initYouTubeTop5 === 'function') {
-          initYouTubeTop5();
-      }
+      // YouTube Top 5 Visualization initializes itself when script loads
+      // No need to call it here as it handles its own DOM ready state
 
   }).catch(error => {
       console.error('Error loading data:', error);

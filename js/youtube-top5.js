@@ -257,6 +257,14 @@ if (!window.youtubeTop5Loaded) {
     });
   }
 
-  // --- Run Visualization Once ---
-  initYouTubeTop5();
+  // --- Expose function globally and run once ---
+  window.initYouTubeTop5 = initYouTubeTop5;
+  
+  // Run initialization when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initYouTubeTop5);
+  } else {
+    // DOM already loaded
+    initYouTubeTop5();
+  }
 }
