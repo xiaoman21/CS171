@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/globe.css">
     <link rel="stylesheet" href="css/youtube.css">
     <link rel="stylesheet" href="css/youtube-top5.css">
+    <link rel="stylesheet" href="css/social-news.css">
 </head>
 
 <body>
@@ -22,6 +23,7 @@
         <li class="selected"></li>
         <li></li>
         <li></li> <!-- Page 3: YouTube Top 5 -->
+        <li></li> <!-- Page 4: Social news interactive -->
     </ul>
 
     <main>
@@ -68,6 +70,29 @@
                         <div id="youtubeTop5" class="placeholder" role="img"
                             aria-label="YouTube top channels time series"></div>
                     </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Section 4: Social Media News Consumption -->
+        <div class="row full-height">
+            <div class="col-12 d-flex align-items-center justify-content-center">
+                <section class="section-container section4" id="section-social-news" aria-labelledby="social-news-title">
+                    <div class="section-heading">
+                        <p class="eyebrow">New for 2025</p>
+                        <h3 id="social-news-title">Where Americans Get Their News on Social Media</h3>
+                        <p class="section-subtitle">
+                            Based on Pew Research Center’s 2025 survey of U.S. adults. Toggle between trend lines and 2020→2025 percentage-point changes.
+                        </p>
+                    </div>
+                    <iframe
+                        title="Interactive trends in social media news consumption"
+                        src="social_news_interactive.html"
+                        class="social-news-iframe"
+                        loading="lazy"
+                        referrerpolicy="no-referrer"
+                    ></iframe>
+                    <p class="data-note">Source: Pew Research Center, Aug. 18–24, 2025 survey.</p>
                 </section>
             </div>
         </div>

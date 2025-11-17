@@ -60,6 +60,10 @@ We also store a check called is_short_by_duration (threshold-only) for sensitivi
   - Left-aligned bubble legend with profile avatars and channel names
   - Moving avatars that travel along each channel’s line to show changing performance
   - Interactive tooltips on hover displaying channel and view information
+- **Page 4**: Social media news consumption tracker (2020–2025)
+  - Plotly interactive comparing Pew Research Center data across platforms
+  - Toggle between trend lines and percentage-point change summaries
+  - Standalone HTML generated from `build_social_news_interactive.py`
 
 ## 📁 Project Structure
 
@@ -76,13 +80,14 @@ CS171/
 │   ├── main.css                     # Core layout + navigation
 │   ├── globe.css                    # Section 1: TikTok Globe
 │   ├── youtube.css                  # Section 2: Channel composition
-│   └── youtube-top5.css             # Section 3: Top 5 YouTube Channels
+│   ├── youtube-top5.css             # Section 3: Top 5 YouTube Channels
+│   └── social-news.css              # Section 4: Pew social news slide
 │
 └── js/
     ├── navigation.js                # Scroll + dot navigation
     ├── tiktok-globe.js              # Section 1 visualization
     ├── youtube-chart.js             # Section 2 visualization
-    ├── youtube-top5.js              # Section 3 Top 5 chart (NEW)
+    ├── youtube-top5.js              # Section 3 Top 5 chart
     └── main.js                      # Global data loading + initialization
 ```
 
@@ -213,6 +218,21 @@ The project follows a cohesive design inspired by hand-drawn aesthetics:
 - **YouTube Data**: `top2024_annual_summary.csv`, `top_channels_2024_monthly_summary.csv`
   - Top YouTube channels in 2024
   - Metrics: total uploads, shorts, regular videos, views
+- **Pew Social News Data**: `PJ_2025.09.25_social-media-news_consumption-us-adults-data.csv`
+  - Percent of U.S. adults regularly getting news on each social platform (2020–2025)
+  - Used to generate `social_news_interactive.html` via `build_social_news_interactive.py`
+
+### Generating the social news slide
+
+```
+cd /Users/pauljeon/CS171
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org pandas plotly
+python build_social_news_interactive.py --csv PJ_2025.09.25_social-media-news_consumption-us-adults-data.csv --out social_news_interactive.html
+```
+
+The resulting `social_news_interactive.html` is embedded in `index.html` (Section 4) via an `<iframe>`.
 
 ## 🔧 Customization
 
