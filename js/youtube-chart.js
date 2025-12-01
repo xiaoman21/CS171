@@ -42,14 +42,22 @@ function initYouTubeVis(data) {
     const radiusScale = d3.scalePow()
         .exponent(0.35)
         .domain([minUploads, maxUploads])
-        .range([80, 125]);
+        .range([70, 110]);
 
+    const margin = 130;
     const simulation = d3.forceSimulation(filteredChannels)
-        .force('charge', d3.forceManyBody().strength(-100))
+        .force('charge', d3.forceManyBody().strength(-150))
         .force('center', d3.forceCenter(width / 2, height / 2))
-        .force('collision', d3.forceCollide().radius(d => radiusScale(d.total_uploads) + 25))
-        .force('x', d3.forceX(width / 2).strength(0.05))
-        .force('y', d3.forceY(height / 2).strength(0.05))
+        .force('collision', d3.forceCollide().radius(d => radiusScale(d.total_uploads) + 30))
+        .force('x', d3.forceX(width / 2).strength(0.08))
+        .force('y', d3.forceY(height / 2).strength(0.08))
+        .force('boundary', () => {
+            filteredChannels.forEach(d => {
+                const r = radiusScale(d.total_uploads);
+                d.x = Math.max(margin + r, Math.min(width - margin - r, d.x));
+                d.y = Math.max(margin + r, Math.min(height - margin - r, d.y));
+            });
+        })
         .alphaDecay(0.02)
         .velocityDecay(0.3);
 

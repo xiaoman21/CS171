@@ -40,13 +40,32 @@ main{
 /* Channel Performance section needs wider container for charts */
 .slide5 .slide-container{
   max-width:1600px;
+  max-height: 100vh;
+  padding: 1vh 24px;
+  overflow: hidden;
+}
+
+.slide5 .slide-title{
+  font-size: clamp(32px, 5vw, 60px);
+  margin-bottom: 8px;
+}
+
+.slide5 .slide-body{
+  margin-bottom: 8px;
+  font-size: clamp(14px, 1.6vw, 18px);
+  gap: 6px;
+}
+
+.slide5 .slide-subtitle{
+  font-size: clamp(12px, 1.3vw, 14px);
+  margin-bottom: 8px;
 }
 
 /* Add spacing between visualizations in slide 5 */
 .slide5 .viz-placeholder{
-  margin-bottom: 24px;
-  height: 50vh;
-  max-height: 50vh;
+  margin-bottom: 0;
+  height: 42vh;
+  max-height: 42vh;
 }
 
 .slide5 .youtube-flex{
@@ -56,10 +75,9 @@ main{
   overflow: hidden;
 }
 
-/* Slide 5 needs more vertical space management */
-.slide5 .slide-container{
-  max-height: 95vh;
-  padding: 2vh 24px;
+.slide5 .viz-caption{
+  font-size: 11px;
+  margin-top: 4px;
 }
 
 /* Slide 5.5 - Monthly Trends in own container */
@@ -105,7 +123,7 @@ main{
 
 /* Large, elegant titles */
 .slide-title{
-  font-size: clamp(40px, 6.2vw, 88px);
+  font-size: clamp(32px, 5vw, 60px);
   line-height:1.05;
   letter-spacing:-0.02em;
   margin-bottom: 24px;
