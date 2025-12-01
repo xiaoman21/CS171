@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/youtube-top5.css">
     <link rel="stylesheet" href="css/globe.css">
     <link rel="stylesheet" href="css/slide-layout.css">
+    <link rel="stylesheet" href="css/landing.css">
 </head>
 
 <body>
@@ -33,22 +34,43 @@
         <li aria-label="Slide 3: Content Is Getting Shorter"></li>
         <li aria-label="Slide 4: A New Playbook"></li>
         <li aria-label="Slide 5: Channel Performance"></li>
+        <li aria-label="Slide 5.5: Monthly Trends"></li>
         <li aria-label="Slide 6: Where People Get News"></li>
         <li aria-label="Slide 7: Young Audiences"></li>
         <li aria-label="Slide 8: Campaigns in Social Era"></li>
+        <li aria-label="Slide 8.5: Quote"></li>
         <li aria-label="Slide 9: Why This Matters"></li>
         <li aria-label="Slide 10: Conclusion"></li>
+        <li aria-label="Slide 11: Credits"></li>
     </ul>
 
-    <main>
+    <!-- Landing Page -->
+    <div class="landing-page" id="landingPage">
+        <div class="landing-content">
+            <h1 class="landing-title">Are Videos Getting Shorter?</h1>
+            <p class="landing-subtitle">Exploring how short-form content is reshaping media and news consumption</p>
+            <button class="enter-button" id="enterButton">Enter</button>
+        </div>
+    </div>
+
+    <main id="mainContent" class="main-hidden">
         <!-- Slide 1: The Shift to Short -->
         <section class="slide-section slide1" id="slide1">
-            <div class="slide-container">
-                <h2 class="slide-title">The Shift to Short</h2>
-                <div class="slide-body">
-                    <p>Short-form video is exploding in the U.S., especially among younger audiences.</p>
-                    <p>Its quick, dense, and scrollable format makes it easy to consume and share.</p>
-                    <p>This shift is pushing media to become increasingly "bite-sized."</p>
+            <div class="slide-container slide1-fullscreen">
+                <!-- iPhone Frame with YouTube Video - Full Screen -->
+                <div class="iphone-mockup-container-fullscreen">
+                    <div class="iphone-frame-fullscreen">
+                        <div class="iphone-screen-fullscreen">
+                            <iframe
+                                src="https://www.youtube.com/embed/UzNEFwLz6C4?autoplay=1&mute=1&controls=1"
+                                title="Short-form video example"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                                style="width: 100%; height: 100%; border: none;"
+                            ></iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -107,11 +129,22 @@
                     <div id="chart-area"></div>
                 </div>
                 <p class="viz-caption">Source: YouTube Data API v3. Classification: duration threshold + #Shorts heuristic.</p>
-                
+            </div>
+        </section>
+
+        <!-- Slide 5.5: Monthly View Trends -->
+        <section class="slide-section slide5-5" id="slide5-5">
+            <div class="slide-container">
+                <h2 class="slide-title">Monthly View Trends</h2>
+                <div class="slide-body">
+                    <p>Tracking how top channels performed throughout 2024, showing the evolution of viewership patterns over time.</p>
+                </div>
                 <!-- Monthly Growth Chart -->
-                <div class="youtube-flex">
-                    <div id="youtubeBubbles"></div>
-                    <div id="youtubeTop5"></div>
+                <div class="youtube-monthly-container">
+                    <div class="youtube-flex-monthly">
+                        <div id="youtubeBubbles"></div>
+                        <div id="youtubeTop5"></div>
+                    </div>
                 </div>
                 <p class="viz-caption" style="margin-top: 16px;">Monthly view trends for top channels throughout 2024.</p>
             </div>
@@ -128,12 +161,14 @@
                 </div>
                 <div class="viz-frame">
                     <iframe
+                        id="pewResearchFrame"
                         src="public/viz/social_news_interactive.html"
                         title="Where People Get News (2020–2025)"
                         loading="lazy"
                         referrerpolicy="no-referrer"
                         aria-describedby="social-news-caption"
                     ></iframe>
+                    <button class="reset-view-button" id="resetPewView" title="Reset view">Reset View</button>
                 </div>
                 <p id="social-news-caption" class="viz-caption">Source: Pew Research Center.</p>
             </div>
@@ -160,6 +195,22 @@
                     <p>Authentic, street-level clips explain policies, show presence, and build trust at scale.</p>
                     <p>The medium shapes the message.</p>
                 </div>
+                <!-- Zohran Mamdani Image -->
+                <div class="campaign-image-container">
+                    <img src="assets/profile_pics/zohran-mamdani.jpg.jpeg" alt="Zohran Mamdani campaign photo" class="campaign-image" />
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 8.5: Quote Slide -->
+        <section class="slide-section slide8-5" id="slide8-5">
+            <div class="slide-container">
+                <div class="quote-content">
+                    <blockquote class="quote-text">
+                        Ritchie Torres, the Bronx Democrat and frequent critic of progressives, said Mamdani is "a once-in-a-generation communicator" who has mastered what he called the "three threes": A candidate in today's day and age needs to be able to explain ideas in a 30-second vertical social media video, a three-minute television hit and a three-hour long-form podcast
+                    </blockquote>
+                    <cite class="quote-citation">— New York Times, 2025</cite>
+                </div>
             </div>
         </section>
 
@@ -172,8 +223,8 @@
                     <p>For news and politics, it can broaden reach—but also raises new questions about depth and context.</p>
                     <p>Understanding the format is now part of media literacy.</p>
                 </div>
-            </div>
-        </section>
+                    </div>
+                </section>
 
         <!-- Slide 10: Conclusion -->
         <section class="slide-section slide10" id="slide10">
@@ -186,6 +237,31 @@
                 </div>
             </div>
         </section>
+
+        <!-- Slide 11: Credits -->
+        <section class="slide-section slide11" id="slide11">
+            <div class="slide-container">
+                <h2 class="slide-title">Credits</h2>
+                <div class="credits-content">
+                    <div class="credits-section">
+                        <h3 class="credits-heading">Created By</h3>
+                        <ul class="credits-list">
+                            <li>Paul Jeon</li>
+                            <li>Xiaoman Zhang</li>
+                            <li>Lingjie Pan</li>
+                        </ul>
+                    </div>
+                    <div class="credits-section">
+                        <h3 class="credits-heading">Data Sources</h3>
+                        <ul class="credits-list">
+                            <li>Pew Research Center</li>
+                            <li>YouTube Data API v3</li>
+                            <li>TikTok User Statistics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- D3.js and Geo libraries -->
@@ -195,11 +271,13 @@
     <script src="https://d3js.org/d3-geo.v1.min.js"></script>
 
     <!-- Custom JS Files -->
+    <script src="js/landing.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/tiktok-globe.js"></script>
     <script src="js/youtube-chart.js"></script>
     <script src="js/youtube-top5.js"></script>
+    <script src="js/pew-reset.js"></script>
     <script src="js/main.js"></script>
 </body>
 

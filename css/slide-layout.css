@@ -13,10 +13,17 @@ main{
   display:flex;
   align-items:center;
   scroll-snap-align:start;
-  padding: 4vh 0;              /* reduced padding to fit content */
+  scroll-snap-stop:always;
+  padding: 0;
+  margin-bottom: 8vh;              /* add space between slides */
   position:relative;
   overflow:hidden;              /* prevent content from spilling to next slide */
   box-sizing:border-box;
+}
+
+/* Slide 1 needs overflow visible for iPhone */
+.slide1 {
+  overflow: visible !important;
 }
 
 /* Content column with max measure for minimal, airy feel */
@@ -53,6 +60,47 @@ main{
 .slide5 .slide-container{
   max-height: 95vh;
   padding: 2vh 24px;
+}
+
+/* Slide 5.5 - Monthly Trends in own container */
+.slide5-5 .slide-container{
+  max-width: 1600px;
+  max-height: 95vh;
+  padding: 2vh 24px;
+}
+
+.youtube-monthly-container {
+  width: 100%;
+  margin-top: 32px;
+  height: 70vh;
+  max-height: 70vh;
+  background: var(--panel);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 32px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.youtube-flex-monthly {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.youtube-flex-monthly #youtubeBubbles {
+  flex-shrink: 0;
+}
+
+.youtube-flex-monthly #youtubeTop5 {
+  flex: 1;
+  height: 100%;
+  min-height: 0;
 }
 
 /* Large, elegant titles */
@@ -98,6 +146,35 @@ main{
   display:block; width:100%; height:100%; border:0;
 }
 
+/* Reset View Button */
+.reset-view-button {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    padding: 10px 20px;
+    background: var(--accent, #7C9CFF);
+    color: var(--bg, #0E0F12);
+    border: none;
+    border-radius: var(--radius-lg, 16px);
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.reset-view-button:hover {
+    background: #8FA8FF;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(124, 156, 255, 0.4);
+}
+
+.reset-view-button:active {
+    transform: translateY(0);
+}
+
 /* Placeholder panels */
 .viz-placeholder{
   height:60vh;
@@ -131,6 +208,267 @@ main{
 .slide2 .viz-placeholder{
   height: 65vh;
   max-height: 65vh;
+}
+
+/* iPhone Mockup Container - Full Screen */
+.iphone-mockup-container-fullscreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    visibility: visible;
+    opacity: 1;
+}
+
+.iphone-frame-fullscreen {
+    width: min(90vw, 500px);
+    height: min(90vh, 1000px);
+    aspect-ratio: 9 / 19.5;
+    background: #1a1a1a;
+    border-radius: 50px;
+    padding: 16px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6),
+                inset 0 0 0 3px rgba(255, 255, 255, 0.15);
+    position: relative;
+    display: block;
+}
+
+.iphone-frame-fullscreen::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 35px;
+    background: #1a1a1a;
+    border-radius: 0 0 30px 30px;
+    z-index: 10;
+}
+
+.iphone-screen-fullscreen {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 36px;
+    overflow: hidden;
+    position: relative;
+}
+
+.iphone-screen-fullscreen iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    background: #000;
+    object-fit: cover;
+    transform: scale(1);
+}
+
+/* Slide 1 Full Screen Container */
+.slide1-fullscreen {
+    max-width: 100%;
+    max-height: 100vh;
+    padding: 0;
+    position: relative;
+}
+
+/* iPhone Mockup Container - Regular (for other uses) */
+.iphone-mockup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 32px;
+    width: 100%;
+}
+
+.iphone-frame {
+    width: 320px;
+    height: 640px;
+    background: #1a1a1a;
+    border-radius: 40px;
+    padding: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.iphone-frame::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 25px;
+    background: #1a1a1a;
+    border-radius: 0 0 20px 20px;
+    z-index: 10;
+}
+
+.iphone-screen {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 32px;
+    overflow: hidden;
+    position: relative;
+}
+
+.iphone-screen iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Campaign Image Container */
+.campaign-image-container {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.campaign-image {
+    max-width: 100%;
+    max-height: 50vh;
+    border-radius: var(--radius-lg, 16px);
+    box-shadow: var(--shadow-soft, 0 10px 30px rgba(0, 0, 0, 0.25));
+    object-fit: contain;
+}
+
+/* Slide 1 - Full screen iPhone */
+.slide1 {
+    padding: 0;
+    margin-bottom: 8vh;
+    position: relative;
+    overflow: visible;
+}
+
+.slide1 .slide-container {
+    max-width: 100%;
+    max-height: 100vh;
+    padding: 0;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: visible;
+}
+
+/* Slide 8 needs space for image */
+.slide8 .slide-container {
+    max-height: 95vh;
+    padding: 2vh 24px;
+}
+
+/* Slide 8.5 - Quote Slide */
+.slide8-5 .slide-container {
+    max-width: 1200px;
+    max-height: 95vh;
+    padding: 4vh 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.quote-content {
+    width: 100%;
+    text-align: center;
+}
+
+.quote-text {
+    font-family: "Newsreader", serif;
+    font-size: clamp(22px, 3.5vw, 36px);
+    font-style: italic !important;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--text, #EDEFF3);
+    margin: 0 0 32px 0;
+    padding: 0 24px;
+    border: none;
+    quotes: none;
+    max-width: 100%;
+}
+
+.quote-text::before,
+.quote-text::after {
+    content: '';
+}
+
+.quote-citation {
+    display: block;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(16px, 2vw, 20px);
+    font-style: normal;
+    color: var(--muted, #A4ADBD);
+    margin-top: 24px;
+    text-align: right;
+}
+
+/* Credits Slide */
+.slide11 .slide-container {
+    max-width: 1000px;
+    max-height: 95vh;
+    padding: 4vh 24px;
+}
+
+.credits-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 48px;
+    margin-top: 48px;
+    width: 100%;
+}
+
+.credits-section {
+    text-align: left;
+}
+
+.credits-heading {
+    font-family: "Newsreader", serif;
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 700;
+    color: var(--text, #EDEFF3);
+    margin-bottom: 24px;
+    border-bottom: 2px solid var(--accent, #7C9CFF);
+    padding-bottom: 12px;
+}
+
+.credits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.credits-list li {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(16px, 1.8vw, 20px);
+    color: var(--muted, #A4ADBD);
+    margin-bottom: 16px;
+    padding-left: 24px;
+    position: relative;
+}
+
+.credits-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent, #7C9CFF);
+    font-size: 1.5em;
+    line-height: 0.8;
 }
 
 /* ---------- Reveal animations ---------- */

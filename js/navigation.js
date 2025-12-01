@@ -3,17 +3,24 @@
   const sections = Array.from(document.querySelectorAll('section.slide-section'));
   const dots = Array.from(document.querySelectorAll('.navigation_dots li'));
   const progress = document.querySelector('.scroll-progress');
+  
+  // Filter out sections that don't have IDs (if any)
+  const validSections = sections.filter(s => s.id);
 
   // Map dots to sections by order
   dots.forEach((dot, i)=>{
     dot.tabIndex = 0;
     dot.addEventListener('click', ()=>{
-      sections[i].scrollIntoView({ behavior:'smooth', block:'start' });
+      if (validSections[i]) {
+        validSections[i].scrollIntoView({ behavior:'smooth', block:'start' });
+      }
     });
     dot.addEventListener('keydown', (e)=>{
       if (e.key === 'Enter' || e.key === ' '){
         e.preventDefault();
-        sections[i].scrollIntoView({ behavior:'smooth', block:'start' });
+        if (validSections[i]) {
+          validSections[i].scrollIntoView({ behavior:'smooth', block:'start' });
+        }
       }
     });
   });
@@ -22,14 +29,14 @@
   const io = new IntersectionObserver((entries)=>{
     entries.forEach((entry)=>{
       if (entry.isIntersecting){
-        const idx = sections.indexOf(entry.target);
+        const idx = validSections.indexOf(entry.target);
         dots.forEach(d=>d.classList.remove('selected'));
-        if (dots[idx]) dots[idx].classList.add('selected');
+        if (dots[idx] && idx >= 0) dots[idx].classList.add('selected');
       }
     });
   }, { root:null, threshold:0.6 });
 
-  sections.forEach(s=>io.observe(s));
+  validSections.forEach(s=>io.observe(s));
 
   // Scroll progress (of main container)
   const main = document.querySelector('main');
