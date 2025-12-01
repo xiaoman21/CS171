@@ -208,6 +208,7 @@ main{
 .slide2 .viz-placeholder{
   height: 65vh;
   max-height: 65vh;
+  background: #0E0F12;
 }
 
 /* iPhone Mockup Container - Full Screen */
