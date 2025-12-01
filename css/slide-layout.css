@@ -399,8 +399,26 @@ main{
 
 /* Slide 8 needs space for image */
 .slide8 .slide-container {
-    max-height: 95vh;
-    padding: 2vh 24px;
+    max-height: 100vh;
+    padding: 1vh 24px;
+    overflow: hidden;
+}
+
+.slide8 .slide-title {
+    margin-bottom: 12px;
+}
+
+.slide8 .slide-body {
+    margin-bottom: 16px;
+    gap: 8px;
+}
+
+.slide8 .campaign-image-container {
+    margin-top: 16px;
+}
+
+.slide8 .campaign-image {
+    max-height: 55vh;
 }
 
 /* Slide 8.5 - Quote Slide */
