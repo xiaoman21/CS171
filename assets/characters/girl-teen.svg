@@ -1,0 +1,25 @@
+<svg width="200" height="300" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Girl character holding phone -->
+  <!-- Head -->
+  <circle cx="100" cy="80" r="35" fill="#FFD7C7" stroke="#F4A300" stroke-width="2"/>
+  <!-- Hair -->
+  <path d="M 65 80 Q 60 50, 80 45 Q 100 40, 120 45 Q 140 50, 135 80 Q 130 60, 100 60 Q 70 60, 65 80" fill="#F4A300"/>
+  <!-- Body (shirt) -->
+  <rect x="70" y="115" width="60" height="80" rx="10" fill="#F4A300"/>
+  <!-- Arms -->
+  <rect x="50" y="120" width="25" height="60" rx="12" fill="#F4A300"/>
+  <rect x="125" y="120" width="25" height="60" rx="12" fill="#F4A300"/>
+  <!-- Legs -->
+  <rect x="80" y="195" width="20" height="70" rx="10" fill="#4A148C"/>
+  <rect x="100" y="195" width="20" height="70" rx="10" fill="#4A148C"/>
+  <!-- Phone (in right hand) -->
+  <rect x="140" y="130" width="30" height="50" rx="4" fill="#15171B" stroke="#7C9CFF" stroke-width="2"/>
+  <rect x="143" y="135" width="24" height="35" fill="#0E0F12"/>
+  <circle cx="155" cy="175" r="3" fill="#7C9CFF"/>
+  <!-- Eyes -->
+  <circle cx="90" cy="75" r="4" fill="#15171B"/>
+  <circle cx="110" cy="75" r="4" fill="#15171B"/>
+  <!-- Smile -->
+  <path d="M 85 90 Q 100 98, 115 90" stroke="#15171B" stroke-width="2" fill="none" stroke-linecap="round"/>
+</svg>
+

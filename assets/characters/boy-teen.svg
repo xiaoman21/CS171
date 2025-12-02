@@ -1,0 +1,25 @@
+<svg width="200" height="300" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Boy character holding phone -->
+  <!-- Head -->
+  <circle cx="100" cy="80" r="35" fill="#FFD7C7" stroke="#E14A40" stroke-width="2"/>
+  <!-- Hair (shorter) -->
+  <path d="M 70 80 Q 65 55, 85 50 Q 100 45, 115 50 Q 135 55, 130 80 Q 125 65, 100 65 Q 75 65, 70 80" fill="#1A1A1A"/>
+  <!-- Body (shirt) -->
+  <rect x="70" y="115" width="60" height="80" rx="10" fill="#E14A40"/>
+  <!-- Arms -->
+  <rect x="50" y="120" width="25" height="60" rx="12" fill="#E14A40"/>
+  <rect x="125" y="120" width="25" height="60" rx="12" fill="#E14A40"/>
+  <!-- Legs -->
+  <rect x="80" y="195" width="20" height="70" rx="10" fill="#1A1A1A"/>
+  <rect x="100" y="195" width="20" height="70" rx="10" fill="#1A1A1A"/>
+  <!-- Phone (in left hand) -->
+  <rect x="30" y="130" width="30" height="50" rx="4" fill="#15171B" stroke="#FF6B9D" stroke-width="2"/>
+  <rect x="33" y="135" width="24" height="35" fill="#0E0F12"/>
+  <circle cx="45" cy="175" r="3" fill="#FF6B9D"/>
+  <!-- Eyes -->
+  <circle cx="90" cy="75" r="4" fill="#15171B"/>
+  <circle cx="110" cy="75" r="4" fill="#15171B"/>
+  <!-- Smile -->
+  <path d="M 85 90 Q 100 98, 115 90" stroke="#15171B" stroke-width="2" fill="none" stroke-linecap="round"/>
+</svg>
+
