@@ -33,7 +33,20 @@
     font-weight: 800;
     line-height: 1.2;
     color: var(--text, #EDEFF3);
-    margin: 0 0 clamp(20px, 2.5vh, 32px) 0;
+    margin: 0 0 clamp(12px, 1.5vh, 20px) 0;
+    opacity: 0;
+    animation: fadeInSlide3Text 1s ease-out 0.3s forwards;
+}
+
+.slide3 .slide-subtext {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(15px, 1.6vw, 19px);
+    line-height: 1.6;
+    color: #C4CDDD; /* Brighter than body text */
+    margin: 0 0 clamp(16px, 2vh, 24px) 0;
+    font-weight: 500;
+    opacity: 0;
+    animation: fadeInSlide3Text 1s ease-out 0.6s forwards;
 }
 
 .slide3 .slide-body {
@@ -48,6 +61,21 @@
     line-height: 1.6;
     color: var(--muted, #A4ADBD);
     margin: 0;
+    opacity: 0;
+    animation: fadeInSlide3Text 1s ease-out forwards;
+}
+
+/* Stagger body paragraph animations */
+.slide3 .slide-body p:nth-child(1) {
+    animation-delay: 0.9s;
+}
+
+.slide3 .slide-body p:nth-child(2) {
+    animation-delay: 1.1s;
+}
+
+.slide3 .slide-body p:nth-child(3) {
+    animation-delay: 1.3s;
 }
 
 /* Responsive: Stack on smaller screens */
@@ -58,30 +86,21 @@
     }
 }
 
-/* Animation for slide 3 content */
-.slide3-left-column,
-.slide3-right-column {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInSlide3 1.2s ease-out forwards;
-}
-
-.slide3-left-column {
-    animation-delay: 0.2s;
-}
-
-.slide3-right-column {
-    animation-delay: 0.5s;
-}
-
-@keyframes fadeInSlide3 {
+/* Animation for slide 3 text elements */
+@keyframes fadeInSlide3Text {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(15px);
     }
     to {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Ensure columns are visible (children will fade in individually) */
+.slide3-left-column,
+.slide3-right-column {
+    opacity: 1;
 }
 
