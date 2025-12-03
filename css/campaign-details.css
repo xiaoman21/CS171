@@ -244,28 +244,41 @@
 }
 
 .follower-bar-item {
-    margin-bottom: clamp(24px, 3vh, 36px);
+    margin-bottom: clamp(24px, 3vh, 36px) !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    width: 100% !important;
 }
 
 .bar-label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-    gap: 16px;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 16px !important;
+    gap: 16px !important;
+    width: 100% !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .candidate-name {
-    font-family: "Newsreader", serif; /* Changed to title font */
-    font-size: clamp(24px, 2.8vw, 36px); /* Increased size */
-    font-weight: 800; /* Bolder */
-    color: var(--text, #EDEFF3);
+    font-family: "Newsreader", serif !important; /* Changed to title font */
+    font-size: clamp(24px, 2.8vw, 36px) !important; /* Increased size */
+    font-weight: 800 !important; /* Bolder */
+    color: #EDEFF3 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-block !important;
 }
 
 .follower-value {
-    font-family: "Newsreader", serif; /* Title font */
-    font-size: clamp(28px, 3.5vw, 48px); /* Larger size */
-    font-weight: 900; /* Extra bold */
+    font-family: "Newsreader", serif !important; /* Title font */
+    font-size: clamp(28px, 3.5vw, 48px) !important; /* Larger size */
+    font-weight: 900 !important; /* Extra bold */
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-block !important;
 }
 
 .bar-container {
