@@ -115,8 +115,8 @@
     line-height: 1.6;
     /* Ensure subtitle position is stable */
     position: relative;
-    /* Move subtitle lower on the page */
-    margin-top: clamp(80px, 10vw, 120px);
+    /* Move subtitle even lower to prevent overlap */
+    margin-top: clamp(120px, 15vw, 180px);
     padding-top: 0;
 }
 

@@ -124,6 +124,23 @@ function initYouTubeVis(data) {
         .attr('class', 'channel-group')
         .attr('transform', d => `translate(${d.x}, ${d.y})`);
 
+    // Add orange gradient for circles
+    const orangeGradient = defs.append('radialGradient')
+        .attr('id', 'orangeGradient')
+        .attr('cx', '50%')
+        .attr('cy', '50%')
+        .attr('r', '50%');
+    
+    orangeGradient.append('stop')
+        .attr('offset', '0%')
+        .attr('stop-color', '#FFB84D')
+        .attr('stop-opacity', 1);
+    
+    orangeGradient.append('stop')
+        .attr('offset', '100%')
+        .attr('stop-color', '#FF8C00')
+        .attr('stop-opacity', 1);
+    
     // Add glow filter for circles
     const glowFilter = defs.append('filter')
         .attr('id', 'glow')
@@ -146,13 +163,13 @@ function initYouTubeVis(data) {
         const radius = radiusScale(d.total_uploads);
         const clipId = `clip-${d.name.replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '')}`;
         
-        // Add circle - start all red with glow
+        // Add circle - start all orange gradient with glow
         group.append('circle')
             .attr('class', 'channel-circle')
             .attr('r', radius)
             .attr('data-state', 'circle')
-            .attr('fill', '#ff6b6b')
-            .attr('stroke', '#ff6b6b')
+            .attr('fill', 'url(#orangeGradient)')
+            .attr('stroke', '#FF8C00')
             .attr('stroke-width', 3)
             .style('cursor', 'pointer')
             .style('filter', 'url(#glow)')
@@ -344,8 +361,8 @@ function initYouTubeVis(data) {
                 .style('opacity', 0);
 
             const pieData = [
-                { label: 'Shorts', value: d.shorts_uploads, color: '#ff6b6b' }, // Red for Shorts
-                { label: 'Regular', value: d.regular_uploads, color: '#4ecdc4' } // Green for Regular
+                { label: 'Shorts', value: d.shorts_uploads, color: '#FF4500' }, // Red-orange for Shorts
+                { label: 'Regular', value: d.regular_uploads, color: '#FFA500' } // Orange for Regular
             ];
 
             const arcs = pie(pieData);

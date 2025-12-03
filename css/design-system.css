@@ -47,17 +47,17 @@ p{ margin:0; }
 .navigation_dots li.selected{ background:var(--accent); transform:scale(1.15); }
 .navigation_dots li:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
 
-/* Timeline base container */
+/* Timeline base container - moved to right side as overlay */
 .timeline-container {
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     width: 260px;
     height: 100vh;
     padding: 80px 20px;
     box-sizing: border-box;
     pointer-events: none;
-    z-index: 20;
+    z-index: 999;
     background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.1));
 }
 
@@ -69,6 +69,7 @@ p{ margin:0; }
     display: flex;
     flex-direction: column;
     gap: 32px;
+    pointer-events: auto; /* Allow clicks on timeline */
 }
 
 /* Timeline item */
