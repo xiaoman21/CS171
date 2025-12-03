@@ -12,7 +12,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0 10%;
+    padding: 0 15%;
+    text-align: center;
     opacity: 1;
     transition: opacity 1s ease-out;
 }
@@ -29,6 +30,8 @@
     color: var(--text, #EDEFF3);
     margin-bottom: clamp(32px, 5vh, 60px);
     opacity: 1;
+    text-align: center;
+    width: 100%;
 }
 
 .slide2-intro-text {
@@ -39,6 +42,7 @@
     text-align: center;
     max-width: 900px;
     opacity: 1;
+    margin: 0 auto;
 }
 
 /* Typing cursor effect */
