@@ -8,10 +8,6 @@ function parseNumber(value: string | number): number {
   return isNaN(parsed) ? 0 : parsed;
 }
 
-function safeDiv(num: number, den: number): number {
-  return den === 0 ? 0 : num / den;
-}
-
 export async function loadAnnualData(): Promise<AnnualChannelSummary[]> {
   try {
     const response = await fetch('/tbl_AnnualChannelSummary.csv');

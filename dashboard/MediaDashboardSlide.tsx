@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { loadAllData } from './dataLoader';
-import type { AnnualChannelSummary, MonthlyChannelSummary, MonthlyShortVsLong, DashboardFilters, ViewMode } from './types';
+import type { AnnualChannelSummary, MonthlyChannelSummary, MonthlyShortVsLong, DashboardFilters } from './types';
 import { DashboardControls } from './components/DashboardControls';
 import { OverviewCharts } from './components/OverviewCharts';
 import { ChannelDrilldownCharts } from './components/ChannelDrilldownCharts';

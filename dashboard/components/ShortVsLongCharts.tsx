@@ -14,7 +14,6 @@ interface ShortVsLongChartsProps {
 
 export const ShortVsLongCharts: React.FC<ShortVsLongChartsProps> = ({
   data,
-  year,
   selectedChannels,
 }) => {
   if (data.length === 0) {
@@ -216,13 +215,11 @@ export const ShortVsLongCharts: React.FC<ShortVsLongChartsProps> = ({
                 dataKey="uploads_share_within_channel_month_Short"
                 name="Upload Share (%)"
                 fill="#FFB344"
-                formatter={(v: number) => (v * 100).toFixed(1) + '%'}
               />
               <Bar
                 dataKey="views_share_within_channel_month_Short"
                 name="View Share (%)"
                 fill="#FF44B3"
-                formatter={(v: number) => (v * 100).toFixed(1) + '%'}
               />
             </BarChart>
           </ResponsiveContainer>
