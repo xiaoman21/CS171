@@ -46,7 +46,7 @@
         const container = document.getElementById('slide7ChartContainer');
         if (!container) return;
         
-        margin = { top: 20, right: 120, bottom: 50, left: 60 };
+        margin = { top: 20, right: 120, bottom: 20, left: 60 };
         containerWidth = container.clientWidth;
         containerHeight = container.clientHeight;
         chartWidth = containerWidth - margin.left - margin.right;
