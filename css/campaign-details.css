@@ -287,8 +287,9 @@
 }
 
 .mamdani-bar {
-    background: linear-gradient(90deg, rgba(68, 255, 136, 0.7) 0%, rgba(68, 255, 136, 0.95) 100%);
-    box-shadow: 0 0 20px rgba(68, 255, 136, 0.4);
+    background: linear-gradient(90deg, rgba(68, 255, 136, 0.7) 0%, rgba(68, 255, 136, 0.95) 100%) !important;
+    box-shadow: 0 0 20px rgba(68, 255, 136, 0.4) !important;
+    width: 100% !important; /* Force width for debugging */
 }
 
 .mamdani-bar + .bar-label .follower-value,
@@ -297,8 +298,9 @@
 }
 
 .sliwa-bar {
-    background: linear-gradient(90deg, rgba(255, 179, 68, 0.7) 0%, rgba(255, 179, 68, 0.95) 100%);
-    box-shadow: 0 0 20px rgba(255, 179, 68, 0.3);
+    background: linear-gradient(90deg, rgba(255, 179, 68, 0.7) 0%, rgba(255, 179, 68, 0.95) 100%) !important;
+    box-shadow: 0 0 20px rgba(255, 179, 68, 0.3) !important;
+    width: 11.76% !important; /* Force width for debugging */
 }
 
 .tiktok-followers-chart .follower-bar-item:nth-child(2) .follower-value {
@@ -306,8 +308,9 @@
 }
 
 .cuomo-bar {
-    background: linear-gradient(90deg, rgba(255, 107, 107, 0.7) 0%, rgba(255, 107, 107, 0.95) 100%);
-    box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+    background: linear-gradient(90deg, rgba(255, 107, 107, 0.7) 0%, rgba(255, 107, 107, 0.95) 100%) !important;
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.3) !important;
+    width: 5% !important; /* Force width for debugging - increased from 0.88% to be more visible */
 }
 
 .tiktok-followers-chart .follower-bar-item:nth-child(3) .follower-value {
