@@ -5,6 +5,7 @@ import {
 } from 'recharts';
 import type { MonthlyShortVsLong } from '../types';
 import { formatNumber, safeDiv } from '../utils';
+import { ChartCarousel } from './ChartCarousel';
 
 interface ShortVsLongChartsProps {
   data: MonthlyShortVsLong[];
@@ -87,6 +88,17 @@ export const ShortVsLongCharts: React.FC<ShortVsLongChartsProps> = ({
     },
   ]).filter(d => d.duration > 0 && d.views > 0);
 
+  // Calculate better x-axis domain for Duration vs Performance
+  const durations = scatterPoints.map(p => p.duration);
+  const minDuration = Math.min(...durations);
+  const maxDuration = Math.max(...durations);
+  // Add 10% padding on each side for better visualization
+  const durationPadding = (maxDuration - minDuration) * 0.1;
+  const durationDomain = [
+    Math.max(0, minDuration - durationPadding), 
+    maxDuration + durationPadding
+  ];
+
   const COLORS = {
     shorts: '#FF4444',
     normal: '#4488FF',
@@ -113,12 +125,10 @@ export const ShortVsLongCharts: React.FC<ShortVsLongChartsProps> = ({
     return null;
   };
 
-  return (
-    <div className="short-vs-long-charts">
-      {/* Horizontal scrolling layout for all charts */}
-      <div className="chart-grid-2">
-        {/* Average Views Per Video by Type */}
-        <div className="chart-container">
+  // Prepare chart elements for carousel
+  const chartElements = [
+    // Chart 1: Average Views Per Video by Type
+    <div key="avg-views" className="chart-container">
           <h3 className="chart-title">Average Views Per Video: Shorts vs Normal</h3>
           <ResponsiveContainer width="100%" height={450}>
             <BarChart data={avgViewsData} margin={{ top: 20, right: 30, left: 60, bottom: 60 }}>
@@ -134,10 +144,10 @@ export const ShortVsLongCharts: React.FC<ShortVsLongChartsProps> = ({
               <Bar dataKey="Shorts" fill={COLORS.shorts} />
             </BarChart>
           </ResponsiveContainer>
-        </div>
-
-        {/* Multiplier Chart */}
-        <div className="chart-container">
+        </div>,
+    
+    // Chart 2: Multiplier Chart
+    <div key="multiplier" className="chart-container">
           <h3 className="chart-title">Shorts vs Normal Performance Multiplier</h3>
           <p className="chart-subtitle">
             How many times more (or less) views does a Short get on average compared to a normal video?
@@ -151,10 +161,10 @@ export const ShortVsLongCharts: React.FC<ShortVsLongChartsProps> = ({
               <Bar dataKey="multiplier" fill="#FFB344" />
             </BarChart>
           </ResponsiveContainer>
-        </div>
-
-        {/* Duration vs Performance Scatter - third chart */}
-        <div className="chart-container">
+        </div>,
+    
+    // Chart 3: Duration vs Performance Scatter
+    <div key="duration-performance" className="chart-container">
           <h3 className="chart-title">Duration vs Performance</h3>
           <p className="chart-subtitle">
             Each point represents a channel-month. Blue = Normal videos, Red = Shorts.
@@ -167,6 +177,7 @@ export const ShortVsLongCharts: React.FC<ShortVsLongChartsProps> = ({
                 dataKey="duration"
                 name="Duration (sec)"
                 stroke="#C4CDDD"
+                domain={durationDomain}
                 label={{ value: 'Avg Duration (seconds)', position: 'insideBottom', offset: -10, fill: '#E8EAEF' }}
               />
               <YAxis
@@ -198,11 +209,12 @@ export const ShortVsLongCharts: React.FC<ShortVsLongChartsProps> = ({
             </ScatterChart>
           </ResponsiveContainer>
         </div>
-      </div>
+  ];
 
-      {/* Optional: If single channel selected, show share over time */}
-      {selectedChannels.length === 1 && (
-        <div className="chart-container">
+  // Add optional single-channel chart if applicable
+  if (selectedChannels.length === 1) {
+    chartElements.push(
+      <div key="share-over-time" className="chart-container">
           <h3 className="chart-title">Shorts Share Over Time: {selectedChannels[0].replace('@', '')}</h3>
           <ResponsiveContainer width="100%" height={450}>
             <BarChart
@@ -227,7 +239,14 @@ export const ShortVsLongCharts: React.FC<ShortVsLongChartsProps> = ({
             </BarChart>
           </ResponsiveContainer>
         </div>
-      )}
+    );
+  }
+
+  return (
+    <div className="short-vs-long-charts">
+      <ChartCarousel>
+        {chartElements}
+      </ChartCarousel>
     </div>
   );
 };

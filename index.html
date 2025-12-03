@@ -63,6 +63,7 @@
         <li aria-label="Slide 8.4: Young Voter Performance"></li>
         <li aria-label="Slide 8.5: Age Demographics"></li>
         <li aria-label="Slide 8.6: TikTok Strategy"></li>
+        <li aria-label="Slide 8.6.5: Short-Form Video Impact"></li>
         <li aria-label="Slide 8.7: Key Takeaway"></li>
         <li aria-label="Slide 9: Conclusion"></li>
         <li aria-label="Slide 10: Credits"></li>
@@ -435,29 +436,53 @@
             </div>
         </section>
 
-        <!-- Slide 8.6: TikTok Strategy -->
+        <!-- Slide 8.6: TikTok Strategy - Part 1 -->
         <section class="slide-section slide8-6 campaign-detail-slide" id="slide8-6">
             <div class="slide-container">
                 <div class="campaign-detail-content">
                     <p class="campaign-detail-text">Mamdani's campaign didn't just talk about younger voters – it was built around them, both in policy and in delivery.</p>
                     
-                    <div class="tiktok-followers">
-                        <div class="follower-stat mamdani">
-                            <span class="follower-count">1.7M</span>
-                            <span class="follower-name">Mamdani</span>
+                    <!-- Horizontal Bar Chart for TikTok Followers -->
+                    <div class="tiktok-followers-chart">
+                        <h3 class="chart-heading">TikTok Followers</h3>
+                        <div class="follower-bar-item">
+                            <div class="bar-label">
+                                <span class="candidate-name">Mamdani</span>
+                                <span class="follower-value">1.7M</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar-fill mamdani-bar" data-width="100"></div>
+                            </div>
                         </div>
-                        <div class="follower-stat sliwa">
-                            <span class="follower-count">200K</span>
-                            <span class="follower-name">Sliwa</span>
+                        <div class="follower-bar-item">
+                            <div class="bar-label">
+                                <span class="candidate-name">Sliwa</span>
+                                <span class="follower-value">200K</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar-fill sliwa-bar" data-width="11.76"></div>
+                            </div>
                         </div>
-                        <div class="follower-stat cuomo">
-                            <span class="follower-count">15K</span>
-                            <span class="follower-name">Cuomo</span>
+                        <div class="follower-bar-item">
+                            <div class="bar-label">
+                                <span class="candidate-name">Cuomo</span>
+                                <span class="follower-value">15K</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar-fill cuomo-bar" data-width="0.88"></div>
+                            </div>
                         </div>
                     </div>
                     
                     <p class="campaign-detail-text-small">That follower gap isn't just cosmetic; it signals a massively larger direct channel into the everyday media diets of young New Yorkers.</p>
-                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 8.6.5: TikTok Strategy - Part 2 (Short-Form Video Impact) -->
+        <section class="slide-section slide8-6-5 campaign-detail-slide" id="slide8-6-5">
+            <div class="slide-container">
+                <div class="campaign-detail-content">
                     <p class="campaign-detail-text"><strong>His campaign used short-form video to:</strong></p>
                     <ul class="campaign-bullets">
                         <li>Break down complex policy (housing, transit, childcare) into quick, sharable clips.</li>
@@ -573,6 +598,9 @@
     
     <!-- Return to Top Button -->
     <script src="js/return-to-top.js"></script>
+    
+    <!-- TikTok Bar Chart Animation -->
+    <script src="js/tiktok-bar-animation.js"></script>
 </body>
 
 </html>

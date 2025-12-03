@@ -5,6 +5,7 @@ import {
 } from 'recharts';
 import type { AnnualChannelSummary } from '../types';
 import { formatNumber, safeDiv } from '../utils';
+import { ChartCarousel } from './ChartCarousel';
 
 interface OverviewChartsProps {
   data: AnnualChannelSummary[];
@@ -65,8 +66,10 @@ export const OverviewCharts: React.FC<OverviewChartsProps> = ({ data, year }) =>
     normal: '#4488FF',
   };
 
-  return (
-    <div className="overview-charts">
+  // Prepare chart elements for carousel
+  const chartElements = [
+    // Chart 1: Views by Channel
+    <div key="views-by-channel" className="carousel-chart-full">
       {/* KPI Cards */}
       <div className="kpi-row">
         <div className="kpi-card">
@@ -90,8 +93,6 @@ export const OverviewCharts: React.FC<OverviewChartsProps> = ({ data, year }) =>
           <div className="kpi-label">Engagement / 1K Views</div>
         </div>
       </div>
-
-      {/* Views by Channel */}
       <div className="chart-container">
         <h3 className="chart-title">Total Views by Channel ({year})</h3>
         <ResponsiveContainer width="100%" height={300}>
@@ -113,11 +114,10 @@ export const OverviewCharts: React.FC<OverviewChartsProps> = ({ data, year }) =>
           </BarChart>
         </ResponsiveContainer>
       </div>
-
-      {/* Horizontal scrolling layout for all charts */}
-      <div className="chart-grid-2">
-        {/* Uploads Comparison */}
-        <div className="chart-container">
+    </div>,
+    
+    // Chart 2: Uploads Comparison
+    <div key="uploads-comparison" className="chart-container">
           <h3 className="chart-title">Uploads: Shorts vs Normal</h3>
           <ResponsiveContainer width="100%" height={450}>
             <BarChart data={uploadsComparison} margin={{ top: 20, right: 30, left: 60, bottom: 60 }}>
@@ -134,12 +134,12 @@ export const OverviewCharts: React.FC<OverviewChartsProps> = ({ data, year }) =>
               <Legend />
               <Bar dataKey="Shorts" stackId="a" fill={COLORS.shorts} />
               <Bar dataKey="Normal" stackId="a" fill={COLORS.normal} />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-
-        {/* Views Comparison */}
-        <div className="chart-container">
+          </BarChart>
+        </ResponsiveContainer>
+      </div>,
+    
+    // Chart 3: Views Comparison
+    <div key="views-comparison" className="chart-container">
           <h3 className="chart-title">Views: Shorts vs Normal</h3>
           <ResponsiveContainer width="100%" height={450}>
             <BarChart data={viewsComparison} margin={{ top: 20, right: 30, left: 60, bottom: 60 }}>
@@ -159,12 +159,12 @@ export const OverviewCharts: React.FC<OverviewChartsProps> = ({ data, year }) =>
               <Legend />
               <Bar dataKey="Shorts" stackId="a" fill={COLORS.shorts} />
               <Bar dataKey="Normal" stackId="a" fill={COLORS.normal} />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-
-        {/* Scatter Plot - third chart in horizontal scroll */}
-        <div className="chart-container">
+          </BarChart>
+        </ResponsiveContainer>
+      </div>,
+    
+    // Chart 4: Scatter Plot
+    <div key="scatter-plot" className="chart-container">
           <h3 className="chart-title">Shorts Supply vs Impact</h3>
           <p className="chart-subtitle">
             X-axis: % of uploads that are Shorts | Y-axis: % of views from Shorts | Size: Total views
@@ -206,7 +206,13 @@ export const OverviewCharts: React.FC<OverviewChartsProps> = ({ data, year }) =>
             </ScatterChart>
           </ResponsiveContainer>
         </div>
-      </div>
+  ];
+
+  return (
+    <div className="overview-charts">
+      <ChartCarousel>
+        {chartElements}
+      </ChartCarousel>
     </div>
   );
 };

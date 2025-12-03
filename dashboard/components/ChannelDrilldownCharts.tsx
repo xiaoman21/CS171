@@ -4,6 +4,7 @@ import {
 } from 'recharts';
 import type { MonthlyChannelSummary } from '../types';
 import { formatNumber, safeDiv } from '../utils';
+import { ChartCarousel } from './ChartCarousel';
 
 interface ChannelDrilldownChartsProps {
   data: MonthlyChannelSummary[];
@@ -69,44 +70,48 @@ export const ChannelDrilldownCharts: React.FC<ChannelDrilldownChartsProps> = ({
     total: '#44FF88',
   };
 
-  return (
-    <div className="drilldown-charts">
-      {selectedChannels.length > 1 && (
-        <div className="drilldown-note">
-          Drill-down shown for: <strong>{drilldownChannel.replace('@', '')}</strong>
-          {' '}(you have {selectedChannels.length} channels selected)
-        </div>
-      )}
+  // Prepare chart elements for carousel
+  const drilldownNote = selectedChannels.length > 1 ? (
+    <div className="drilldown-note">
+      Drill-down shown for: <strong>{drilldownChannel.replace('@', '')}</strong>
+      {' '}(you have {selectedChannels.length} channels selected)
+    </div>
+  ) : null;
 
-      {/* KPI Cards */}
-      <div className="kpi-row">
-        <div className="kpi-card">
-          <div className="kpi-value">{formatNumber(totalViews)}</div>
-          <div className="kpi-label">Total Views ({year})</div>
-        </div>
-        <div className="kpi-card">
-          <div className="kpi-value">{totalUploads}</div>
-          <div className="kpi-label">Total Uploads</div>
-        </div>
-        <div className="kpi-card">
-          <div className="kpi-value">{formatNumber(avgViewsPerVideo)}</div>
-          <div className="kpi-label">Avg Views/Video</div>
-        </div>
-        <div className="kpi-card">
-          <div className="kpi-value">{(shortsUploadShare * 100).toFixed(1)}%</div>
-          <div className="kpi-label">Shorts Share (Uploads)</div>
-        </div>
-        <div className="kpi-card">
-          <div className="kpi-value">{(shortsViewShare * 100).toFixed(1)}%</div>
-          <div className="kpi-label">Shorts Share (Views)</div>
-        </div>
-        <div className="kpi-card">
-          <div className="kpi-value">{weightedEngagement.toFixed(2)}</div>
-          <div className="kpi-label">Engagement / 1K Views</div>
-        </div>
+  const kpiCards = (
+    <div className="kpi-row">
+      <div className="kpi-card">
+        <div className="kpi-value">{formatNumber(totalViews)}</div>
+        <div className="kpi-label">Total Views ({year})</div>
       </div>
+      <div className="kpi-card">
+        <div className="kpi-value">{totalUploads}</div>
+        <div className="kpi-label">Total Uploads</div>
+      </div>
+      <div className="kpi-card">
+        <div className="kpi-value">{formatNumber(avgViewsPerVideo)}</div>
+        <div className="kpi-label">Avg Views/Video</div>
+      </div>
+      <div className="kpi-card">
+        <div className="kpi-value">{(shortsUploadShare * 100).toFixed(1)}%</div>
+        <div className="kpi-label">Shorts Share (Uploads)</div>
+      </div>
+      <div className="kpi-card">
+        <div className="kpi-value">{(shortsViewShare * 100).toFixed(1)}%</div>
+        <div className="kpi-label">Shorts Share (Views)</div>
+      </div>
+      <div className="kpi-card">
+        <div className="kpi-value">{weightedEngagement.toFixed(2)}</div>
+        <div className="kpi-label">Engagement / 1K Views</div>
+      </div>
+    </div>
+  );
 
-      {/* Monthly Views Line Chart */}
+  const chartElements = [
+    // Chart 1: Monthly Views with KPIs
+    <div key="monthly-views" className="carousel-chart-full">
+      {drilldownNote}
+      {kpiCards}
       <div className="chart-container">
         <h3 className="chart-title">Monthly Views</h3>
         <ResponsiveContainer width="100%" height={350}>
@@ -125,11 +130,10 @@ export const ChannelDrilldownCharts: React.FC<ChannelDrilldownChartsProps> = ({
           </LineChart>
         </ResponsiveContainer>
       </div>
-
-      {/* Two-column layout */}
-      <div className="chart-grid-2">
-        {/* Monthly Uploads Stacked */}
-        <div className="chart-container">
+    </div>,
+    
+    // Chart 2: Monthly Uploads Stacked
+    <div key="monthly-uploads" className="chart-container">
           <h3 className="chart-title">Monthly Uploads by Type</h3>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={monthlyUploadsData} margin={{ top: 20, right: 30, left: 20, bottom: 60 }}>
@@ -142,10 +146,10 @@ export const ChannelDrilldownCharts: React.FC<ChannelDrilldownChartsProps> = ({
               <Bar dataKey="Normal" stackId="a" fill={COLORS.normal} />
             </BarChart>
           </ResponsiveContainer>
-        </div>
-
-        {/* Shorts Share Over Time */}
-        <div className="chart-container">
+        </div>,
+    
+    // Chart 3: Shorts Share Over Time
+    <div key="shorts-share" className="chart-container">
           <h3 className="chart-title">Shorts Share Over Time</h3>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={shortsShareData} margin={{ top: 20, right: 30, left: 20, bottom: 60 }}>
@@ -159,7 +163,13 @@ export const ChannelDrilldownCharts: React.FC<ChannelDrilldownChartsProps> = ({
             </LineChart>
           </ResponsiveContainer>
         </div>
-      </div>
+  ];
+
+  return (
+    <div className="drilldown-charts">
+      <ChartCarousel>
+        {chartElements}
+      </ChartCarousel>
     </div>
   );
 };

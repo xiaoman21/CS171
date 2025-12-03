@@ -221,59 +221,92 @@
     font-weight: 300;
 }
 
-/* TikTok Followers */
-.tiktok-followers {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    gap: clamp(24px, 4vw, 48px);
-    margin: clamp(32px, 4vh, 48px) 0;
-    padding: clamp(24px, 3vh, 40px);
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 16px;
+/* TikTok Followers - Horizontal Bar Chart */
+.tiktok-followers-chart {
+    margin: clamp(32px, 5vh, 60px) auto;
+    max-width: 85%;
+    opacity: 0;
+    animation: campaignFadeIn 1.2s ease-out 0.5s forwards;
 }
 
-.follower-stat {
+.chart-heading {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(20px, 2.2vw, 28px);
+    font-weight: 700;
+    color: var(--text, #EDEFF3);
+    margin-bottom: clamp(24px, 3vh, 40px);
+    text-align: center;
+}
+
+.follower-bar-item {
+    margin-bottom: clamp(24px, 3vh, 36px);
+}
+
+.bar-label {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    gap: 12px;
-    padding: clamp(16px, 2vh, 24px);
-    border-radius: 8px;
-    transition: transform 0.3s ease;
+    margin-bottom: 12px;
 }
 
-.follower-stat:hover {
-    transform: translateY(-4px);
+.candidate-name {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 700;
+    color: var(--text, #EDEFF3);
 }
 
-.follower-stat.mamdani {
-    background: rgba(68, 255, 136, 0.15);
-    border: 2px solid rgba(68, 255, 136, 0.4);
+.follower-value {
+    font-family: "Newsreader", serif;
+    font-size: clamp(22px, 2.5vw, 32px);
+    font-weight: 800;
 }
 
-.follower-stat.mamdani .follower-count {
-    font-size: clamp(42px, 7vw, 84px);
+.bar-container {
+    width: 100%;
+    height: clamp(40px, 5vh, 60px);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: 12px;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 0; /* Start at 0, will be animated */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 16px;
+}
+
+.mamdani-bar {
+    background: linear-gradient(90deg, rgba(68, 255, 136, 0.7) 0%, rgba(68, 255, 136, 0.95) 100%);
+    box-shadow: 0 0 20px rgba(68, 255, 136, 0.4);
+}
+
+.mamdani-bar + .bar-label .follower-value,
+.follower-bar-item:nth-child(1) .follower-value {
     color: #44FF88;
 }
 
-.follower-stat.sliwa {
-    background: rgba(255, 179, 68, 0.15);
-    border: 2px solid rgba(255, 179, 68, 0.4);
+.sliwa-bar {
+    background: linear-gradient(90deg, rgba(255, 179, 68, 0.7) 0%, rgba(255, 179, 68, 0.95) 100%);
+    box-shadow: 0 0 20px rgba(255, 179, 68, 0.3);
 }
 
-.follower-stat.sliwa .follower-count {
-    font-size: clamp(32px, 5vw, 56px);
+.follower-bar-item:nth-child(2) .follower-value {
     color: #FFB344;
 }
 
-.follower-stat.cuomo {
-    background: rgba(255, 107, 107, 0.15);
-    border: 2px solid rgba(255, 107, 107, 0.4);
+.cuomo-bar {
+    background: linear-gradient(90deg, rgba(255, 107, 107, 0.7) 0%, rgba(255, 107, 107, 0.95) 100%);
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
 }
 
-.follower-stat.cuomo .follower-count {
-    font-size: clamp(24px, 4vw, 42px);
+.follower-bar-item:nth-child(3) .follower-value {
     color: #FF6B6B;
 }
 
