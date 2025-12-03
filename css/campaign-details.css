@@ -1,0 +1,335 @@
+/* Campaign Detail Slides Styling */
+
+.campaign-detail-slide {
+    overflow: visible !important;
+}
+
+.campaign-detail-slide .slide-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+
+.campaign-detail-content {
+    width: 100%;
+    max-width: 900px;
+    opacity: 0;
+    animation: fadeInCampaign 1.2s ease-out 0.3s forwards;
+}
+
+@keyframes fadeInCampaign {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.campaign-detail-title {
+    font-family: "Newsreader", serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 800;
+    color: var(--text, #EDEFF3);
+    margin-bottom: clamp(32px, 4vh, 48px);
+    line-height: 1.2;
+}
+
+.campaign-detail-text {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(18px, 2.2vw, 26px);
+    line-height: 1.7;
+    color: var(--text, #EDEFF3);
+    margin-bottom: clamp(24px, 3vh, 36px);
+}
+
+.campaign-detail-text-small {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(16px, 1.8vw, 22px);
+    line-height: 1.6;
+    color: var(--muted, #A4ADBD);
+    margin-bottom: clamp(20px, 2.5vh, 30px);
+}
+
+/* Stat Highlights */
+.stat-highlight {
+    color: #FFB344;
+    font-weight: 800;
+}
+
+.stat-huge {
+    font-size: clamp(64px, 10vw, 120px);
+    font-family: "Newsreader", serif;
+    font-weight: 900;
+    display: inline-block;
+    line-height: 1;
+    margin: 0 8px;
+}
+
+.stat-large {
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 900;
+    color: #44FF88;
+}
+
+.stat-medium {
+    font-size: clamp(32px, 5vw, 64px);
+    font-weight: 700;
+}
+
+.stat-small {
+    font-size: clamp(20px, 3vw, 36px);
+    font-weight: 600;
+    color: #FF6B6B;
+}
+
+.stat-emphasis {
+    font-weight: 700;
+    color: #FFB344;
+    font-size: clamp(20px, 2.5vw, 32px);
+}
+
+.stat-green {
+    color: #44FF88 !important;
+}
+
+.stat-red {
+    color: #FF6B6B !important;
+}
+
+/* Before/After Graphic */
+.before-after-graphic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(24px, 4vw, 48px);
+    margin: clamp(32px, 5vh, 60px) 0;
+    padding: clamp(24px, 3vh, 40px);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+}
+
+.before-stat, .after-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.stat-label {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(14px, 1.5vw, 18px);
+    color: var(--muted, #A4ADBD);
+    text-align: center;
+    max-width: 200px;
+}
+
+.arrow {
+    font-size: clamp(32px, 5vw, 56px);
+    color: #FFB344;
+    font-weight: 300;
+}
+
+/* Split Graphic */
+.split-graphic {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(24px, 4vw, 48px);
+    margin: clamp(32px, 4vh, 48px) 0;
+}
+
+.split-left, .split-right {
+    padding: clamp(24px, 3vh, 36px);
+    background: rgba(68, 136, 255, 0.1);
+    border-radius: 12px;
+    border: 2px solid rgba(68, 136, 255, 0.3);
+}
+
+.split-stat {
+    font-family: "Newsreader", serif;
+    font-size: clamp(48px, 8vw, 84px);
+    font-weight: 900;
+    color: #4488FF;
+    margin-bottom: 12px;
+}
+
+.split-label {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(16px, 1.8vw, 22px);
+    color: var(--text, #EDEFF3);
+    line-height: 1.4;
+}
+
+/* Group Stats */
+.group-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(16px, 2vw, 24px);
+    margin: clamp(24px, 3vh, 36px) 0;
+}
+
+.group-stat {
+    padding: clamp(20px, 2.5vh, 32px);
+    background: linear-gradient(135deg, rgba(255, 179, 68, 0.15) 0%, rgba(255, 179, 68, 0.05) 100%);
+    border-radius: 12px;
+    border: 2px solid rgba(255, 179, 68, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.group-pct {
+    font-family: "Newsreader", serif;
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 900;
+    color: #FFB344;
+}
+
+.group-label {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(14px, 1.5vw, 18px);
+    color: var(--text, #EDEFF3);
+    text-align: center;
+}
+
+/* Age Comparison */
+.age-comparison {
+    margin: clamp(32px, 5vh, 60px) 0;
+}
+
+.comparison-note {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(20px, 2.5vw, 32px);
+    color: var(--muted, #A4ADBD);
+    margin-top: 16px;
+    font-weight: 300;
+}
+
+/* TikTok Followers */
+.tiktok-followers {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: clamp(24px, 4vw, 48px);
+    margin: clamp(32px, 4vh, 48px) 0;
+    padding: clamp(24px, 3vh, 40px);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+}
+
+.follower-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: clamp(16px, 2vh, 24px);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.follower-stat:hover {
+    transform: translateY(-4px);
+}
+
+.follower-stat.mamdani {
+    background: rgba(68, 255, 136, 0.15);
+    border: 2px solid rgba(68, 255, 136, 0.4);
+}
+
+.follower-stat.mamdani .follower-count {
+    font-size: clamp(42px, 7vw, 84px);
+    color: #44FF88;
+}
+
+.follower-stat.sliwa {
+    background: rgba(255, 179, 68, 0.15);
+    border: 2px solid rgba(255, 179, 68, 0.4);
+}
+
+.follower-stat.sliwa .follower-count {
+    font-size: clamp(32px, 5vw, 56px);
+    color: #FFB344;
+}
+
+.follower-stat.cuomo {
+    background: rgba(255, 107, 107, 0.15);
+    border: 2px solid rgba(255, 107, 107, 0.4);
+}
+
+.follower-stat.cuomo .follower-count {
+    font-size: clamp(24px, 4vw, 42px);
+    color: #FF6B6B;
+}
+
+.follower-count {
+    font-family: "Newsreader", serif;
+    font-weight: 900;
+}
+
+.follower-name {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(14px, 1.5vw, 18px);
+    color: var(--text, #EDEFF3);
+    font-weight: 600;
+}
+
+/* Campaign Bullets */
+.campaign-bullets {
+    text-align: left;
+    max-width: 800px;
+    margin: clamp(24px, 3vh, 36px) auto;
+    padding-left: clamp(24px, 3vw, 40px);
+}
+
+.campaign-bullets li {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(16px, 2vw, 22px);
+    line-height: 1.7;
+    color: var(--text, #EDEFF3);
+    margin-bottom: clamp(16px, 2vh, 24px);
+}
+
+.campaign-bullets li::marker {
+    color: #FFB344;
+}
+
+/* Key Message */
+.campaign-key-message {
+    font-size: clamp(24px, 3vw, 40px) !important;
+    font-weight: 700;
+    color: #FFB344 !important;
+    padding: clamp(24px, 3vh, 40px);
+    background: rgba(255, 179, 68, 0.1);
+    border-left: 4px solid #FFB344;
+    border-radius: 8px;
+    margin: clamp(32px, 4vh, 48px) 0 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .split-graphic {
+        grid-template-columns: 1fr;
+    }
+    
+    .group-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .tiktok-followers {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .before-after-graphic {
+        flex-direction: column;
+    }
+}
+
