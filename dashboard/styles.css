@@ -5,7 +5,7 @@
   height: 100vh;
   background: #000000; /* Match main slide background */
   color: #EDEFF3;
-  overflow: auto;
+  overflow: hidden; /* Prevent double scrollbars */
   position: relative;
 }
 
@@ -79,21 +79,21 @@
   }
 }
 
-/* Dashboard View Header (for subsequent slides without full intro) */
-.dashboard-view-header {
-  padding: clamp(20px, 3vh, 40px) clamp(40px, 5vw, 80px) clamp(10px, 1.5vh, 20px);
-  text-align: center;
+/* Dashboard View Label (for subsequent slides without full intro) */
+.dashboard-view-label {
+  padding: clamp(12px, 1.5vh, 20px) clamp(20px, 3vw, 40px);
+  text-align: left;
   opacity: 0;
-  animation: fadeInDashboardViewHeader 1s ease-out 0.3s forwards;
+  animation: fadeInDashboardViewHeader 0.8s ease-out 0.3s forwards;
 }
 
-.dashboard-view-type {
-  font-family: "Newsreader", serif;
-  font-size: clamp(28px, 4vw, 48px);
-  font-weight: 800;
+.view-mode-name {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(16px, 1.8vw, 22px);
+  font-weight: 700;
   color: #4488FF;
   margin: 0;
-  text-transform: capitalize;
+  text-transform: none;
 }
 
 @keyframes fadeInDashboardViewHeader {
@@ -110,13 +110,14 @@
 .dashboard-container {
   width: 100%;
   height: 100%;
-  padding: clamp(20px, 3vh, 40px) clamp(20px, 3vw, 60px);
+  padding: clamp(20px, 3vh, 40px) clamp(20px, 3vw, 40px) clamp(20px, 3vh, 40px) clamp(40px, 5vw, 60px); /* Less right padding */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: clamp(16px, 2vh, 24px);
   opacity: 0;
   animation: fadeInDashboard 1s ease-out 0.5s forwards;
+  overflow: hidden; /* Prevent overflow */
 }
 
 /* Header */
@@ -340,9 +341,10 @@
 .dashboard-charts {
   background: transparent; /* Remove visible background */
   border-radius: 0;
-  padding: clamp(16px, 2vw, 32px);
+  padding: clamp(16px, 2vw, 32px) clamp(16px, 2vw, 32px) clamp(16px, 2vw, 32px) 0; /* Remove right padding to avoid nav overlap */
   overflow-y: auto;
   border: none; /* Remove border */
+  max-width: calc(100vw - 100px); /* Leave space for side nav */
 }
 
 /* Chart Containers - Larger vertical size */

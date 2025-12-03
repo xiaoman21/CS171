@@ -10,11 +10,13 @@ import './styles.css';
 interface MediaDashboardSlideProps {
   initialViewMode?: 'overview' | 'channel-drilldown' | 'short-vs-long';
   hideControls?: boolean;
+  showMainHeader?: boolean; // Only show "Interactive Media Analytics" header on first dashboard
 }
 
 export const MediaDashboardSlide: React.FC<MediaDashboardSlideProps> = ({ 
   initialViewMode = 'overview',
-  hideControls = false 
+  hideControls = false,
+  showMainHeader = true // Default to true for backward compatibility
 }) => {
   const [loading, setLoading] = useState(true);
   const [annualData, setAnnualData] = useState<AnnualChannelSummary[]>([]);
@@ -68,16 +70,32 @@ export const MediaDashboardSlide: React.FC<MediaDashboardSlideProps> = ({
     d => d.year === filters.year && filters.selectedChannels.includes(d.channelKey)
   );
 
+  // View mode display names
+  const viewModeNames = {
+    'overview': 'Overview',
+    'channel-drilldown': 'Channel Drill-down',
+    'short-vs-long': 'Short vs Long'
+  };
+
   return (
     <section className="slide-section media-dashboard-slide" id="dashboard">
       <div className="dashboard-container">
-        {/* Header */}
-        <div className="dashboard-header">
-          <h2 className="dashboard-title">Interactive Media Analytics</h2>
-          <p className="dashboard-subtitle">
-            Explore how top YouTube channels balance short-form and long-form content strategies
-          </p>
-        </div>
+        {/* Main Header - Only show on first dashboard */}
+        {showMainHeader && (
+          <div className="dashboard-header">
+            <h2 className="dashboard-title">Interactive Media Analytics</h2>
+            <p className="dashboard-subtitle">
+              Explore how top YouTube channels balance short-form and long-form content strategies
+            </p>
+          </div>
+        )}
+
+        {/* View Mode Label - Show on all dashboards at top */}
+        {!showMainHeader && (
+          <div className="dashboard-view-label">
+            <h3 className="view-mode-name">{viewModeNames[initialViewMode]}</h3>
+          </div>
+        )}
 
         {/* Main Content */}
         <div className="dashboard-content">

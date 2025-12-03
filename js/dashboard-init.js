@@ -9,12 +9,16 @@
             return;
         }
 
-        // Initialize Overview Dashboard
+        // Initialize Overview Dashboard (FIRST - with main header)
         const overviewRoot = document.getElementById('dashboard-overview-root');
         const overviewIntro = document.getElementById('dashboardOverviewIntro');
         if (overviewRoot) {
             const root1 = ReactDOM.createRoot(overviewRoot);
-            const props1 = { initialViewMode: 'overview', hideControls: true };
+            const props1 = { 
+                initialViewMode: 'overview', 
+                hideControls: true,
+                showMainHeader: true // Show "Interactive Media Analytics" header
+            };
             root1.render(React.createElement(MediaDashboardSlide.default || MediaDashboardSlide, props1));
             
             // Show intro, then fade to dashboard
@@ -26,36 +30,28 @@
             }, 3000);
         }
 
-        // Initialize Drill-down Dashboard
+        // Initialize Drill-down Dashboard (SECOND - no main header, just view label)
         const drilldownRoot = document.getElementById('dashboard-drilldown-root');
-        const drilldownIntro = document.getElementById('dashboardDrilldownIntro');
         if (drilldownRoot) {
             const root2 = ReactDOM.createRoot(drilldownRoot);
-            const props2 = { initialViewMode: 'channel-drilldown', hideControls: true };
+            const props2 = { 
+                initialViewMode: 'channel-drilldown', 
+                hideControls: true,
+                showMainHeader: false // Hide main header, show view label only
+            };
             root2.render(React.createElement(MediaDashboardSlide.default || MediaDashboardSlide, props2));
-            
-            setTimeout(() => {
-                drilldownIntro.classList.add('fade-out');
-                setTimeout(() => {
-                    drilldownIntro.style.display = 'none';
-                }, 1000);
-            }, 3000);
         }
 
-        // Initialize Short vs Long Dashboard
+        // Initialize Short vs Long Dashboard (THIRD - no main header, just view label)
         const shortvlongRoot = document.getElementById('dashboard-shortvlong-root');
-        const shortvlongIntro = document.getElementById('dashboardShortvlongIntro');
         if (shortvlongRoot) {
             const root3 = ReactDOM.createRoot(shortvlongRoot);
-            const props3 = { initialViewMode: 'short-vs-long', hideControls: true };
+            const props3 = { 
+                initialViewMode: 'short-vs-long', 
+                hideControls: true,
+                showMainHeader: false // Hide main header, show view label only
+            };
             root3.render(React.createElement(MediaDashboardSlide.default || MediaDashboardSlide, props3));
-            
-            setTimeout(() => {
-                shortvlongIntro.classList.add('fade-out');
-                setTimeout(() => {
-                    shortvlongIntro.style.display = 'none';
-                }, 1000);
-            }, 3000);
         }
 
         console.log('All dashboards initialized');
