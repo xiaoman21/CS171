@@ -617,7 +617,8 @@ main{
     text-align: right;
 }
 
-/* Center slide 8, 9, 10 content */
+/* Center slide 7, 8, 9, 10 content */
+.slide7 .slide-container,
 .slide8 .slide-container,
 .slide9 .slide-container,
 .slide10 .slide-container {
@@ -630,6 +631,14 @@ main{
     justify-content: center;
 }
 
+.slide7 .slide-title,
+.slide8 .slide-title,
+.slide9 .slide-title,
+.slide10 .slide-title {
+    text-align: center;
+}
+
+.slide7 .slide-body,
 .slide8 .slide-body,
 .slide9 .slide-body,
 .slide10 .slide-body {
@@ -638,6 +647,17 @@ main{
     margin: 0 auto;
 }
 
+.slide7 .campaign-image-container,
+.slide8 .campaign-image-container,
+.slide9 .campaign-image-container,
+.slide10 .campaign-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 24px auto;
+}
+
+.slide7 .credits-content,
 .slide8 .credits-content,
 .slide9 .credits-content,
 .slide10 .credits-content {
