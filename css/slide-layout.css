@@ -115,28 +115,36 @@ main{
   padding: 2vh 24px;
 }
 
+.slide5-5 .slide-title {
+  margin-bottom: 12px;
+}
+
+.slide5-5 .slide-body {
+  margin-bottom: 16px;
+}
+
 .youtube-monthly-container {
   width: 100%;
-  margin-top: 80px;
-  height: 70vh;
-  max-height: 70vh;
+  margin-top: 0px;
+  height: 75vh;
+  max-height: 75vh;
   background: var(--panel);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
-  padding: 32px;
+  padding: 20px 0;
   box-sizing: border-box;
   overflow: hidden;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .youtube-flex-monthly {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 40px;
   width: 100%;
-  height: 85%;
+  height: 100%;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -147,12 +155,16 @@ main{
   min-width: 200px;
   max-width: 250px;
   overflow: hidden;
+  align-self: flex-start;
+  padding-left: 24px;
 }
 
 .youtube-flex-monthly #youtubeTop5 {
   flex: 1;
   height: 100%;
   min-height: 0;
+  align-self: flex-start;
+  padding-right: 24px;
 }
 
 /* Large, elegant titles */
