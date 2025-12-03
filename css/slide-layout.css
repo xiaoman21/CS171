@@ -549,17 +549,18 @@ main{
     display: flex !important;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 16px;
     z-index: 100;
-    max-width: 280px;
-    flex-shrink: 0;
+    max-width: 350px;
+    flex-shrink: 1;
     flex-grow: 0;
-    flex-basis: 280px;
+    flex-basis: 350px;
 }
 
 .iphone-left-text {
-    text-align: right;
-    align-items: flex-end;
+    text-align: center;
+    align-items: center;
     order: 1;
 }
 
@@ -570,8 +571,8 @@ main{
 }
 
 .iphone-right-text {
-    text-align: left;
-    align-items: flex-start;
+    text-align: center;
+    align-items: center;
     order: 3;
 }
 
@@ -595,6 +596,18 @@ main{
     opacity: 0.9;
     margin: 0;
     padding: 0;
+}
+
+.side-text-large {
+    font-family: "Newsreader", serif;
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 700;
+    color: var(--text, #EDEFF3);
+    line-height: 1.3;
+    opacity: 0.95;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
 /* Responsive: Hide side text on smaller screens */
