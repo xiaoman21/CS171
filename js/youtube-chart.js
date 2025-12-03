@@ -60,8 +60,8 @@ function initYouTubeVis(data) {
     
     // Text obstacle areas (precise positions to avoid text)
     const textObstacles = [
-        { x: width / 2, y: 150, width: 1000, height: 320 }, // Title, body text, and subtitle area (top)
-        { x: width / 2, y: height - 40, width: 800, height: 80 } // Caption area at bottom
+        { x: width / 2, y: 200, width: width * 0.9, height: 450 }, // Title, body text, and subtitle area (top) - expanded
+        { x: width / 2, y: height - 30, width: width * 0.8, height: 60 } // Caption area at bottom
     ];
     
     // Function to check if a position overlaps with any text obstacle
@@ -82,21 +82,21 @@ function initYouTubeVis(data) {
     // Function to find a safe position away from text
     function findSafePosition(radius, index) {
         // Start in the safe zone (below title text, above caption)
-        const safeZoneTop = 350; // Well below the text
-        const safeZoneBottom = height - 150; // Well above caption
+        const safeZoneTop = 480; // Well below the text (increased from 350)
+        const safeZoneBottom = height - 120; // Well above caption
         const safeZoneHeight = safeZoneBottom - safeZoneTop;
-        
+
         // Spread circles across the safe zone
         const angle = (index / filteredChannels.length) * Math.PI * 2;
-        const radiusOffset = 200 + Math.random() * 150;
-        
+        const radiusOffset = 180 + Math.random() * 120;
+
         let x = width / 2 + Math.cos(angle) * radiusOffset;
         let y = safeZoneTop + safeZoneHeight / 2 + Math.sin(angle) * (safeZoneHeight / 3);
-        
+
         // Ensure within bounds
         x = Math.max(boundaryPadding + radius, Math.min(width - boundaryPadding - radius, x));
         y = Math.max(safeZoneTop + radius, Math.min(safeZoneBottom - radius, y));
-        
+
         return { x, y };
     }
     
@@ -110,10 +110,10 @@ function initYouTubeVis(data) {
     
     const simulation = d3.forceSimulation(filteredChannels)
         .force('charge', d3.forceManyBody().strength(-200))
-        .force('center', d3.forceCenter(width / 2, height / 2 + 100).strength(0.03)) // Center in safe zone
+        .force('center', d3.forceCenter(width / 2, height * 0.65).strength(0.05)) // Center in safe zone (lower)
         .force('collision', d3.forceCollide().radius(d => radiusScale(d.total_uploads) + 35))
-        .force('x', d3.forceX(width / 2).strength(0.01))
-        .force('y', d3.forceY(height / 2 + 100).strength(0.03)) // Keep in middle area
+        .force('x', d3.forceX(width / 2).strength(0.02))
+        .force('y', d3.forceY(height * 0.65).strength(0.08)) // Keep in lower area with stronger force
         .alphaDecay(0.015)
         .velocityDecay(0.4);
 
@@ -218,39 +218,48 @@ function initYouTubeVis(data) {
         // Enforce boundaries and text avoidance on each tick
         filteredChannels.forEach(d => {
             const radius = radiusScale(d.total_uploads);
-            
+
+            // Define strict safe zone boundaries
+            const safeZoneTop = 480;
+            const safeZoneBottom = height - 120;
+
             // Keep within slide boundaries
             d.x = Math.max(minX + radius, Math.min(maxX - radius, d.x));
             d.y = Math.max(minY + radius, Math.min(maxY - radius, d.y));
-            
+
+            // FORCE circles to stay below text (strict vertical constraint)
+            if (d.y < safeZoneTop + radius) {
+                d.y = safeZoneTop + radius;
+                d.vy = Math.abs(d.vy || 0); // Push downward
+            }
+            if (d.y > safeZoneBottom - radius) {
+                d.y = safeZoneBottom - radius;
+                d.vy = -Math.abs(d.vy || 0); // Push upward
+            }
+
             // Avoid text obstacles - push circles away from text
             textObstacles.forEach(obstacle => {
                 const distX = Math.abs(d.x - obstacle.x);
                 const distY = Math.abs(d.y - obstacle.y);
-                const minDistX = obstacle.width / 2 + radius + 30;
-                const minDistY = obstacle.height / 2 + radius + 30;
-                
+                const minDistX = obstacle.width / 2 + radius + 50; // Increased padding
+                const minDistY = obstacle.height / 2 + radius + 50;
+
                 if (distX < minDistX && distY < minDistY) {
-                    // Circle is overlapping with text - push it away
-                    const overlapX = minDistX - distX;
-                    const overlapY = minDistY - distY;
-                    
-                    // Push in the direction of least overlap
-                    if (overlapX < overlapY) {
-                        // Push horizontally
-                        d.x += (d.x < obstacle.x ? -overlapX : overlapX);
+                    // Circle is overlapping with text - push it down strongly
+                    // Always push down (away from top text)
+                    if (d.y < obstacle.y) {
+                        d.y = obstacle.y - minDistY - 10;
                     } else {
-                        // Push vertically
-                        d.y += (d.y < obstacle.y ? -overlapY : overlapY);
+                        d.y = obstacle.y + minDistY + 10;
                     }
-                    
-                    // Ensure still within bounds after pushing
+
+                    // Ensure still within safe zone after pushing
+                    d.y = Math.max(safeZoneTop + radius, Math.min(safeZoneBottom - radius, d.y));
                     d.x = Math.max(minX + radius, Math.min(maxX - radius, d.x));
-                    d.y = Math.max(minY + radius, Math.min(maxY - radius, d.y));
                 }
             });
         });
-        
+
         channelGroups.attr('transform', d => `translate(${d.x}, ${d.y})`);
     });
 
