@@ -110,7 +110,7 @@
 .landing-subtitle {
     font-family: "Inter", sans-serif;
     font-size: clamp(18px, 2.5vw, 28px);
-    color: var(--muted, #A4ADBD);
+    color: #E8EAEF;
     margin-bottom: 48px;
     line-height: 1.6;
     /* Ensure subtitle position is stable */
