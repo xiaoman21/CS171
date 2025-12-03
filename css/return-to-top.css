@@ -1,0 +1,53 @@
+/* Return to Top Button on Credits Slide */
+.return-to-top-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: clamp(40px, 6vh, 80px);
+    padding: 20px;
+    background: rgba(68, 136, 255, 0.1);
+    border: 2px solid rgba(68, 136, 255, 0.3);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #4488FF;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.return-to-top-btn:hover {
+    background: rgba(68, 136, 255, 0.2);
+    border-color: rgba(68, 136, 255, 0.6);
+    transform: translateY(-4px);
+}
+
+.return-to-top-btn:hover .return-arrow {
+    transform: translateY(-4px);
+    animation: bounceArrow 0.6s ease-in-out infinite;
+}
+
+.return-arrow {
+    transition: transform 0.3s ease;
+}
+
+.return-text {
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.return-to-top-btn:hover .return-text {
+    opacity: 1;
+}
+
+@keyframes bounceArrow {
+    0%, 100% {
+        transform: translateY(-4px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+

@@ -6,7 +6,7 @@
     
     function typeText(element, text, speed, callback) {
         let index = 0;
-        element.textContent = '';
+        element.textContent = ''; // Clear content before starting
         
         function type() {
             if (index < text.length) {
@@ -32,6 +32,10 @@
         const titleText = titleElement.textContent;
         const bodyText = textElement.textContent;
         
+        // Clear content immediately
+        titleElement.textContent = '';
+        textElement.textContent = '';
+        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting && !introShown) {
@@ -44,11 +48,11 @@
                         yearSelector.style.pointerEvents = 'none';
                     }
                     
-                    // Start typing animation
-                    typeText(titleElement, titleText, 80, () => {
+                    // Start typing animation - slower speeds
+                    typeText(titleElement, titleText, 120, () => {
                         // Title done, wait a moment then type text
                         setTimeout(() => {
-                            typeText(textElement, bodyText, 30, () => {
+                            typeText(textElement, bodyText, 50, () => {
                                 // Both done, hold for 2 seconds then fade out
                                 setTimeout(() => {
                                     introOverlay.classList.add('fade-out');
