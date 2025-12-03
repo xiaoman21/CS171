@@ -386,14 +386,13 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: auto;
     height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     z-index: 10;
     visibility: visible;
     opacity: 1;
+    flex-shrink: 0;
 }
 
 .iphone-frame-fullscreen {
@@ -538,9 +537,11 @@ main{
     width: 100%;
     overflow: visible;
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    gap: 40px;
+    justify-content: space-between;
+    gap: clamp(20px, 3vw, 60px);
+    padding: 0 clamp(40px, 5vw, 100px) !important;
 }
 
 /* Side text for iPhone slide */
@@ -548,20 +549,30 @@ main{
     display: flex !important;
     flex-direction: column;
     justify-content: center;
-    gap: 24px;
-    z-index: 5;
-    max-width: 250px;
+    gap: 16px;
+    z-index: 100;
+    max-width: 280px;
     flex-shrink: 0;
+    flex-grow: 0;
+    flex-basis: 280px;
 }
 
 .iphone-left-text {
     text-align: right;
     align-items: flex-end;
+    order: 1;
+}
+
+.iphone-mockup-container-fullscreen {
+    order: 2;
+    flex-shrink: 0;
+    flex-grow: 0;
 }
 
 .iphone-right-text {
     text-align: left;
     align-items: flex-start;
+    order: 3;
 }
 
 .side-text-item {
