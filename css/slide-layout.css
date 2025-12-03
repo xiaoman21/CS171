@@ -654,7 +654,12 @@ main{
     justify-content: center;
 }
 
-.slide7 .slide-title,
+.slide7 .slide-title {
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .slide8 .slide-title,
 .slide9 .slide-title,
 .slide10 .slide-title {
