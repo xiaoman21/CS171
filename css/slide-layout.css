@@ -556,12 +556,15 @@ main{
     flex-shrink: 1;
     flex-grow: 0;
     flex-basis: 350px;
+    opacity: 0;
+    animation: fadeInSlide1Text 1.5s ease-out forwards;
 }
 
 .iphone-left-text {
     text-align: center;
     align-items: center;
     order: 1;
+    animation-delay: 0.3s;
 }
 
 .iphone-mockup-container-fullscreen {
@@ -574,6 +577,19 @@ main{
     text-align: center;
     align-items: center;
     order: 3;
+    animation-delay: 0.6s;
+}
+
+/* Fade-in animation for slide 1 text */
+@keyframes fadeInSlide1Text {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .side-text-item {
