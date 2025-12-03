@@ -276,10 +276,8 @@
     border-radius: 12px;
     transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
     width: 0; /* Start at 0, will be animated */
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 16px;
+    display: block; /* Changed from flex to block for better visibility */
+    position: relative;
 }
 
 .mamdani-bar {
