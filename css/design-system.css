@@ -59,6 +59,17 @@ p{ margin:0; }
     pointer-events: none;
     z-index: 1000;
     background: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0));
+    opacity: 0.15;
+    transition: opacity 0.3s ease;
+    display: none; /* Hidden on landing page */
+}
+
+.timeline-container.visible {
+    display: block; /* Show after landing page */
+}
+
+.timeline-container:hover {
+    opacity: 1;
 }
 
 /* List structure */

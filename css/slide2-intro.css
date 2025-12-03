@@ -28,8 +28,7 @@
     font-weight: 800;
     color: var(--text, #EDEFF3);
     margin-bottom: clamp(32px, 5vh, 60px);
-    opacity: 0;
-    animation: fadeInTitle 2s ease-in forwards;
+    opacity: 1;
 }
 
 .slide2-intro-text {
@@ -39,29 +38,21 @@
     color: var(--muted, #A4ADBD);
     text-align: center;
     max-width: 900px;
-    opacity: 0;
-    animation: fadeInText 2.5s ease-in 1.5s forwards;
+    opacity: 1;
 }
 
-@keyframes fadeInTitle {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Typing cursor effect */
+.typing-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background-color: var(--text, #EDEFF3);
+    margin-left: 4px;
+    animation: blink 0.7s infinite;
 }
 
-@keyframes fadeInText {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
 }
 
