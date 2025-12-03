@@ -41,6 +41,28 @@
     }
 }
 
+/* CRITICAL: Force TikTok chart text visible on Slide 8.6 */
+.slide8-6 .tiktok-followers-chart,
+.slide8-6 .chart-heading,
+.slide8-6 .follower-bar-item,
+.slide8-6 .bar-label,
+.slide8-6 .candidate-name,
+.slide8-6 .follower-value,
+.slide8-6 .campaign-detail-text {
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: none !important;
+}
+
+.slide8-6 .bar-label {
+    display: flex !important;
+}
+
+.slide8-6 .candidate-name,
+.slide8-6 .follower-value {
+    display: inline-block !important;
+}
+
 .campaign-detail-title {
     font-family: "Newsreader", serif;
     font-size: clamp(32px, 5vw, 56px);
@@ -223,10 +245,11 @@
 
 /* TikTok Followers - Horizontal Bar Chart */
 .tiktok-followers-chart {
-    margin: clamp(32px, 5vh, 60px) auto;
-    max-width: 85%;
-    opacity: 0;
-    animation: campaignFadeIn 1.2s ease-out 0.5s forwards;
+    margin: clamp(32px, 5vh, 60px) auto !important;
+    max-width: 85% !important;
+    opacity: 1 !important; /* Always visible, no animation */
+    visibility: visible !important;
+    display: block !important;
 }
 
 /* Ensure chart is visible for debugging */
@@ -235,55 +258,76 @@
 }
 
 .chart-heading {
-    font-family: "Inter", sans-serif;
-    font-size: clamp(20px, 2.2vw, 28px);
-    font-weight: 700;
-    color: var(--text, #EDEFF3);
-    margin-bottom: clamp(24px, 3vh, 40px);
-    text-align: center;
+    font-family: "Inter", sans-serif !important;
+    font-size: clamp(20px, 2.2vw, 28px) !important;
+    font-weight: 700 !important;
+    color: #EDEFF3 !important;
+    margin-bottom: clamp(24px, 3vh, 40px) !important;
+    text-align: center !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
 }
 
 .follower-bar-item {
-    margin-bottom: clamp(24px, 3vh, 36px);
+    margin-bottom: clamp(24px, 3vh, 36px) !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    width: 100% !important;
 }
 
 .bar-label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 16px !important;
+    gap: 16px !important;
+    width: 100% !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .candidate-name {
-    font-family: "Inter", sans-serif;
-    font-size: clamp(18px, 2vw, 24px);
-    font-weight: 700;
-    color: var(--text, #EDEFF3);
+    font-family: "Newsreader", serif !important; /* Changed to title font */
+    font-size: clamp(24px, 2.8vw, 36px) !important; /* Increased size */
+    font-weight: 800 !important; /* Bolder */
+    color: #EDEFF3 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-block !important;
 }
 
 .follower-value {
-    font-family: "Newsreader", serif;
-    font-size: clamp(22px, 2.5vw, 32px);
-    font-weight: 800;
+    font-family: "Newsreader", serif !important; /* Title font */
+    font-size: clamp(28px, 3.5vw, 48px) !important; /* Larger size */
+    font-weight: 900 !important; /* Extra bold */
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-block !important;
 }
 
 .bar-container {
-    width: 100%;
-    height: clamp(40px, 5vh, 60px);
-    background: rgba(255, 255, 255, 0.05);
+    width: 100% !important;
+    height: 60px !important; /* Fixed height for visibility */
+    min-height: 60px !important;
+    background: rgba(255, 255, 255, 0.1) !important; /* More visible background */
     border-radius: 12px;
-    overflow: hidden;
+    overflow: visible !important; /* Changed to visible for debugging */
     position: relative;
+    display: block !important;
 }
 
 .bar-fill {
-    height: 100%;
+    height: 60px !important; /* Match container height exactly */
+    min-height: 60px !important;
     border-radius: 12px;
     transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
     width: 0; /* Start at 0, will be animated */
-    display: block;
-    position: relative;
-    min-width: 5px; /* Ensure at least some width is visible for debugging */
+    display: block !important;
+    position: absolute !important;
+    top: 0;
+    left: 0;
 }
 
 .mamdani-bar {
