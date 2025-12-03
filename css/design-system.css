@@ -118,12 +118,11 @@ p{ margin:0; }
     background: #fff;
 }
 
-/* Main centering wrapper */
+/* Main centering wrapper - NO changes for timeline */
 .page-wrapper {
-    max-width: 1200px;   /* controls the centered content width */
-    margin: 0 auto;      /* centers everything horizontally */
-    padding-left: 40px;  
-    padding-right: 40px; 
+    width: 100%;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
