@@ -111,7 +111,7 @@ main{
   min-height: 100svh;
   height: 100svh;
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: visible;
   position: relative;
   z-index: 1;
 }
@@ -121,7 +121,7 @@ main{
   width: 100%;
   padding: 0 24px 3vh 24px;
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: visible;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -306,10 +306,12 @@ main{
 
 /* Slide 2 (TikTok Globe) needs proper sizing */
 .slide2 .slide-container{
-  max-width: 800px;
+  max-width: 900px;
   max-height: 100vh;
   padding: 1vh 24px;
   overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .slide2 .slide-title{

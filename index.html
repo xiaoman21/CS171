@@ -31,6 +31,13 @@
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress"></div>
 
+    <!-- Narrative Timeline -->
+    <div id="narrativeTimeline" class="timeline-container">
+        <ul class="timeline-list">
+            <!-- Timeline nodes will be inserted here by JS -->
+        </ul>
+    </div>
+
     <!-- Side Navigation Dots -->
     <ul class="navigation_dots" role="navigation" aria-label="Section navigation">
         <li class="selected" aria-label="Slide 1: The Shift to Short"></li>
@@ -59,6 +66,7 @@
     </div>
 
     <main id="mainContent" class="main-hidden">
+        <div class="page-wrapper">
         <!-- Slide 1: The Shift to Short -->
         <section class="slide-section slide1" id="slide1">
             <div class="slide-container slide1-fullscreen">
@@ -164,13 +172,6 @@
                     <p>Short-form clips haven't replaced long videos — especially for the biggest creators. But they work like trailers: warming up the audience and helping the next long upload go bigger. Explore each creator to see how short-form and long-form content interact.</p>
                 </div>
 
-                <!-- Legend Toggles -->
-                <div class="legend-toggles">
-                    <button class="legend-toggle" data-legend="promo">🚀 Promo Month</button>
-                    <button class="legend-toggle" data-legend="slope">📈 Rising Slope</button>
-                    <span class="legend-guide">Use the options above to toggle creator avatars and highlight post-promo spikes.</span>
-                </div>
-
                 <!-- Avatar Slider Container -->
                 <div id="avatarSliderContainer" class="avatar-slider-wrapper">
                     <button class="avatar-nav-arrow avatar-nav-left" aria-label="Previous creator">←</button>
@@ -180,6 +181,12 @@
                     <button class="avatar-nav-arrow avatar-nav-right" aria-label="Next creator">→</button>
                 </div>
                 <p class="slider-subtitle">Click any icon to explore how Shorts and long-form videos interact.</p>
+
+                <!-- Legend Toggles -->
+                <div class="legend-toggles">
+                    <button class="legend-toggle" data-legend="promo">🚀 Promo Month</button>
+                    <button class="legend-toggle" data-legend="slope">📈 Rising Slope</button>
+                </div>
 
                 <!-- Fixed Chart Container -->
                 <div id="creatorChart" class="creator-chart-container"></div>
@@ -316,6 +323,7 @@
                 </div>
             </div>
         </section>
+        </div>
     </main>
 
     <!-- D3.js and Geo libraries -->
@@ -337,6 +345,7 @@
     <script src="js/young-audience.js"></script>
     <script src="js/pew-reset.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/timeline.js"></script>
 </body>
 
 </html>

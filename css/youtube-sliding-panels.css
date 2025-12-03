@@ -2,19 +2,6 @@
    YouTube Avatar Slider with Fixed Chart - Slide 5.6
    ===================================================== */
 
-/* Legend Toggles - Upper Right */
-.legend-toggles {
-  position: absolute;
-  top: 20px;
-  right: 5%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-  z-index: 100;
-  max-width: 60%;
-}
-
 .legend-toggle {
   padding: 6px 12px;
   background: rgba(21, 23, 27, 0.8);
@@ -171,18 +158,31 @@
   line-height: 1.4;
 }
 
+/* Legend Toggles - Above Chart */
+.legend-toggles {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 16px 0;
+  margin: 16px 0;
+}
+
 /* Fixed Chart Container */
 #creatorChart,
 .creator-chart-container {
   width: 100%;
-  max-width: 1100px;
-  margin: 32px auto;
+  max-width: 1600px;
+  margin: 0 auto;
   background: var(--panel, #15171B);
   border-radius: var(--radius-lg, 16px);
   box-shadow: var(--shadow-soft, 0 10px 30px rgba(0, 0, 0, 0.25));
-  padding: 24px;
+  padding: 32px;
   height: auto !important;
-  min-height: 450px !important;
+  min-height: 600px !important;
   max-height: none !important;
   overflow: visible !important;
   display: block !important;
@@ -195,7 +195,7 @@
   display: block !important;
   width: 100%;
   height: auto !important;
-  min-height: 450px;
+  min-height: 600px;
   background: transparent;
   visibility: visible !important;
   opacity: 1 !important;
@@ -262,11 +262,13 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .legend-toggles {
-    top: 10px;
-    right: 2%;
-    flex-direction: column;
-    gap: 6px;
-    max-width: 90%;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 0;
+    margin: 12px 0;
   }
 
   .legend-toggle {
