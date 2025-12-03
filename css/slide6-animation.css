@@ -1,0 +1,288 @@
+/* Slide 6 Animated News Consumption Chart */
+
+.slide6 {
+    overflow: visible !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+}
+
+.slide6 .slide-container {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: auto 1fr;
+    gap: clamp(30px, 4vh, 50px) clamp(60px, 6vw, 100px);
+    padding: clamp(60px, 7vh, 90px) clamp(80px, 8vw, 140px);
+    max-height: none !important;
+    height: 100vh !important;
+    max-width: none !important;
+    width: 100%;
+    overflow: visible;
+    align-items: stretch;
+    box-sizing: border-box;
+}
+
+.slide6-title {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+    grid-column: 1;
+    grid-row: 1;
+    text-align: left;
+    margin-bottom: 0;
+    align-self: start;
+}
+
+.slide6-title.visible {
+    opacity: 1;
+}
+
+.slide6-text-container {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(36px, 5vh, 60px);
+    text-align: left;
+    align-self: stretch;
+    justify-content: space-between;
+    position: relative;
+}
+
+.slide6-chart-container {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+    position: relative;
+    align-self: stretch;
+    justify-self: stretch;
+    display: flex;
+    align-items: center;
+}
+
+#slide6Chart {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.slide6-text {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(18px, 2vw, 26px);
+    line-height: 1.8;
+    color: var(--muted, #A4ADBD);
+    margin-bottom: 0;
+    opacity: 0;
+    transition: opacity 0.8s ease-in;
+    flex: 0 0 auto;
+}
+
+.slide6-text.visible {
+    opacity: 1;
+}
+
+.platform-name {
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.8s ease-in;
+}
+
+.platform-name.visible {
+    opacity: 1;
+}
+
+.youtube-text {
+    color: #FF0000;
+}
+
+.instagram-text {
+    color: #E4405F;
+}
+
+.tiktok-text {
+    color: #00F2EA;
+}
+
+.twitter-text {
+    color: #1DA1F2;
+}
+
+/* Controls section */
+.slide6-controls {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 0 0 auto;
+}
+
+.slide6-toggle-btn {
+    padding: 12px 24px;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    background-color: var(--accent, #7C9CFF);
+    color: var(--text, #EDEFF3);
+    border: none;
+    border-radius: var(--radius-lg, 16px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+}
+
+.slide6-toggle-btn:hover {
+    background-color: #6A8AEE;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(124, 156, 255, 0.3);
+}
+
+.slide6-toggle-btn:active {
+    transform: translateY(0);
+}
+
+.slide6-toggle-btn.visible {
+    opacity: 1 !important;
+}
+
+.slide6-source {
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    color: var(--muted, #A4ADBD);
+    margin: 0;
+    font-style: italic;
+}
+
+/* Chart styling */
+.chart-line {
+    fill: none;
+    stroke-width: 3;
+    opacity: 0;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+}
+
+.chart-line.animate-in {
+    opacity: 1;
+    animation: drawLine 2s ease-out forwards;
+}
+
+@keyframes drawLine {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.chart-dot {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+.chart-dot.visible {
+    opacity: 1;
+}
+
+.axis text {
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    fill: var(--muted, #A4ADBD);
+}
+
+.axis line,
+.axis path {
+    stroke: var(--border, #2A2D35);
+}
+
+.grid-line {
+    stroke: var(--border, #2A2D35);
+    stroke-opacity: 0.3;
+    stroke-dasharray: 2,2;
+}
+
+.chart-label {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+
+.chart-label.visible {
+    opacity: 1;
+}
+
+/* Bar chart styles */
+.chart-bar {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+.chart-bar.animate-in {
+    opacity: 1;
+}
+
+.bar-label {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+.bar-label.visible {
+    opacity: 1;
+}
+
+.bar-value-label {
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+.bar-value-label.visible {
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .slide6 .slide-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        gap: clamp(16px, 2vh, 24px);
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .slide6-title {
+        grid-column: 1;
+        grid-row: 1;
+        text-align: center;
+    }
+    
+    .slide6-chart-container {
+        grid-column: 1;
+        grid-row: 2;
+        height: 50vh;
+        min-height: 400px;
+        max-height: 600px;
+    }
+    
+    .slide6-text-container {
+        grid-column: 1;
+        grid-row: 3;
+        text-align: center;
+        gap: clamp(16px, 2vh, 24px);
+    }
+}
+
+@media (max-width: 768px) {
+    .slide6-chart-container {
+        height: 45vh;
+        min-height: 350px;
+    }
+    
+    .slide6-text {
+        font-size: 16px;
+    }
+}

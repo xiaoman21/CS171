@@ -35,6 +35,14 @@ main{
   max-height:92vh;              /* ensure container fits in slide */
   overflow-y:auto;              /* allow scrolling within slide if needed */
   box-sizing:border-box;
+  /* Hide scrollbar but allow scrolling */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.slide-container::-webkit-scrollbar {
+  display: none;
 }
 
 /* Channel Performance section needs wider container for charts */
@@ -45,8 +53,13 @@ main{
 /* Add spacing between visualizations in slide 5 */
 .slide5 .viz-placeholder{
   margin-bottom: 24px;
-  height: 50vh;
-  max-height: 50vh;
+  height: 90vh;
+  max-height: 90vh;
+  min-height: 90vh;
+  background: transparent;
+  /* Remove any background or border */
+  box-shadow: none;
+  border-radius: 0;
 }
 
 .slide5 .youtube-flex{
@@ -56,10 +69,43 @@ main{
   overflow: hidden;
 }
 
+/* Slide 5 needs more vertical space - make it taller */
+.slide5 {
+  min-height: 150vh !important;
+  height: 150vh !important;
+  overflow: visible !important;
+  position: relative;
+}
+
 /* Slide 5 needs more vertical space management */
 .slide5 .slide-container{
-  max-height: 95vh;
+  max-height: 145vh;
+  min-height: 145vh;
   padding: 2vh 24px;
+  overflow: visible;
+  position: relative;
+}
+
+/* Allow visualization to extend beyond container */
+.slide5 #youtubeChart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  z-index: 1;
+}
+
+/* Make text elements act as obstacles */
+.slide5 .slide-title,
+.slide5 .slide-body,
+.slide5 .slide-subtitle,
+.slide5 .viz-caption {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+  pointer-events: none;
 }
 
 /* Slide 5.5 - Monthly Trends in own container */
@@ -187,22 +233,13 @@ main{
   flex-shrink: 0;
 }
 
-/* Slide 6 (Pew Research) needs wider container */
-.slide6 .slide-container{
-  max-width:1600px;
-  max-height: 95vh;
-  padding: 2vh 24px;
-}
-
-.slide6 .viz-frame{
-  height: 55vh;
-  max-height: 55vh;
-}
+/* Slide 6 uses custom animation styles from slide6-animation.css */
 
 /* Slide 2 (TikTok Globe) needs proper sizing */
 .slide2 .slide-container{
   max-height: 95vh;
   padding: 2vh 24px;
+  overflow: hidden; /* Prevent scrollbar on slide 2 */
 }
 
 .slide2 .viz-placeholder{
@@ -365,16 +402,58 @@ main{
     height: 100vh;
     width: 100%;
     overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
 }
 
-/* Slide 8 needs space for image */
-.slide8 .slide-container {
+/* Side text for iPhone slide */
+.iphone-side-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    z-index: 5;
+    max-width: 200px;
+}
+
+.iphone-left-text {
+    text-align: right;
+    align-items: flex-end;
+}
+
+.iphone-right-text {
+    text-align: left;
+    align-items: flex-start;
+}
+
+.side-text-item {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(16px, 2vw, 24px);
+    font-weight: 600;
+    color: var(--text, #EDEFF3);
+    line-height: 1.4;
+    opacity: 0.9;
+    margin: 0;
+    padding: 8px 0;
+}
+
+/* Responsive: Hide side text on smaller screens */
+@media (max-width: 1200px) {
+    .iphone-side-text {
+        display: none;
+    }
+}
+
+/* Slide 7 needs space for image */
+.slide7 .slide-container {
     max-height: 95vh;
     padding: 2vh 24px;
 }
 
-/* Slide 8.5 - Quote Slide */
-.slide8-5 .slide-container {
+/* Slide 7.5 - Quote Slide */
+.slide7-5 .slide-container {
     max-width: 1200px;
     max-height: 95vh;
     padding: 4vh 32px;

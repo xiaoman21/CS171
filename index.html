@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="css/globe.css">
     <link rel="stylesheet" href="css/slide-layout.css">
     <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="css/slide6-animation.css">
 </head>
 
 <body>
@@ -47,9 +48,15 @@
     <!-- Landing Page -->
     <div class="landing-page" id="landingPage">
         <div class="landing-content">
-            <h1 class="landing-title">Are Videos Getting Shorter?</h1>
-            <p class="landing-subtitle">Exploring how short-form content is reshaping media and news consumption</p>
-            <button class="enter-button" id="enterButton">Enter</button>
+            <h1 class="landing-title" id="animatedTitle">Are Videos Getting Shorter?</h1>
+            <p class="landing-subtitle">Explore how short-form content is reshaping media and news consumption</p>
+        </div>
+        <!-- Scroll Down Indicator -->
+        <div class="scroll-down-indicator" id="scrollDownArrow">
+            <p class="scroll-down-text">Scroll Down</p>
+            <svg class="scroll-down-arrow-svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9l6 6 6-6"/>
+            </svg>
         </div>
     </div>
 
@@ -57,6 +64,13 @@
         <!-- Slide 1: The Shift to Short -->
         <section class="slide-section slide1" id="slide1">
             <div class="slide-container slide1-fullscreen">
+                <!-- Text on the left -->
+                <div class="iphone-side-text iphone-left-text">
+                    <p class="side-text-item">Quicker cuts</p>
+                    <p class="side-text-item">Quicker messaging</p>
+                    <p class="side-text-item">Quicker impressions</p>
+                </div>
+                
                 <!-- iPhone Frame with YouTube Video - Full Screen -->
                 <div class="iphone-mockup-container-fullscreen">
                     <div class="iphone-frame-fullscreen">
@@ -71,6 +85,13 @@
                             ></iframe>
                         </div>
                     </div>
+                </div>
+                
+                <!-- Text on the right -->
+                <div class="iphone-side-text iphone-right-text">
+                    <p class="side-text-item">Quicker cuts</p>
+                    <p class="side-text-item">Quicker messaging</p>
+                    <p class="side-text-item">Quicker impressions</p>
                 </div>
             </div>
         </section>
@@ -150,44 +171,44 @@
             </div>
         </section>
 
-        <!-- Slide 6: Where People Get News (2020–2025) -->
+        <!-- Slide 6: Social Media News Consumption Animated -->
         <section class="slide-section slide6" id="slide6">
             <div class="slide-container">
-                <h2 class="slide-title">Where People Get News (2020–2025)</h2>
-                <div class="slide-body">
-                    <p>More Americans now say they regularly get news from YouTube, Instagram, and TikTok.</p>
-                    <p>In contrast, X (formerly Twitter) shows a modest decline as a regular news source.</p>
-                    <p>The center of gravity is shifting toward social video.</p>
+                <h2 class="slide-title slide6-title" id="slide6Title">Where People Get News (2020–2025)</h2>
+                
+                <!-- Chart Container -->
+                <div class="slide6-chart-container" id="slide6ChartContainer">
+                    <svg id="slide6Chart"></svg>
                 </div>
-                <div class="viz-frame">
-                    <iframe
-                        id="pewResearchFrame"
-                        src="public/viz/social_news_interactive.html"
-                        title="Where People Get News (2020–2025)"
-                        loading="lazy"
-                        referrerpolicy="no-referrer"
-                        aria-describedby="social-news-caption"
-                    ></iframe>
-                    <button class="reset-view-button" id="resetPewView" title="Reset view">Reset View</button>
+                
+                <!-- Animated Text Sections -->
+                <div class="slide6-text-container">
+                    <p class="slide6-text" id="slide6Text1">
+                        Most Americans now say they regularly get news from 
+                        <span class="platform-name youtube-text">YouTube</span>, 
+                        <span class="platform-name instagram-text">Instagram</span>, and 
+                        <span class="platform-name tiktok-text">TikTok</span>.
+                    </p>
+                    <p class="slide6-text" id="slide6Text2">
+                        In contrast, <span class="platform-name twitter-text">X (formerly Twitter)</span> has declined from 15% to 12%.
+                    </p>
+                    <p class="slide6-text" id="slide6Text3">
+                        The center of gravity on social media reach is shifting to social video instead of written text.
+                    </p>
+                    
+                    <!-- Toggle Button and Source -->
+                    <div class="slide6-controls">
+                        <button class="slide6-toggle-btn" id="slide6ToggleBtn" style="opacity: 0;">
+                            <span class="toggle-btn-text">Show Change (2020–2025)</span>
+                        </button>
+                        <p class="slide6-source">Source: Pew Research Center</p>
+                    </div>
                 </div>
-                <p id="social-news-caption" class="viz-caption">Source: Pew Research Center.</p>
             </div>
         </section>
 
-        <!-- Slide 7: Young Audiences Lead the Change -->
+        <!-- Slide 7: Campaigns in the Social Era (Case Study) -->
         <section class="slide-section slide7" id="slide7">
-            <div class="slide-container">
-                <h2 class="slide-title">Young Audiences Lead the Change</h2>
-                <div class="slide-body">
-                    <p>Short-form is especially popular among young users who value speed, novelty, and shareability.</p>
-                    <p>Rapid scrolling and easy remixing amplify what resonates.</p>
-                    <p>Social platforms have become primary gateways to information.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Slide 8: Campaigns in the Social Era (Case Study) -->
-        <section class="slide-section slide8" id="slide8">
             <div class="slide-container">
                 <h2 class="slide-title">Campaigns in the Social Era (Case Study)</h2>
                 <div class="slide-body">
@@ -202,8 +223,8 @@
             </div>
         </section>
 
-        <!-- Slide 8.5: Quote Slide -->
-        <section class="slide-section slide8-5" id="slide8-5">
+        <!-- Slide 7.5: Quote Slide -->
+        <section class="slide-section slide7-5" id="slide7-5">
             <div class="slide-container">
                 <div class="quote-content">
                     <blockquote class="quote-text">
@@ -214,8 +235,8 @@
             </div>
         </section>
 
-        <!-- Slide 9: Why This Matters -->
-        <section class="slide-section slide9" id="slide9">
+        <!-- Slide 8: Why This Matters -->
+        <section class="slide-section slide8" id="slide8">
             <div class="slide-container">
                 <h2 class="slide-title">Why This Matters</h2>
                 <div class="slide-body">
@@ -226,8 +247,8 @@
                     </div>
                 </section>
 
-        <!-- Slide 10: Conclusion -->
-        <section class="slide-section slide10" id="slide10">
+        <!-- Slide 9: Conclusion -->
+        <section class="slide-section slide9" id="slide9">
             <div class="slide-container">
                 <h2 class="slide-title">Conclusion</h2>
                 <div class="slide-body">
@@ -238,8 +259,8 @@
             </div>
         </section>
 
-        <!-- Slide 11: Credits -->
-        <section class="slide-section slide11" id="slide11">
+        <!-- Slide 10: Credits -->
+        <section class="slide-section slide10" id="slide10">
             <div class="slide-container">
                 <h2 class="slide-title">Credits</h2>
                 <div class="credits-content">
@@ -278,6 +299,7 @@
     <script src="js/youtube-chart.js"></script>
     <script src="js/youtube-top5.js"></script>
     <script src="js/pew-reset.js"></script>
+    <script src="js/slide6-animation.js"></script>
     <script src="js/main.js"></script>
 </body>
 

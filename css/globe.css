@@ -63,21 +63,46 @@
 
 .year-selector select {
     padding: 10px 15px;
-    font-family: Verdana, sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 16px;
+    font-weight: 500;
     background-color: var(--panel, #15171B);
     border: 2px solid var(--accent, #7C9CFF);
-    border-radius: var(--r-lg, 16px);
+    border-radius: var(--radius-lg, 16px);
     color: var(--text, #EDEFF3);
     cursor: pointer;
     outline: none;
     transition: all 0.3s ease;
+    appearance: none; /* Remove default arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237C9CFF' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 40px;
 }
 
 .year-selector select:hover {
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(124, 156, 255, 0.5);
-    border-color: var(--accent-2, #34D399);
+    border-color: var(--accent, #7C9CFF);
+}
+
+/* Style the option elements */
+.year-selector select option {
+    background-color: var(--panel, #15171B);
+    color: var(--text, #EDEFF3);
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px 15px;
+    border: none;
+}
+
+.year-selector select option:hover,
+.year-selector select option:checked {
+    background-color: var(--accent, #7C9CFF);
+    color: var(--bg, #0E0F12);
 }
 
 .year-selector label {
