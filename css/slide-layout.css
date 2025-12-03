@@ -112,13 +112,35 @@ main{
   position: relative;
 }
 
-/* Slide 5.5 - Monthly Trends in own container */
+/* Slide 5.5 - Monthly Trends centered */
 .slide5-5 {
   min-height: 100svh;
   height: 100svh;
   overflow-y: auto;
   overflow-x: visible;
   position: relative;
+}
+
+.slide5-5 .slide-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.slide5-5 .slide-title,
+.slide5-5 .slide-body {
+  text-align: center;
+}
+
+.slide5-5 .youtube-flex-monthly {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Allow visualization to extend beyond container */
@@ -143,16 +165,20 @@ main{
   pointer-events: none;
 }
 
-/* Slide 5.5 - Monthly Trends in own container */
+/* Slide 5.5 - Monthly Trends centered */
 .slide5-5 .slide-container{
   max-width: 1600px;
   width: 100%;
-  padding: 0 24px 3vh 24px;
+  padding: 2vh 24px;
+  margin: 0 auto;
   overflow-y: auto;
   overflow-x: visible;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   height: 100%;
   max-height: 100vh;
 }
@@ -160,6 +186,7 @@ main{
 .slide5-5 .slide-title {
   font-size: clamp(26px, 4.2vw, 48px);
   margin-bottom: 2px;
+  text-align: center;
   flex-shrink: 0;
   line-height: 1.05;
 }
@@ -566,11 +593,7 @@ main{
     }
 }
 
-/* Slide 7 needs space for image */
-.slide7 .slide-container {
-    max-height: 95vh;
-    padding: 2vh 24px;
-}
+/* Slide 7 centering handled below in "Center slide 7, 8, 9, 10" section */
 
 /* Slide 7.5 - Quote Slide */
 .slide7-5 .slide-container {
