@@ -223,10 +223,11 @@
 
 /* TikTok Followers - Horizontal Bar Chart */
 .tiktok-followers-chart {
-    margin: clamp(32px, 5vh, 60px) auto;
-    max-width: 85%;
-    opacity: 0;
-    animation: campaignFadeIn 1.2s ease-out 0.5s forwards;
+    margin: clamp(32px, 5vh, 60px) auto !important;
+    max-width: 85% !important;
+    opacity: 1 !important; /* Always visible, no animation */
+    visibility: visible !important;
+    display: block !important;
 }
 
 /* Ensure chart is visible for debugging */
@@ -235,12 +236,15 @@
 }
 
 .chart-heading {
-    font-family: "Inter", sans-serif;
-    font-size: clamp(20px, 2.2vw, 28px);
-    font-weight: 700;
-    color: var(--text, #EDEFF3);
-    margin-bottom: clamp(24px, 3vh, 40px);
-    text-align: center;
+    font-family: "Inter", sans-serif !important;
+    font-size: clamp(20px, 2.2vw, 28px) !important;
+    font-weight: 700 !important;
+    color: #EDEFF3 !important;
+    margin-bottom: clamp(24px, 3vh, 40px) !important;
+    text-align: center !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
 }
 
 .follower-bar-item {
