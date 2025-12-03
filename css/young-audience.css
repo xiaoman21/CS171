@@ -1,0 +1,107 @@
+#young-audience-viz {
+    height: 440px;
+    margin-top: -40px;
+    position: relative;
+    width: 100%;
+    overflow: visible !important;
+}
+
+.age-chart-label {
+    font-size: 14px;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 1px;
+    margin-left: -120px; /* Shift left to align with chart */
+    position: relative;
+}
+
+/* Wrapper for visualization - moves entire group left and up */
+.youth-viz-wrapper {
+    width: 900px;
+    max-width: 100%;
+    margin: 0 auto;
+    transform: translate(-120px, 40px); /* Moved up by 40px (from 80px to 40px) */
+    position: relative;
+    overflow: visible;
+}
+
+#young-audience-viz svg {
+    overflow: visible;
+    z-index: 20;
+    display: block;
+    width: 100%;
+    max-width: 900px;
+}
+
+.youth-viz-wrapper svg {
+    overflow: visible;
+    z-index: 20;
+    display: block;
+    width: 100%;
+}
+
+.kid-character {
+    position: relative;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.pie-chart-group {
+    z-index: 10;
+}
+
+.slice-group {
+    transition: transform 0.2s ease;
+    transform-origin: center;
+}
+
+.slice {
+    transition: fill-opacity 0.15s ease;
+}
+
+.slice:hover {
+    fill-opacity: 0.9;
+}
+
+.slice-label {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    pointer-events: none;
+}
+
+.youth-tooltip {
+    position: absolute;
+    background: rgba(20, 20, 20, 0.9);
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    color: white;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    line-height: 1.5;
+}
+
+.youth-tooltip strong {
+    color: #EDEFF3;
+    font-weight: 600;
+}
+
+/* Caption spacing - moved up to prevent overlap with next slide */
+.slide7 .viz-caption {
+    margin-top: -130px; /* Moved up significantly to avoid next slide title */
+    margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #young-audience-viz {
+        height: 380px;
+    }
+    
+    .youth-viz-wrapper {
+        transform: translate(-60px, -60px);
+        width: 100%;
+    }
+}

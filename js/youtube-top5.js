@@ -85,11 +85,23 @@ if (!window.youtubeTop5Loaded) {
         .join("div")
         .attr("class", "bubble-item");
 
-      bubbles.append("img")
+      // Create clickable links for each channel
+      const links = bubbles.append("a")
+        .attr("href", d => `https://www.youtube.com/${d.key}`)
+        .attr("target", "_blank")
+        .attr("rel", "noopener noreferrer")
+        .attr("class", "bubble-link")
+        .style("display", "flex")
+        .style("align-items", "center")
+        .style("gap", "10px")
+        .style("text-decoration", "none")
+        .style("color", "inherit");
+
+      links.append("img")
         .attr("src", d => profilePics[d.key])
         .attr("alt", d => d.key);
 
-      bubbles.append("span")
+      links.append("span")
         .text(d => d.key.replace("@", ""));
 
       // --- Draw main D3 chart ---
@@ -99,7 +111,7 @@ if (!window.youtubeTop5Loaded) {
 
       const width = +svg.attr("width");
       const height = +svg.attr("height");
-      const m = { top: 60, right: 140, bottom: 70, left: 90 };
+      const m = { top: 60, right: 140, bottom: 85, left: 90 };
       const w = width - m.left - m.right;
       const h = height - m.top - m.bottom;
 
@@ -160,6 +172,30 @@ if (!window.youtubeTop5Loaded) {
         .y(d => y(d.total_views))
         .curve(d3.curveMonotoneX);
 
+      // --- Reference line at 1B views ---
+      const oneBillion = 1000000000;
+      if (d3.max(clean, d => d.total_views) >= oneBillion) {
+        const refLine = g.append("line")
+          .attr("class", "reference-line")
+          .attr("x1", 0)
+          .attr("x2", w)
+          .attr("y1", y(oneBillion))
+          .attr("y2", y(oneBillion))
+          .attr("stroke", "rgba(164, 173, 189, 0.2)")
+          .attr("stroke-width", 1)
+          .attr("stroke-dasharray", "4,4");
+
+        g.append("text")
+          .attr("class", "reference-label")
+          .attr("x", -5)
+          .attr("y", y(oneBillion) - 5)
+          .attr("text-anchor", "end")
+          .attr("fill", "rgba(164, 173, 189, 0.6)")
+          .attr("font-size", "11px")
+          .attr("font-family", "Inter, sans-serif")
+          .text("1B views");
+      }
+
       // --- Lines ---
       g.selectAll(".line")
         .data(series)
@@ -180,6 +216,57 @@ if (!window.youtubeTop5Loaded) {
         .duration(3500)
         .ease(d3.easeCubicInOut)
         .attr("stroke-dashoffset", 0);
+
+      // --- Find peaks for each series ---
+      const peaksAndAnnotations = series.map(s => {
+        const values = s.values;
+        const peaks = [];
+
+        // Find monthly peak
+        const maxPoint = d3.max(values, d => d.total_views);
+        const peakPoint = values.find(d => d.total_views === maxPoint);
+        if (peakPoint) {
+          peaks.push({
+            date: peakPoint.date,
+            views: peakPoint.total_views,
+            channel: s.key
+          });
+        }
+
+        return { peaks, annotations: [], key: s.key };
+      });
+
+      // --- Add peak markers with gentle glow ---
+      peaksAndAnnotations.forEach(({ peaks, key }) => {
+        peaks.forEach(peak => {
+          const peakGroup = g.append("g")
+            .attr("class", "peak-marker")
+            .attr("transform", `translate(${x(peak.date)},${y(peak.views)})`)
+            .style("opacity", 0);
+
+          // Glow circle
+          peakGroup.append("circle")
+            .attr("r", 8)
+            .attr("fill", color(key))
+            .attr("opacity", 0.3)
+            .attr("class", "peak-glow");
+
+          // Main marker
+          peakGroup.append("circle")
+            .attr("r", 5)
+            .attr("fill", color(key))
+            .attr("stroke", "rgba(255, 255, 255, 0.5)")
+            .attr("stroke-width", 1.5)
+            .attr("class", "peak-dot");
+
+          // Animate peak marker appearance
+          peakGroup.transition()
+            .delay(3500)
+            .duration(600)
+            .style("opacity", 1);
+        });
+      });
+
 
       // --- Moving Avatars ---
       const avatarGroups = g.selectAll(".avatar-group")

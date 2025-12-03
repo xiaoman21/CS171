@@ -1,51 +1,80 @@
-.section4 {
-    text-align: center;
+/* =====================================================
+   Social News & Young Audience Visualization - Slide 7
+   ===================================================== */
+
+#young-audience-viz {
+  width: 100%;
+  height: 460px;
+  position: relative;
+  z-index: 10;
+  margin: 32px auto;
 }
 
-.section4 .section-heading {
-    margin-bottom: 1.5rem;
+#youthDemographics {
+  width: 100%;
+  max-width: 1200px;
+  margin: 32px auto;
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.section4 .eyebrow {
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    font-size: 0.85rem;
-    color: #ffeb99;
-    margin-bottom: 0.5rem;
+#youthDemographics svg {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-.section4 .section-subtitle {
-    max-width: 720px;
-    margin: 0 auto;
-    font-size: 1rem;
-    color: #f0f0f0;
+/* Character Styles - Static, no animation */
+.character {
+  transition: none;
 }
 
-.social-news-iframe {
-    width: 100%;
-    height: 600px;
-    border: none;
-    border-radius: 24px;
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
-    background: #10131a;
-    margin: 0 auto;
+.character image {
+  transition: none;
 }
 
-.section4 .data-note {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    color: #d9d9d9;
+/* Pie Chart */
+.pie-chart {
+  pointer-events: all;
 }
 
-@media (max-width: 992px) {
-    .social-news-iframe {
-        height: 520px;
-    }
+.slice {
+  transition: opacity 0.2s ease, stroke-width 0.2s ease;
 }
 
-@media (max-width: 576px) {
-    .social-news-iframe {
-        height: 460px;
-    }
+.slice-label {
+  pointer-events: none;
+  user-select: none;
 }
 
+.slice-label text {
+  pointer-events: none;
+}
+
+/* Tooltip */
+.slice-tooltip {
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.slice-tooltip text {
+  pointer-events: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #youthDemographics {
+    min-height: 400px;
+    margin: 24px auto;
+  }
+
+  .character {
+    transform: scale(0.7);
+  }
+
+  .slice-label text {
+    font-size: 11px;
+  }
+}

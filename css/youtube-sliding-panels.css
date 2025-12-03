@@ -1,0 +1,326 @@
+/* =====================================================
+   YouTube Avatar Slider with Fixed Chart - Slide 5.6
+   ===================================================== */
+
+.legend-toggle {
+  padding: 6px 12px;
+  background: rgba(21, 23, 27, 0.8);
+  border: 1px solid rgba(124, 156, 255, 0.3);
+  border-radius: 16px;
+  color: #EDEFF3;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.legend-toggle:hover {
+  background: rgba(124, 156, 255, 0.1);
+  border-color: rgba(124, 156, 255, 0.5);
+}
+
+.legend-toggle.active {
+  background: rgba(124, 156, 255, 0.2);
+  border-color: rgba(124, 156, 255, 0.6);
+}
+
+.legend-guide {
+  padding: 6px 12px;
+  background: rgba(21, 23, 27, 0.8);
+  border: 1px solid rgba(124, 156, 255, 0.3);
+  border-radius: 16px;
+  color: rgba(237, 239, 243, 0.8);
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+  white-space: normal;
+  max-width: 300px;
+}
+
+/* Avatar Slider Wrapper - Small, centered, capsule-shaped */
+.avatar-slider-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 24px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 130px;
+}
+
+/* Avatar Slider - Capsule-shaped track */
+.avatar-slider {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  gap: 20px;
+  padding: 15px 60px;
+  flex: 1;
+  background: rgba(21, 23, 27, 0.8);
+  border-radius: 65px;
+  border: 2px solid rgba(124, 156, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* Avatar Item */
+.avatar-item {
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+}
+
+.avatar-slider-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid rgba(124, 156, 255, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  display: block;
+  object-fit: cover;
+}
+
+.avatar-item.active .avatar-slider-img {
+  border-color: rgba(124, 156, 255, 0.9);
+  box-shadow: 0 0 20px rgba(124, 156, 255, 0.6);
+}
+
+/* Navigation Arrows - Small, positioned on slider */
+.avatar-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  background: rgba(21, 23, 27, 0.95);
+  border: 2px solid rgba(124, 156, 255, 0.5);
+  border-radius: 50%;
+  color: #EDEFF3;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  pointer-events: all;
+}
+
+.avatar-nav-left {
+  left: 5px;
+}
+
+.avatar-nav-right {
+  right: 5px;
+}
+
+.avatar-nav-arrow:hover {
+  background: rgba(124, 156, 255, 0.2);
+  border-color: rgba(124, 156, 255, 0.8);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.avatar-nav-arrow:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Slider Subtitle */
+.slider-subtitle {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  margin: 12px auto 0 auto;
+  padding: 0;
+  max-width: 600px;
+  line-height: 1.4;
+}
+
+/* Legend Toggles - Above Chart */
+.legend-toggles {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 16px 0;
+  margin: 16px 0;
+}
+
+/* Fixed Chart Container */
+#creatorChart,
+.creator-chart-container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  background: var(--panel, #15171B);
+  border-radius: var(--radius-lg, 16px);
+  box-shadow: var(--shadow-soft, 0 10px 30px rgba(0, 0, 0, 0.25));
+  padding: 32px;
+  height: auto !important;
+  min-height: 600px !important;
+  max-height: none !important;
+  overflow: visible !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+#creatorChart svg,
+.creator-chart-container svg {
+  display: block !important;
+  width: 100%;
+  height: auto !important;
+  min-height: 600px;
+  background: transparent;
+  visibility: visible !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+}
+
+/* Floating Tooltip */
+.floating-tooltip {
+  pointer-events: none;
+  z-index: 10001;
+}
+
+.floating-tooltip text {
+  pointer-events: none;
+}
+
+/* Slide Narrative - Positioned right after chart */
+.slide5-6 .slide-narrative {
+  max-width: 900px;
+  margin: 24px auto 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+.slide5-6 .slide-narrative p {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(237, 239, 243, 0.9);
+  margin: 0;
+}
+
+/* Spike Segment Animation */
+.spike-segment {
+  animation: spikePulse 2s ease-in-out infinite;
+}
+
+@keyframes spikePulse {
+  0%, 100% {
+    opacity: 0.8;
+    stroke-width: 5;
+  }
+  50% {
+    opacity: 1;
+    stroke-width: 6;
+  }
+}
+
+/* Ensure no clipping */
+.slide5-6 {
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 100svh;
+  position: relative;
+}
+
+.slide5-6 .slide-container {
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+  position: relative;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .legend-toggles {
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 0;
+    margin: 12px 0;
+  }
+
+  .legend-toggle {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+
+  .legend-guide {
+    font-size: 10px;
+    padding: 5px 10px;
+    max-width: 100%;
+  }
+
+  .slider-subtitle {
+    font-size: 0.85rem;
+    margin: 10px auto 0 auto;
+    padding: 0 16px;
+  }
+
+  .avatar-slider-wrapper {
+    max-width: 90%;
+    height: 110px;
+  }
+
+  .avatar-slider {
+    padding: 12px 40px;
+    gap: 16px;
+  }
+
+  .avatar-slider-img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .avatar-nav-arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  #creatorChart,
+  .creator-chart-container {
+    padding: 16px;
+    min-height: 400px !important;
+  }
+  
+  #creatorChart svg,
+  .creator-chart-container svg {
+    min-height: 400px;
+  }
+
+  .slide5-6 .slide-narrative p {
+    font-size: 12px;
+  }
+}
