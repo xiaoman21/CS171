@@ -32,6 +32,7 @@
     opacity: 1;
     text-align: center;
     width: 100%;
+    min-height: clamp(48px, 8vw, 96px); /* Prevent layout shift */
 }
 
 .slide2-intro-text {
@@ -43,6 +44,7 @@
     max-width: 900px;
     opacity: 1;
     margin: 0 auto;
+    min-height: 150px; /* Prevent layout shift */
 }
 
 /* Typing cursor effect */
