@@ -102,26 +102,26 @@ The project contains 14 interactive slides exploring the shift to short-form con
   - Floating bubbles representing channels (force-directed layout)
   - Click to see Shorts vs Regular content breakdown with animated transitions
   - Interactive drag-and-drop layout
-- **Slide 5.5**: Monthly View Trends - Top 5 YouTube Channels (2024)
+- **Slide 6**: Monthly View Trends - Top 5 YouTube Channels (2024)
   - Animated D3 line chart showing total monthly views
   - Bubble legend with channel profile avatars
   - Moving avatars that travel along performance lines
   - Interactive tooltips on hover
-- **Slide 5.6**: Shorts Ignite Long-Form - Long/Short content interaction
+- **Slide 7**: Shorts Ignite Long-Form - Long/Short content interaction
   - Avatar slider to select creators
   - Combined view of Shorts and long-form video performance
   - Promo month and rising slope indicators
   - Interactive legend toggles
-- **Slide 6**: Where People Get News (2020–2025)
+- **Slide 8**: Where People Get News (2020–2025)
   - Animated D3 line chart with sequential text reveals
   - Pew Research Center data visualization
   - Toggle to show percentage-point changes
   - Platform-specific text highlights
-- **Slide 7**: Campaigns in the Social Era - NYC campaign case study
-- **Slide 7.5**: Quote - Ritchie Torres quote on modern communication
-- **Slide 8**: Why This Matters - Media literacy insights
-- **Slide 9**: Conclusion - Key takeaways
-- **Slide 10**: Credits - Team and data sources
+- **Slide 9**: Campaigns in the Social Era - NYC campaign case study
+- **Slide 10**: Quote - Ritchie Torres quote on modern communication
+- **Slide 11**: Why This Matters - Media literacy insights
+- **Slide 12**: Conclusion - Key takeaways
+- **Slide 13**: Credits - Team and data sources
 
 ## 📁 Project Structure
 
@@ -145,10 +145,10 @@ CS171/
 │   ├── slide-layout.css              # Slide container layouts
 │   ├── globe.css                     # TikTok Globe (Slide 2)
 │   ├── youtube.css                   # Channel composition (Slide 5)
-│   ├── youtube-top5.css              # Monthly trends (Slide 5.5)
-│   ├── youtube-longshort-combined.css # Long/Short interaction (Slide 5.6)
+│   ├── youtube-top5.css              # Monthly trends (Slide 6)
+│   ├── youtube-longshort-combined.css # Long/Short interaction (Slide 7)
 │   ├── youtube-sliding-panels.css    # Sliding panels component
-│   ├── slide6-animation.css          # News consumption slide (Slide 6)
+│   ├── slide6-animation.css          # News consumption slide (Slide 8)
 │   ├── social-news.css               # Social news styles
 │   ├── young-audience.css            # Young audience styles
 │   └── slide7-animation.css          # Campaign slide animations
@@ -160,10 +160,10 @@ CS171/
 │   ├── animations.js                 # Global animation utilities
 │   ├── tiktok-globe.js              # TikTok Globe visualization (Slide 2)
 │   ├── youtube-chart.js             # Channel composition (Slide 5)
-│   ├── youtube-top5.js              # Monthly trends chart (Slide 5.5)
-│   ├── youtube-longshort-combined.js # Long/Short interaction (Slide 5.6)
+│   ├── youtube-top5.js              # Monthly trends chart (Slide 6)
+│   ├── youtube-longshort-combined.js # Long/Short interaction (Slide 7)
 │   ├── youtube-sliding-panels.js    # Sliding panels component
-│   ├── slide6-animation.js          # News consumption animation (Slide 6)
+│   ├── slide6-animation.js          # News consumption animation (Slide 8)
 │   ├── young-audience.js            # Young audience visualization
 │   ├── pew-reset.js                 # Pew data reset utilities
 │   ├── explanation-cards.js         # Pop-up explanation cards
@@ -293,17 +293,17 @@ The project uses a modern, professional design system defined in [design-system.
   - Circle-to-pie chart transitions
   - Click interactions
 
-- **[youtube-top5.js](js/youtube-top5.js)**: Monthly trends (Slide 5.5)
+- **[youtube-top5.js](js/youtube-top5.js)**: Monthly trends (Slide 6)
   - Animated line chart
   - Moving avatars along trend lines
   - Interactive tooltips
 
-- **[youtube-longshort-combined.js](js/youtube-longshort-combined.js)**: Long/Short interaction (Slide 5.6)
+- **[youtube-longshort-combined.js](js/youtube-longshort-combined.js)**: Long/Short interaction (Slide 7)
   - Creator avatar slider
   - Combined bar/line charts
   - Legend toggles for promo months and slope indicators
 
-- **[slide6-animation.js](js/slide6-animation.js)**: News consumption (Slide 6)
+- **[slide6-animation.js](js/slide6-animation.js)**: News consumption (Slide 8)
   - Animated line chart with sequential reveals
   - Intersection Observer for scroll-triggered animations
   - Toggle between trend lines and change bars
@@ -329,7 +329,7 @@ The project uses a modern, professional design system defined in [design-system.
 
 3. **`top_channels_2024_monthly_summary.csv`**
    - Monthly view data for top YouTube channels throughout 2024
-   - Used in Slide 5.5 (Monthly View Trends)
+   - Used in Slide 6 (Monthly View Trends)
 
 4. **`shortform_youth_audience.csv`**
    - Young audience engagement data
@@ -339,7 +339,7 @@ The project uses a modern, professional design system defined in [design-system.
    - Pew Research Center data
    - Percentage of U.S. adults regularly getting news on social platforms (2020-2025)
    - Platforms: YouTube, Instagram, TikTok, X/Twitter, Facebook, etc.
-   - Used in Slide 6 (Where People Get News)
+   - Used in Slide 8 (Where People Get News)
 
 
 ## 🔧 Development Guide
