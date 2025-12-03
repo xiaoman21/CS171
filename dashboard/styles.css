@@ -1,0 +1,446 @@
+/* Media Dashboard Slide Styles */
+
+.media-dashboard-slide {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+  color: #EDEFF3;
+  overflow: auto;
+  position: relative;
+}
+
+.dashboard-container {
+  width: 100%;
+  height: 100%;
+  padding: clamp(20px, 3vh, 40px) clamp(20px, 3vw, 60px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2vh, 24px);
+}
+
+/* Header */
+.dashboard-header {
+  text-align: center;
+  margin-bottom: clamp(16px, 2vh, 24px);
+}
+
+.dashboard-title {
+  font-family: "Newsreader", serif;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800;
+  color: #EDEFF3;
+  margin: 0 0 clamp(8px, 1vh, 16px) 0;
+}
+
+.dashboard-subtitle {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(14px, 1.5vw, 18px);
+  color: #A4ADBD;
+  margin: 0;
+}
+
+/* Main Content Layout */
+.dashboard-content {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: clamp(24px, 3vw, 40px);
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Controls Sidebar */
+.dashboard-controls {
+  background: rgba(26, 26, 46, 0.6);
+  border-radius: 12px;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid rgba(164, 173, 189, 0.1);
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.control-label {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #A4ADBD;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Year Selector */
+.year-selector-group {
+  display: flex;
+  gap: 8px;
+}
+
+.year-btn {
+  flex: 1;
+  padding: 10px;
+  background: rgba(68, 136, 255, 0.1);
+  border: 1px solid rgba(68, 136, 255, 0.3);
+  border-radius: 6px;
+  color: #4488FF;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.year-btn:hover {
+  background: rgba(68, 136, 255, 0.2);
+  border-color: rgba(68, 136, 255, 0.5);
+}
+
+.year-btn.active {
+  background: #4488FF;
+  color: #0f0f1e;
+  border-color: #4488FF;
+}
+
+/* Channel Selector */
+.channel-actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 6px 10px;
+  background: rgba(164, 173, 189, 0.1);
+  border: 1px solid rgba(164, 173, 189, 0.2);
+  border-radius: 4px;
+  color: #A4ADBD;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+  background: rgba(164, 173, 189, 0.2);
+  color: #EDEFF3;
+}
+
+.channel-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.channel-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: rgba(164, 173, 189, 0.05);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.channel-checkbox:hover {
+  background: rgba(164, 173, 189, 0.1);
+}
+
+.channel-checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.channel-name {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  color: #EDEFF3;
+}
+
+/* View Mode Tabs */
+.view-mode-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.view-mode-btn {
+  padding: 10px 12px;
+  background: rgba(164, 173, 189, 0.1);
+  border: 1px solid rgba(164, 173, 189, 0.2);
+  border-radius: 6px;
+  color: #A4ADBD;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.view-mode-btn:hover {
+  background: rgba(164, 173, 189, 0.15);
+  color: #EDEFF3;
+}
+
+.view-mode-btn.active {
+  background: rgba(255, 179, 68, 0.2);
+  border-color: #FFB344;
+  color: #FFB344;
+}
+
+/* View Description */
+.view-description {
+  padding: 16px;
+  background: rgba(68, 136, 255, 0.1);
+  border-left: 3px solid #4488FF;
+  border-radius: 4px;
+}
+
+.view-description-title {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #4488FF;
+  margin: 0 0 8px 0;
+}
+
+.view-description-text {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #A4ADBD;
+  margin: 0;
+}
+
+/* Charts Area */
+.dashboard-charts {
+  background: rgba(26, 26, 46, 0.4);
+  border-radius: 12px;
+  padding: clamp(16px, 2vw, 32px);
+  overflow-y: auto;
+  border: 1px solid rgba(164, 173, 189, 0.1);
+}
+
+/* Chart Containers */
+.chart-container {
+  margin-bottom: clamp(24px, 3vh, 40px);
+}
+
+.chart-title {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(16px, 1.8vw, 20px);
+  font-weight: 700;
+  color: #EDEFF3;
+  margin: 0 0 8px 0;
+}
+
+.chart-subtitle {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(12px, 1.2vw, 14px);
+  color: #A4ADBD;
+  margin: 0 0 16px 0;
+  font-style: italic;
+}
+
+/* KPI Cards */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.kpi-card {
+  background: linear-gradient(135deg, rgba(68, 136, 255, 0.1) 0%, rgba(68, 136, 255, 0.05) 100%);
+  border: 1px solid rgba(68, 136, 255, 0.2);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(68, 136, 255, 0.2);
+}
+
+.kpi-value {
+  font-family: "Newsreader", serif;
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 800;
+  color: #4488FF;
+  margin-bottom: 4px;
+}
+
+.kpi-label {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(10px, 1vw, 12px);
+  color: #A4ADBD;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Chart Grid */
+.chart-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+/* Drill-down Note */
+.drilldown-note {
+  background: rgba(255, 179, 68, 0.1);
+  border-left: 3px solid #FFB344;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  border-radius: 4px;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  color: #A4ADBD;
+}
+
+.drilldown-note strong {
+  color: #FFB344;
+}
+
+/* No Data State */
+.no-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 300px;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  color: #A4ADBD;
+  text-align: center;
+  padding: 40px;
+}
+
+/* Loading State */
+.dashboard-slide.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-spinner {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  color: #4488FF;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Scrollbar Styling */
+.dashboard-controls::-webkit-scrollbar,
+.dashboard-charts::-webkit-scrollbar,
+.channel-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dashboard-controls::-webkit-scrollbar-track,
+.dashboard-charts::-webkit-scrollbar-track,
+.channel-list::-webkit-scrollbar-track {
+  background: rgba(15, 15, 30, 0.5);
+  border-radius: 4px;
+}
+
+.dashboard-controls::-webkit-scrollbar-thumb,
+.dashboard-charts::-webkit-scrollbar-thumb,
+.channel-list::-webkit-scrollbar-thumb {
+  background: rgba(68, 136, 255, 0.4);
+  border-radius: 4px;
+}
+
+.dashboard-controls::-webkit-scrollbar-thumb:hover,
+.dashboard-charts::-webkit-scrollbar-thumb:hover,
+.channel-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(68, 136, 255, 0.6);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .dashboard-content {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-controls {
+    max-height: none;
+  }
+
+  .chart-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .kpi-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 16px;
+  }
+
+  .kpi-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .view-mode-tabs {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .view-mode-btn {
+    flex: 1;
+    min-width: 120px;
+  }
+}
+
+/* Recharts Customization */
+.recharts-tooltip-wrapper {
+  z-index: 1000;
+}
+
+.recharts-legend-wrapper {
+  padding-top: 20px !important;
+}
+
+.recharts-default-legend {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 20px !important;
+}
+
+.recharts-legend-item {
+  margin-right: 20px !important;
+}
+
+.recharts-legend-item-text {
+  color: #A4ADBD !important;
+  font-family: "Inter", sans-serif !important;
+  font-size: 13px !important;
+}
+
