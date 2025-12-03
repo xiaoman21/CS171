@@ -30,14 +30,15 @@
             }, 3000);
         }
 
-        // Initialize Drill-down Dashboard (SECOND - no main header, just view label)
+        // Initialize Drill-down Dashboard (SECOND - no main header, with channel selector)
         const drilldownRoot = document.getElementById('dashboard-drilldown-root');
         if (drilldownRoot) {
             const root2 = ReactDOM.createRoot(drilldownRoot);
             const props2 = { 
                 initialViewMode: 'channel-drilldown', 
                 hideControls: true,
-                showMainHeader: false // Hide main header, show view label only
+                showMainHeader: false, // Hide main header, show view label only
+                showChannelSelector: true // Show channel dropdown selector
             };
             root2.render(React.createElement(MediaDashboardSlide.default || MediaDashboardSlide, props2));
         }

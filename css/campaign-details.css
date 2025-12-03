@@ -288,7 +288,7 @@
 }
 
 .mamdani-bar + .bar-label .follower-value,
-.follower-bar-item:nth-child(1) .follower-value {
+.tiktok-followers-chart .follower-bar-item:nth-child(1) .follower-value {
     color: #44FF88;
 }
 
@@ -297,7 +297,7 @@
     box-shadow: 0 0 20px rgba(255, 179, 68, 0.3);
 }
 
-.follower-bar-item:nth-child(2) .follower-value {
+.tiktok-followers-chart .follower-bar-item:nth-child(2) .follower-value {
     color: #FFB344;
 }
 
@@ -306,7 +306,7 @@
     box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
 }
 
-.follower-bar-item:nth-child(3) .follower-value {
+.tiktok-followers-chart .follower-bar-item:nth-child(3) .follower-value {
     color: #FF6B6B;
 }
 

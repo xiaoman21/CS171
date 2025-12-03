@@ -11,12 +11,14 @@ interface MediaDashboardSlideProps {
   initialViewMode?: 'overview' | 'channel-drilldown' | 'short-vs-long';
   hideControls?: boolean;
   showMainHeader?: boolean; // Only show "Interactive Media Analytics" header on first dashboard
+  showChannelSelector?: boolean; // Show channel selector for drill-down view
 }
 
 export const MediaDashboardSlide: React.FC<MediaDashboardSlideProps> = ({ 
   initialViewMode = 'overview',
   hideControls = false,
-  showMainHeader = true // Default to true for backward compatibility
+  showMainHeader = true, // Default to true for backward compatibility
+  showChannelSelector = false // Show channel selector for drill-down
 }) => {
   const [loading, setLoading] = useState(true);
   const [annualData, setAnnualData] = useState<AnnualChannelSummary[]>([]);
@@ -99,22 +101,31 @@ export const MediaDashboardSlide: React.FC<MediaDashboardSlideProps> = ({
 
         {/* Main Content */}
         <div className="dashboard-content">
-          {/* Left: Controls - conditionally render */}
-          {!hideControls && (
-            <DashboardControls
-              filters={filters}
-              allChannels={allChannels}
-              onFilterChange={handleFilterChange}
-            />
+          {/* Left: Controls - conditionally render based on view */}
+          {showChannelSelector && initialViewMode === 'channel-drilldown' && (
+            <div className="channel-selector-compact">
+              <label className="control-label">Select Channel</label>
+              <select 
+                className="channel-select-dropdown"
+                value={filters.selectedChannels[0] || allChannels[0]}
+                onChange={(e) => handleFilterChange({ selectedChannels: [e.target.value] })}
+              >
+                {allChannels.map(channel => (
+                  <option key={channel} value={channel}>
+                    {channel.replace('@', '')}
+                  </option>
+                ))}
+              </select>
+            </div>
           )}
 
-          {/* Right: Charts */}
+          {/* Right: Charts - full width */}
           <div className="dashboard-charts">
-            {filters.viewMode === 'overview' && (
+            {initialViewMode === 'overview' && (
               <OverviewCharts data={filteredAnnual} year={filters.year} />
             )}
             
-            {filters.viewMode === 'channel-drilldown' && (
+            {initialViewMode === 'channel-drilldown' && (
               <ChannelDrilldownCharts
                 data={filteredMonthly}
                 year={filters.year}
@@ -122,7 +133,7 @@ export const MediaDashboardSlide: React.FC<MediaDashboardSlideProps> = ({
               />
             )}
             
-            {filters.viewMode === 'short-vs-long' && (
+            {initialViewMode === 'short-vs-long' && (
               <ShortVsLongCharts
                 data={filteredShortVsLong}
                 year={filters.year}
