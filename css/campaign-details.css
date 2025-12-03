@@ -251,20 +251,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
+    gap: 16px;
 }
 
 .candidate-name {
-    font-family: "Inter", sans-serif;
-    font-size: clamp(18px, 2vw, 24px);
-    font-weight: 700;
+    font-family: "Newsreader", serif; /* Changed to title font */
+    font-size: clamp(24px, 2.8vw, 36px); /* Increased size */
+    font-weight: 800; /* Bolder */
     color: var(--text, #EDEFF3);
 }
 
 .follower-value {
-    font-family: "Newsreader", serif;
-    font-size: clamp(22px, 2.5vw, 32px);
-    font-weight: 800;
+    font-family: "Newsreader", serif; /* Title font */
+    font-size: clamp(28px, 3.5vw, 48px); /* Larger size */
+    font-weight: 900; /* Extra bold */
 }
 
 .bar-container {
