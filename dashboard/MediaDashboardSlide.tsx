@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { loadAllData } from './dataLoader';
 import type { AnnualChannelSummary, MonthlyChannelSummary, MonthlyShortVsLong, DashboardFilters } from './types';
-import { DashboardControls } from './components/DashboardControls';
 import { OverviewCharts } from './components/OverviewCharts';
 import { ChannelDrilldownCharts } from './components/ChannelDrilldownCharts';
 import { ShortVsLongCharts } from './components/ShortVsLongCharts';
@@ -9,14 +8,12 @@ import './styles.css';
 
 interface MediaDashboardSlideProps {
   initialViewMode?: 'overview' | 'channel-drilldown' | 'short-vs-long';
-  hideControls?: boolean;
   showMainHeader?: boolean; // Only show "Interactive Media Analytics" header on first dashboard
   showChannelSelector?: boolean; // Show channel selector for drill-down view
 }
 
 export const MediaDashboardSlide: React.FC<MediaDashboardSlideProps> = ({ 
   initialViewMode = 'overview',
-  hideControls = false,
   showMainHeader = true, // Default to true for backward compatibility
   showChannelSelector = false // Show channel selector for drill-down
 }) => {
