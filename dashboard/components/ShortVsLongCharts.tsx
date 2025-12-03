@@ -115,86 +115,89 @@ export const ShortVsLongCharts: React.FC<ShortVsLongChartsProps> = ({
 
   return (
     <div className="short-vs-long-charts">
-      {/* Average Views Per Video by Type */}
-      <div className="chart-container">
-        <h3 className="chart-title">Average Views Per Video: Shorts vs Normal</h3>
-        <ResponsiveContainer width="100%" height={350}>
-          <BarChart data={avgViewsData} margin={{ top: 20, right: 30, left: 20, bottom: 60 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#333" />
-            <XAxis dataKey="channel" stroke="#A4ADBD" angle={-45} textAnchor="end" height={80} />
-            <YAxis stroke="#A4ADBD" tickFormatter={(v) => formatNumber(v)} />
-            <Tooltip
-              contentStyle={{ backgroundColor: '#1a1a2e', border: '1px solid #333' }}
-              formatter={(v: any) => formatNumber(v)}
-            />
-            <Legend />
-            <Bar dataKey="Normal" fill={COLORS.normal} />
-            <Bar dataKey="Shorts" fill={COLORS.shorts} />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
+      {/* Horizontal scrolling layout for all charts */}
+      <div className="chart-grid-2">
+        {/* Average Views Per Video by Type */}
+        <div className="chart-container">
+          <h3 className="chart-title">Average Views Per Video: Shorts vs Normal</h3>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={avgViewsData} margin={{ top: 20, right: 30, left: 60, bottom: 60 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#333" />
+              <XAxis dataKey="channel" stroke="#C4CDDD" angle={-45} textAnchor="end" height={80} />
+              <YAxis stroke="#C4CDDD" tickFormatter={(v) => formatNumber(v)} />
+              <Tooltip
+                contentStyle={{ backgroundColor: '#1a1a2e', border: '1px solid #333' }}
+                formatter={(v: any) => formatNumber(v)}
+              />
+              <Legend />
+              <Bar dataKey="Normal" fill={COLORS.normal} />
+              <Bar dataKey="Shorts" fill={COLORS.shorts} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
 
-      {/* Multiplier Chart */}
-      <div className="chart-container">
-        <h3 className="chart-title">Shorts vs Normal Performance Multiplier</h3>
-        <p className="chart-subtitle">
-          How many times more (or less) views does a Short get on average compared to a normal video?
-        </p>
-        <ResponsiveContainer width="100%" height={350}>
-          <BarChart data={multiplierData} margin={{ top: 20, right: 30, left: 20, bottom: 60 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#333" />
-            <XAxis dataKey="channel" stroke="#A4ADBD" angle={-45} textAnchor="end" height={80} />
-            <YAxis stroke="#A4ADBD" label={{ value: 'Multiplier (x)', angle: -90, position: 'insideLeft' }} />
-            <Tooltip content={<CustomMultiplierTooltip />} />
-            <Bar dataKey="multiplier" fill="#FFB344" />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
+        {/* Multiplier Chart */}
+        <div className="chart-container">
+          <h3 className="chart-title">Shorts vs Normal Performance Multiplier</h3>
+          <p className="chart-subtitle">
+            How many times more (or less) views does a Short get on average compared to a normal video?
+          </p>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={multiplierData} margin={{ top: 20, right: 30, left: 60, bottom: 60 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#333" />
+              <XAxis dataKey="channel" stroke="#C4CDDD" angle={-45} textAnchor="end" height={80} />
+              <YAxis stroke="#C4CDDD" label={{ value: 'Multiplier (x)', angle: -90, position: 'insideLeft', fill: '#E8EAEF' }} />
+              <Tooltip content={<CustomMultiplierTooltip />} />
+              <Bar dataKey="multiplier" fill="#FFB344" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
 
-      {/* Duration vs Performance Scatter */}
-      <div className="chart-container">
-        <h3 className="chart-title">Duration vs Performance</h3>
-        <p className="chart-subtitle">
-          Each point represents a channel-month. Blue = Normal videos, Red = Shorts.
-        </p>
-        <ResponsiveContainer width="100%" height={450}>
-          <ScatterChart margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#333" />
-            <XAxis
-              type="number"
-              dataKey="duration"
-              name="Duration (sec)"
-              stroke="#A4ADBD"
-              label={{ value: 'Avg Duration (seconds)', position: 'insideBottom', offset: -10 }}
-            />
-            <YAxis
-              type="number"
-              dataKey="views"
-              name="Avg Views"
-              stroke="#A4ADBD"
-              label={{ value: 'Avg Views Per Video', angle: -90, position: 'insideLeft' }}
-              tickFormatter={(v) => formatNumber(v)}
-            />
-            <Tooltip
-              contentStyle={{ backgroundColor: '#1a1a2e', border: '1px solid #333' }}
-              formatter={(v: any, name: string) => {
-                if (name === 'views') return formatNumber(v);
-                if (name === 'size') return formatNumber(v);
-                return v;
-              }}
-            />
-            <Scatter data={scatterPoints} fill="#8884d8">
-              {scatterPoints.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={entry.type === 'Shorts' ? COLORS.shorts : COLORS.normal}
-                  opacity={0.6}
-                  r={Math.sqrt(entry.size) / 8000}
-                />
-              ))}
-            </Scatter>
-          </ScatterChart>
-        </ResponsiveContainer>
+        {/* Duration vs Performance Scatter - third chart */}
+        <div className="chart-container">
+          <h3 className="chart-title">Duration vs Performance</h3>
+          <p className="chart-subtitle">
+            Each point represents a channel-month. Blue = Normal videos, Red = Shorts.
+          </p>
+          <ResponsiveContainer width="100%" height={300}>
+            <ScatterChart margin={{ top: 20, right: 30, left: 60, bottom: 40 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#333" />
+              <XAxis
+                type="number"
+                dataKey="duration"
+                name="Duration (sec)"
+                stroke="#C4CDDD"
+                label={{ value: 'Avg Duration (seconds)', position: 'insideBottom', offset: -10, fill: '#E8EAEF' }}
+              />
+              <YAxis
+                type="number"
+                dataKey="views"
+                name="Avg Views"
+                stroke="#C4CDDD"
+                label={{ value: 'Avg Views Per Video', angle: -90, position: 'insideLeft', fill: '#E8EAEF' }}
+                tickFormatter={(v) => formatNumber(v)}
+              />
+              <Tooltip
+                contentStyle={{ backgroundColor: '#1a1a2e', border: '1px solid #333' }}
+                formatter={(v: any, name: string) => {
+                  if (name === 'views') return formatNumber(v);
+                  if (name === 'size') return formatNumber(v);
+                  return v;
+                }}
+              />
+              <Scatter data={scatterPoints} fill="#8884d8">
+                {scatterPoints.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={entry.type === 'Shorts' ? COLORS.shorts : COLORS.normal}
+                    opacity={0.6}
+                    r={Math.sqrt(entry.size) / 8000}
+                  />
+                ))}
+              </Scatter>
+            </ScatterChart>
+          </ResponsiveContainer>
+        </div>
       </div>
 
       {/* Optional: If single channel selected, show share over time */}

@@ -102,9 +102,9 @@ export const OverviewCharts: React.FC<OverviewChartsProps> = ({ data, year }) =>
               angle={-45}
               textAnchor="end"
               height={80}
-              stroke="#A4ADBD"
+              stroke="#C4CDDD"
             />
-            <YAxis stroke="#A4ADBD" tickFormatter={(v) => formatNumber(v)} />
+            <YAxis stroke="#C4CDDD" tickFormatter={(v) => formatNumber(v)} />
             <Tooltip
               contentStyle={{ backgroundColor: '#1a1a2e', border: '1px solid #333' }}
               formatter={(v: any) => formatNumber(v)}
@@ -114,22 +114,22 @@ export const OverviewCharts: React.FC<OverviewChartsProps> = ({ data, year }) =>
         </ResponsiveContainer>
       </div>
 
-      {/* Two-column layout for stacked bars */}
+      {/* Horizontal scrolling layout for all charts */}
       <div className="chart-grid-2">
         {/* Uploads Comparison */}
         <div className="chart-container">
           <h3 className="chart-title">Uploads: Shorts vs Normal</h3>
           <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={uploadsComparison} margin={{ top: 20, right: 30, left: 20, bottom: 60 }}>
+            <BarChart data={uploadsComparison} margin={{ top: 20, right: 30, left: 60, bottom: 60 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#333" />
               <XAxis
                 dataKey="channel"
                 angle={-45}
                 textAnchor="end"
                 height={80}
-                stroke="#A4ADBD"
+                stroke="#C4CDDD"
               />
-              <YAxis stroke="#A4ADBD" />
+              <YAxis stroke="#C4CDDD" />
               <Tooltip contentStyle={{ backgroundColor: '#1a1a2e', border: '1px solid #333' }} />
               <Legend />
               <Bar dataKey="Shorts" stackId="a" fill={COLORS.shorts} />
@@ -142,16 +142,16 @@ export const OverviewCharts: React.FC<OverviewChartsProps> = ({ data, year }) =>
         <div className="chart-container">
           <h3 className="chart-title">Views: Shorts vs Normal</h3>
           <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={viewsComparison} margin={{ top: 20, right: 30, left: 20, bottom: 60 }}>
+            <BarChart data={viewsComparison} margin={{ top: 20, right: 30, left: 60, bottom: 60 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#333" />
               <XAxis
                 dataKey="channel"
                 angle={-45}
                 textAnchor="end"
                 height={80}
-                stroke="#A4ADBD"
+                stroke="#C4CDDD"
               />
-              <YAxis stroke="#A4ADBD" tickFormatter={(v) => formatNumber(v)} />
+              <YAxis stroke="#C4CDDD" tickFormatter={(v) => formatNumber(v)} />
               <Tooltip
                 contentStyle={{ backgroundColor: '#1a1a2e', border: '1px solid #333' }}
                 formatter={(v: any) => formatNumber(v)}
@@ -162,50 +162,50 @@ export const OverviewCharts: React.FC<OverviewChartsProps> = ({ data, year }) =>
             </BarChart>
           </ResponsiveContainer>
         </div>
-      </div>
 
-      {/* Scatter Plot */}
-      <div className="chart-container">
-        <h3 className="chart-title">Shorts Supply vs Impact</h3>
-        <p className="chart-subtitle">
-          X-axis: % of uploads that are Shorts | Y-axis: % of views from Shorts | Size: Total views
-        </p>
-        <ResponsiveContainer width="100%" height={400}>
-          <ScatterChart margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#333" />
-            <XAxis
-              type="number"
-              dataKey="x"
-              name="Shorts Upload %"
-              stroke="#A4ADBD"
-              label={{ value: 'Shorts Upload Share (%)', position: 'insideBottom', offset: -10 }}
-            />
-            <YAxis
-              type="number"
-              dataKey="y"
-              name="Shorts Views %"
-              stroke="#A4ADBD"
-              label={{ value: 'Shorts Views Share (%)', angle: -90, position: 'insideLeft' }}
-            />
-            <Tooltip
-              contentStyle={{ backgroundColor: '#1a1a2e', border: '1px solid #333' }}
-              formatter={(v: any, name: string) => {
-                if (name === 'size') return formatNumber(v);
-                return `${v.toFixed(1)}%`;
-              }}
-            />
-            <Scatter data={scatterData} fill="#FF4444">
-              {scatterData.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill="#FF4444"
-                  opacity={0.7}
-                  r={Math.sqrt(entry.size) / 10000}
-                />
-              ))}
-            </Scatter>
-          </ScatterChart>
-        </ResponsiveContainer>
+        {/* Scatter Plot - third chart in horizontal scroll */}
+        <div className="chart-container">
+          <h3 className="chart-title">Shorts Supply vs Impact</h3>
+          <p className="chart-subtitle">
+            X-axis: % of uploads that are Shorts | Y-axis: % of views from Shorts | Size: Total views
+          </p>
+          <ResponsiveContainer width="100%" height={300}>
+            <ScatterChart margin={{ top: 20, right: 30, left: 60, bottom: 40 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#333" />
+              <XAxis
+                type="number"
+                dataKey="x"
+                name="Shorts Upload %"
+                stroke="#C4CDDD"
+                label={{ value: 'Shorts Upload Share (%)', position: 'insideBottom', offset: -10, fill: '#E8EAEF' }}
+              />
+              <YAxis
+                type="number"
+                dataKey="y"
+                name="Shorts Views %"
+                stroke="#C4CDDD"
+                label={{ value: 'Shorts Views Share (%)', angle: -90, position: 'insideLeft', fill: '#E8EAEF' }}
+              />
+              <Tooltip
+                contentStyle={{ backgroundColor: '#1a1a2e', border: '1px solid #333' }}
+                formatter={(v: any, name: string) => {
+                  if (name === 'size') return formatNumber(v);
+                  return `${v.toFixed(1)}%`;
+                }}
+              />
+              <Scatter data={scatterData} fill="#FF4444">
+                {scatterData.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill="#FF4444"
+                    opacity={0.7}
+                    r={Math.sqrt(entry.size) / 10000}
+                  />
+                ))}
+              </Scatter>
+            </ScatterChart>
+          </ResponsiveContainer>
+        </div>
       </div>
     </div>
   );
