@@ -41,6 +41,28 @@
     }
 }
 
+/* CRITICAL: Force TikTok chart text visible on Slide 8.6 */
+.slide8-6 .tiktok-followers-chart,
+.slide8-6 .chart-heading,
+.slide8-6 .follower-bar-item,
+.slide8-6 .bar-label,
+.slide8-6 .candidate-name,
+.slide8-6 .follower-value,
+.slide8-6 .campaign-detail-text {
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: none !important;
+}
+
+.slide8-6 .bar-label {
+    display: flex !important;
+}
+
+.slide8-6 .candidate-name,
+.slide8-6 .follower-value {
+    display: inline-block !important;
+}
+
 .campaign-detail-title {
     font-family: "Newsreader", serif;
     font-size: clamp(32px, 5vw, 56px);
