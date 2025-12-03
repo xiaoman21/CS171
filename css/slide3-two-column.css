@@ -1,0 +1,83 @@
+/* Slide 3 Two-Column Layout */
+.slide3 .slide-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: clamp(40px, 6vh, 80px) clamp(60px, 8vw, 120px);
+}
+
+.slide3-two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(60px, 8vw, 100px);
+    width: 100%;
+    max-width: 1600px;
+    align-items: start;
+}
+
+.slide3-left-column,
+.slide3-right-column {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(24px, 3vh, 40px);
+}
+
+.slide3 .slide-subtitle {
+    font-family: "Newsreader", serif;
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--text, #EDEFF3);
+    margin: 0;
+}
+
+.slide3 .slide-body {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2vh, 24px);
+}
+
+.slide3 .slide-body p {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(16px, 1.8vw, 22px);
+    line-height: 1.7;
+    color: var(--muted, #A4ADBD);
+    margin: 0;
+}
+
+/* Responsive: Stack on smaller screens */
+@media (max-width: 1024px) {
+    .slide3-two-column {
+        grid-template-columns: 1fr;
+        gap: clamp(40px, 6vh, 60px);
+    }
+}
+
+/* Animation for slide 3 content */
+.slide3-left-column,
+.slide3-right-column {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInSlide3 1.2s ease-out forwards;
+}
+
+.slide3-left-column {
+    animation-delay: 0.2s;
+}
+
+.slide3-right-column {
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeInSlide3 {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
