@@ -120,7 +120,7 @@ export const ShortVsLongCharts: React.FC<ShortVsLongChartsProps> = ({
         {/* Average Views Per Video by Type */}
         <div className="chart-container">
           <h3 className="chart-title">Average Views Per Video: Shorts vs Normal</h3>
-          <ResponsiveContainer width="100%" height={300}>
+          <ResponsiveContainer width="100%" height={450}>
             <BarChart data={avgViewsData} margin={{ top: 20, right: 30, left: 60, bottom: 60 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#333" />
               <XAxis dataKey="channel" stroke="#C4CDDD" angle={-45} textAnchor="end" height={80} />
@@ -142,7 +142,7 @@ export const ShortVsLongCharts: React.FC<ShortVsLongChartsProps> = ({
           <p className="chart-subtitle">
             How many times more (or less) views does a Short get on average compared to a normal video?
           </p>
-          <ResponsiveContainer width="100%" height={300}>
+          <ResponsiveContainer width="100%" height={450}>
             <BarChart data={multiplierData} margin={{ top: 20, right: 30, left: 60, bottom: 60 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#333" />
               <XAxis dataKey="channel" stroke="#C4CDDD" angle={-45} textAnchor="end" height={80} />
@@ -159,8 +159,8 @@ export const ShortVsLongCharts: React.FC<ShortVsLongChartsProps> = ({
           <p className="chart-subtitle">
             Each point represents a channel-month. Blue = Normal videos, Red = Shorts.
           </p>
-          <ResponsiveContainer width="100%" height={300}>
-            <ScatterChart margin={{ top: 20, right: 30, left: 60, bottom: 40 }}>
+          <ResponsiveContainer width="100%" height={450}>
+            <ScatterChart margin={{ top: 20, right: 30, left: 80, bottom: 60 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#333" />
               <XAxis
                 type="number"
@@ -204,7 +204,7 @@ export const ShortVsLongCharts: React.FC<ShortVsLongChartsProps> = ({
       {selectedChannels.length === 1 && (
         <div className="chart-container">
           <h3 className="chart-title">Shorts Share Over Time: {selectedChannels[0].replace('@', '')}</h3>
-          <ResponsiveContainer width="100%" height={300}>
+          <ResponsiveContainer width="100%" height={450}>
             <BarChart
               data={data.filter(d => d.channelKey === selectedChannels[0]).sort((a, b) => a.month.localeCompare(b.month))}
               margin={{ top: 20, right: 30, left: 20, bottom: 60 }}

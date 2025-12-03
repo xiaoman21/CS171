@@ -7,7 +7,15 @@ import { ChannelDrilldownCharts } from './components/ChannelDrilldownCharts';
 import { ShortVsLongCharts } from './components/ShortVsLongCharts';
 import './styles.css';
 
-export const MediaDashboardSlide: React.FC = () => {
+interface MediaDashboardSlideProps {
+  initialViewMode?: 'overview' | 'channel-drilldown' | 'short-vs-long';
+  hideControls?: boolean;
+}
+
+export const MediaDashboardSlide: React.FC<MediaDashboardSlideProps> = ({ 
+  initialViewMode = 'overview',
+  hideControls = false 
+}) => {
   const [loading, setLoading] = useState(true);
   const [annualData, setAnnualData] = useState<AnnualChannelSummary[]>([]);
   const [monthlyData, setMonthlyData] = useState<MonthlyChannelSummary[]>([]);
@@ -16,7 +24,7 @@ export const MediaDashboardSlide: React.FC = () => {
   const [filters, setFilters] = useState<DashboardFilters>({
     year: 2024,
     selectedChannels: [],
-    viewMode: 'overview',
+    viewMode: initialViewMode,
   });
 
   useEffect(() => {
@@ -73,12 +81,14 @@ export const MediaDashboardSlide: React.FC = () => {
 
         {/* Main Content */}
         <div className="dashboard-content">
-          {/* Left: Controls */}
-          <DashboardControls
-            filters={filters}
-            allChannels={allChannels}
-            onFilterChange={handleFilterChange}
-          />
+          {/* Left: Controls - conditionally render */}
+          {!hideControls && (
+            <DashboardControls
+              filters={filters}
+              allChannels={allChannels}
+              onFilterChange={handleFilterChange}
+            />
+          )}
 
           {/* Right: Charts */}
           <div className="dashboard-charts">

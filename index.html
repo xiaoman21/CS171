@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="css/landing.css">
     <link rel="stylesheet" href="css/slide7-animation-news.css">
     <link rel="stylesheet" href="css/campaign-details.css">
+    <link rel="stylesheet" href="css/nav-tool.css">
     <link rel="stylesheet" href="css/slide2-intro.css">
 </head>
 
@@ -46,7 +47,9 @@
         <li class="selected" aria-label="Slide 1: The Shift to Short"></li>
         <li aria-label="Slide 2: Global Reach"></li>
         <li aria-label="Slide 3: Content Is Getting Shorter"></li>
-        <li aria-label="Slide 3.5: Interactive Dashboard"></li>
+        <li aria-label="Slide 3.5: Dashboard Overview"></li>
+        <li aria-label="Slide 3.6: Dashboard Drill-down"></li>
+        <li aria-label="Slide 3.7: Dashboard Short vs Long"></li>
         <li aria-label="Slide 4: A New Playbook"></li>
         <li aria-label="Slide 5: Channel Performance"></li>
         <li aria-label="Slide 5.5: Monthly Trends"></li>
@@ -147,9 +150,31 @@
             </div>
         </section>
 
-        <!-- Slide 3.5: Interactive Media Dashboard -->
-        <section class="slide-section media-dashboard-slide" id="dashboard">
-            <div id="media-dashboard-root"></div>
+        <!-- Slide 3.5: Dashboard - Overview -->
+        <section class="slide-section media-dashboard-slide dashboard-overview-slide" id="dashboard-overview">
+            <div class="dashboard-intro-overlay" id="dashboardOverviewIntro">
+                <h2 class="dashboard-intro-title">Interactive Media Analytics: Overview</h2>
+                <p class="dashboard-intro-text">Explore how top YouTube channels balance short-form and long-form content strategies. This overview compares investment in Shorts vs viewership they generate across all channels.</p>
+            </div>
+            <div id="dashboard-overview-root" class="dashboard-root"></div>
+        </section>
+
+        <!-- Slide 3.6: Dashboard - Channel Drill-down -->
+        <section class="slide-section media-dashboard-slide dashboard-drilldown-slide" id="dashboard-drilldown">
+            <div class="dashboard-intro-overlay" id="dashboardDrilldownIntro">
+                <h2 class="dashboard-intro-title">Interactive Media Analytics: Channel Drill-down</h2>
+                <p class="dashboard-intro-text">Dive deep into individual channel strategies. See how one channel's content mix evolved month by month throughout 2024.</p>
+            </div>
+            <div id="dashboard-drilldown-root" class="dashboard-root"></div>
+        </section>
+
+        <!-- Slide 3.7: Dashboard - Short vs Long -->
+        <section class="slide-section media-dashboard-slide dashboard-shortvlong-slide" id="dashboard-shortvlong">
+            <div class="dashboard-intro-overlay" id="dashboardShortvlongIntro">
+                <h2 class="dashboard-intro-title">Interactive Media Analytics: Short vs Long</h2>
+                <p class="dashboard-intro-text">Compare per-video performance of Shorts vs long-form content. Discover which format drives more views and engagement across channels.</p>
+            </div>
+            <div id="dashboard-shortvlong-root" class="dashboard-root"></div>
         </section>
 
         <!-- Slide 4: A New Playbook for Brands & Media -->
@@ -537,29 +562,11 @@
     <!-- Dashboard Bundle (will be created after npm run build) -->
     <script src="dashboard-dist/media-dashboard.umd.js"></script>
     
-    <!-- Initialize Dashboard -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Attempting to initialize dashboard...');
-            const dashboardRoot = document.getElementById('media-dashboard-root');
-            console.log('Dashboard root element:', dashboardRoot);
-            console.log('React available:', typeof React !== 'undefined');
-            console.log('ReactDOM available:', typeof ReactDOM !== 'undefined');
-            console.log('MediaDashboardSlide available:', typeof MediaDashboardSlide !== 'undefined');
-            
-            if (dashboardRoot && typeof MediaDashboardSlide !== 'undefined') {
-                try {
-                    const root = ReactDOM.createRoot(dashboardRoot);
-                    root.render(React.createElement(MediaDashboardSlide.default || MediaDashboardSlide));
-                    console.log('Dashboard initialized successfully');
-                } catch (error) {
-                    console.error('Error initializing dashboard:', error);
-                }
-            } else {
-                console.error('Dashboard initialization failed - missing requirements');
-            }
-        });
-    </script>
+    <!-- Initialize Dashboards -->
+    <script src="js/dashboard-init.js"></script>
+    
+    <!-- Nav Tool -->
+    <script src="js/nav-tool.js"></script>
 </body>
 
 </html>

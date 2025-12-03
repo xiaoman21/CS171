@@ -119,7 +119,7 @@ export const OverviewCharts: React.FC<OverviewChartsProps> = ({ data, year }) =>
         {/* Uploads Comparison */}
         <div className="chart-container">
           <h3 className="chart-title">Uploads: Shorts vs Normal</h3>
-          <ResponsiveContainer width="100%" height={300}>
+          <ResponsiveContainer width="100%" height={450}>
             <BarChart data={uploadsComparison} margin={{ top: 20, right: 30, left: 60, bottom: 60 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#333" />
               <XAxis
@@ -141,7 +141,7 @@ export const OverviewCharts: React.FC<OverviewChartsProps> = ({ data, year }) =>
         {/* Views Comparison */}
         <div className="chart-container">
           <h3 className="chart-title">Views: Shorts vs Normal</h3>
-          <ResponsiveContainer width="100%" height={300}>
+          <ResponsiveContainer width="100%" height={450}>
             <BarChart data={viewsComparison} margin={{ top: 20, right: 30, left: 60, bottom: 60 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#333" />
               <XAxis
@@ -169,7 +169,7 @@ export const OverviewCharts: React.FC<OverviewChartsProps> = ({ data, year }) =>
           <p className="chart-subtitle">
             X-axis: % of uploads that are Shorts | Y-axis: % of views from Shorts | Size: Total views
           </p>
-          <ResponsiveContainer width="100%" height={300}>
+          <ResponsiveContainer width="100%" height={450}>
             <ScatterChart margin={{ top: 20, right: 30, left: 60, bottom: 40 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#333" />
               <XAxis

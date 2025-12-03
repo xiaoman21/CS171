@@ -1,0 +1,51 @@
+/* Bottom-right nav tool */
+.nav-tool-container {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.nav-tool-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(68, 136, 255, 0.15);
+    border: 2px solid rgba(68, 136, 255, 0.4);
+    color: #4488FF;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    opacity: 0.3;
+    backdrop-filter: blur(10px);
+}
+
+.nav-tool-button:hover {
+    opacity: 1;
+    background: rgba(68, 136, 255, 0.3);
+    border-color: rgba(68, 136, 255, 0.7);
+    transform: scale(1.1);
+}
+
+.nav-tool-container:not(:hover) .nav-tool-extra {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0);
+}
+
+.nav-tool-container:hover .nav-tool-extra {
+    opacity: 1;
+    pointer-events: all;
+    transform: scale(1);
+}
+
+.nav-tool-extra {
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
