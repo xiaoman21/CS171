@@ -34,7 +34,7 @@ function K(e) {
 }
 async function zm() {
   try {
-    const r = (await (await fetch("/tbl_AnnualChannelSummary.csv")).text()).trim().split(`
+    const r = (await (await fetch("./tbl_AnnualChannelSummary.csv")).text()).trim().split(`
 `), n = r[0].split(",");
     return r.slice(1).map((i) => {
       const a = i.split(","), o = {};
@@ -79,7 +79,7 @@ async function zm() {
 }
 async function Wm() {
   try {
-    const r = (await (await fetch("/tbl_MonthlyChannelSummary.csv")).text()).trim().split(`
+    const r = (await (await fetch("./tbl_MonthlyChannelSummary.csv")).text()).trim().split(`
 `), n = r[0].split(",");
     return r.slice(1).map((i) => {
       const a = i.split(","), o = {};
@@ -115,7 +115,7 @@ async function Wm() {
 }
 async function Um() {
   try {
-    const r = (await (await fetch("/tbl_MonthlyShortVsLong.csv")).text()).trim().split(`
+    const r = (await (await fetch("./tbl_MonthlyShortVsLong.csv")).text()).trim().split(`
 `), n = r[0].split(",");
     return r.slice(1).map((i) => {
       const a = i.split(","), o = {};
