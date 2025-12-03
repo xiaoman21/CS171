@@ -43,7 +43,7 @@
     let containerWidth, containerHeight, margin, chartWidth, chartHeight;
     
     function initChart() {
-        const container = document.getElementById('slide6ChartContainer');
+        const container = document.getElementById('slide7ChartContainer');
         if (!container) return;
         
         margin = { top: 20, right: 120, bottom: 50, left: 60 };
@@ -53,10 +53,10 @@
         chartHeight = containerHeight - margin.top - margin.bottom;
         
         // Clear any existing SVG
-        d3.select('#slide6Chart').selectAll('*').remove();
+        d3.select('#slide7Chart').selectAll('*').remove();
         
         // Create SVG
-        svg = d3.select('#slide6Chart')
+        svg = d3.select('#slide7Chart')
             .attr('width', containerWidth)
             .attr('height', containerHeight);
         
@@ -182,13 +182,13 @@
         
         // Step 1: Fade in title (0s)
         setTimeout(() => {
-            const title = document.getElementById('slide6Title');
+            const title = document.getElementById('slide7Title');
             if (title) title.classList.add('visible');
         }, 100);
         
         // Step 2: Show first text (1s)
         setTimeout(() => {
-            const text1 = document.getElementById('slide6Text1');
+            const text1 = document.getElementById('slide7Text1');
             if (text1) text1.classList.add('visible');
         }, 1000);
         
@@ -224,7 +224,7 @@
         
         // Step 9: Show second text (9.8s)
         setTimeout(() => {
-            const text2 = document.getElementById('slide6Text2');
+            const text2 = document.getElementById('slide7Text2');
             if (text2) text2.classList.add('visible');
         }, 9800);
         
@@ -240,13 +240,13 @@
         
         // Step 12: Show third text (13.2s)
         setTimeout(() => {
-            const text3 = document.getElementById('slide6Text3');
+            const text3 = document.getElementById('slide7Text3');
             if (text3) text3.classList.add('visible');
         }, 13200);
         
         // Step 13: Show toggle button (14.5s)
         setTimeout(() => {
-            const toggleBtn = document.getElementById('slide6ToggleBtn');
+            const toggleBtn = document.getElementById('slide7ToggleBtn');
             if (toggleBtn) toggleBtn.classList.add('visible');
         }, 14500);
     }
@@ -448,9 +448,9 @@
     
     // Toggle between views
     function toggleView() {
-        const btn = document.getElementById('slide6ToggleBtn');
+        const btn = document.getElementById('slide7ToggleBtn');
         const btnText = btn.querySelector('.toggle-btn-text');
-        const title = document.getElementById('slide6Title');
+        const title = document.getElementById('slide7Title');
         
         if (currentView === 'lines') {
             currentView = 'bars';
@@ -493,15 +493,15 @@
     }
     
     function setupToggleButton() {
-        const btn = document.getElementById('slide6ToggleBtn');
+        const btn = document.getElementById('slide7ToggleBtn');
         if (btn) {
             btn.addEventListener('click', toggleView);
         }
     }
     
     function setupIntersectionObserver() {
-        const slide6 = document.getElementById('slide6');
-        if (!slide6) return;
+        const slide7 = document.getElementById('slide7');
+        if (!slide7) return;
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -513,7 +513,7 @@
             threshold: [0.3]
         });
         
-        observer.observe(slide6);
+        observer.observe(slide7);
     }
     
     // Initialize

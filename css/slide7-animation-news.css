@@ -1,12 +1,12 @@
-/* Slide 6 Animated News Consumption Chart */
+/* Slide 7 Animated News Consumption Chart */
 
-.slide6 {
+.slide7 {
     overflow: visible !important;
     height: 100vh !important;
     min-height: 100vh !important;
 }
 
-.slide6 .slide-container {
+.slide7 .slide-container {
     display: grid;
     grid-template-columns: 40% 60%;
     grid-template-rows: auto 1fr;
@@ -22,7 +22,7 @@
     box-sizing: border-box;
 }
 
-.slide6-title {
+.slide7-title {
     opacity: 0;
     transition: opacity 1s ease-in;
     grid-column: 1;
@@ -32,11 +32,11 @@
     align-self: start;
 }
 
-.slide6-title.visible {
+.slide7-title.visible {
     opacity: 1;
 }
 
-.slide6-text-container {
+.slide7-text-container {
     grid-column: 1;
     grid-row: 2;
     display: flex;
@@ -48,7 +48,7 @@
     position: relative;
 }
 
-.slide6-chart-container {
+.slide7-chart-container {
     grid-column: 2;
     grid-row: 1 / 3;
     width: 100%;
@@ -68,7 +68,7 @@
     overflow: visible;
 }
 
-.slide6-text {
+.slide7-text {
     font-family: "Inter", sans-serif;
     font-size: clamp(18px, 2vw, 26px);
     line-height: 1.8;
@@ -79,7 +79,7 @@
     flex: 0 0 auto;
 }
 
-.slide6-text.visible {
+.slide7-text.visible {
     opacity: 1;
 }
 
@@ -110,7 +110,7 @@
 }
 
 /* Controls section */
-.slide6-controls {
+.slide7-controls {
     margin-top: auto;
     display: flex;
     flex-direction: column;
@@ -118,7 +118,7 @@
     flex: 0 0 auto;
 }
 
-.slide6-toggle-btn {
+.slide7-toggle-btn {
     padding: 12px 24px;
     font-family: "Inter", sans-serif;
     font-size: 15px;
@@ -132,21 +132,21 @@
     align-self: flex-start;
 }
 
-.slide6-toggle-btn:hover {
+.slide7-toggle-btn:hover {
     background-color: #6A8AEE;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(124, 156, 255, 0.3);
 }
 
-.slide6-toggle-btn:active {
+.slide7-toggle-btn:active {
     transform: translateY(0);
 }
 
-.slide6-toggle-btn.visible {
+.slide7-toggle-btn.visible {
     opacity: 1 !important;
 }
 
-.slide6-source {
+.slide7-source {
     font-family: "Inter", sans-serif;
     font-size: 13px;
     color: var(--muted, #A4ADBD);
@@ -248,7 +248,7 @@
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
-    .slide6 .slide-container {
+    .slide7 .slide-container {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto auto;
         gap: clamp(16px, 2vh, 24px);
@@ -256,13 +256,13 @@
         min-height: 100vh;
     }
     
-    .slide6-title {
+    .slide7-title {
         grid-column: 1;
         grid-row: 1;
         text-align: center;
     }
     
-    .slide6-chart-container {
+    .slide7-chart-container {
         grid-column: 1;
         grid-row: 2;
         height: 50vh;
@@ -270,7 +270,7 @@
         max-height: 600px;
     }
     
-    .slide6-text-container {
+    .slide7-text-container {
         grid-column: 1;
         grid-row: 3;
         text-align: center;
@@ -279,12 +279,12 @@
 }
 
 @media (max-width: 768px) {
-    .slide6-chart-container {
+    .slide7-chart-container {
         height: 45vh;
         min-height: 350px;
     }
     
-    .slide6-text {
+    .slide7-text {
         font-size: 16px;
     }
 }

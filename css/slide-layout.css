@@ -22,14 +22,14 @@ main{
   isolation: isolate;           /* Create new stacking context to prevent overlap */
 }
 
-/* Slide 7 needs visible overflow for pie chart */
-.slide7 {
+/* Slide 8 needs visible overflow for pie chart */
+.slide8 {
   overflow: visible !important;
   z-index: 50 !important;
   padding-bottom: 60px; /* gives breathing room */
 }
 
-.slide7 .slide-container {
+.slide8 .slide-container {
   overflow: visible !important;
 }
 
@@ -633,7 +633,7 @@ main{
     }
 }
 
-/* Slide 7 centering handled below in "Center slide 7, 8, 9, 10" section */
+/* Slide 8 centering handled below in "Center slide 8, 9, 10" section */
 
 /* Slide 7.5 - Quote Slide */
 .slide7-5 .slide-container {
@@ -680,8 +680,8 @@ main{
     text-align: right;
 }
 
-/* Center slide 7, 8, 9, 10 content */
-.slide7 .slide-container,
+/* Center slide 6, 8, 9, 10 content */
+.slide6 .slide-container,
 .slide8 .slide-container,
 .slide9 .slide-container,
 .slide10 .slide-container {
@@ -700,13 +700,14 @@ main{
     margin: 0 auto;
 }
 
+.slide6 .slide-title,
 .slide8 .slide-title,
 .slide9 .slide-title,
 .slide10 .slide-title {
     text-align: center;
 }
 
-.slide7 .slide-body,
+.slide6 .slide-body,
 .slide8 .slide-body,
 .slide9 .slide-body,
 .slide10 .slide-body {
@@ -715,7 +716,7 @@ main{
     margin: 0 auto;
 }
 
-.slide7 .campaign-image-container,
+.slide6 .campaign-image-container,
 .slide8 .campaign-image-container,
 .slide9 .campaign-image-container,
 .slide10 .campaign-image-container {
@@ -725,7 +726,7 @@ main{
     margin: 24px auto;
 }
 
-.slide7 .credits-content,
+.slide6 .credits-content,
 .slide8 .credits-content,
 .slide9 .credits-content,
 .slide10 .credits-content {
