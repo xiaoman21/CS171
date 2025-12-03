@@ -45,6 +45,7 @@
         <li class="selected" aria-label="Slide 1: The Shift to Short"></li>
         <li aria-label="Slide 2: Global Reach"></li>
         <li aria-label="Slide 3: Content Is Getting Shorter"></li>
+        <li aria-label="Slide 3.5: Interactive Dashboard"></li>
         <li aria-label="Slide 4: A New Playbook"></li>
         <li aria-label="Slide 5: Channel Performance"></li>
         <li aria-label="Slide 5.5: Monthly Trends"></li>
@@ -138,6 +139,11 @@
                 </div>
                 <!-- Optional: Video length over time visualization can be added here -->
             </div>
+        </section>
+
+        <!-- Slide 3.5: Interactive Media Dashboard -->
+        <section class="slide-section media-dashboard-slide" id="dashboard">
+            <div id="media-dashboard-root"></div>
         </section>
 
         <!-- Slide 4: A New Playbook for Brands & Media -->
@@ -369,6 +375,32 @@
     <script src="js/timeline-visibility.js"></script>
     <script src="js/main.js"></script>
     <script src="js/timeline.js"></script>
+
+    <!-- React Dependencies for Dashboard -->
+    <script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    
+    <!-- Recharts for Dashboard Charts -->
+    <script src="https://unpkg.com/recharts@2.10.3/dist/Recharts.js"></script>
+    
+    <!-- Dashboard Bundle (will be created after npm run build) -->
+    <script src="dashboard-dist/media-dashboard.umd.js"></script>
+    
+    <!-- Initialize Dashboard -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dashboardRoot = document.getElementById('media-dashboard-root');
+            if (dashboardRoot && typeof MediaDashboardSlide !== 'undefined') {
+                try {
+                    const root = ReactDOM.createRoot(dashboardRoot);
+                    root.render(React.createElement(MediaDashboardSlide.default || MediaDashboardSlide));
+                    console.log('Dashboard initialized successfully');
+                } catch (error) {
+                    console.error('Error initializing dashboard:', error);
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
