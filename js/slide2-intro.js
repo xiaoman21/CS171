@@ -15,15 +15,31 @@
                 if (entry.isIntersecting && !introShown) {
                     introShown = true;
                     
-                    // Fade out the intro after 4 seconds
+                    // Hide year selector during intro
+                    const yearSelector = document.querySelector('.year-selector');
+                    if (yearSelector) {
+                        yearSelector.style.opacity = '0';
+                        yearSelector.style.pointerEvents = 'none';
+                    }
+                    
+                    // Fade out the intro after 5 seconds (longer for slower animations)
                     setTimeout(() => {
                         introOverlay.classList.add('fade-out');
+                        
+                        // Show year selector after intro fades
+                        setTimeout(() => {
+                            if (yearSelector) {
+                                yearSelector.style.transition = 'opacity 0.5s ease-in';
+                                yearSelector.style.opacity = '1';
+                                yearSelector.style.pointerEvents = 'auto';
+                            }
+                        }, 500);
                         
                         // Remove from DOM after fade completes
                         setTimeout(() => {
                             introOverlay.style.display = 'none';
                         }, 1000);
-                    }, 4000);
+                    }, 5500);
                 }
             });
         }, {

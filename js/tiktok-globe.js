@@ -184,11 +184,9 @@ class TikTokGlobeVis {
             }
         });
 
-        let allUsers2025 = Object.values(vis.countryInfo).map(d => d.users2025).filter(d => d > 0);
-        let maxUsers = Math.max(...allUsers2025);
-
+        // Fixed scale: 0M to 150M for consistent comparison across years
         vis.colorScale = d3.scaleSequential()
-            .domain([0, maxUsers])
+            .domain([0, 150000000]) // 150 million users
             .interpolator(d3.interpolateRgb("#4a4a6a", "#ff6b6b"));
 
         vis.updateVis();

@@ -617,11 +617,34 @@ main{
     text-align: right;
 }
 
-/* Credits Slide */
-.slide11 .slide-container {
-    max-width: 1000px;
-    max-height: 95vh;
-    padding: 4vh 24px;
+/* Center slide 8, 9, 10 content */
+.slide8 .slide-container,
+.slide9 .slide-container,
+.slide10 .slide-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide8 .slide-body,
+.slide9 .slide-body,
+.slide10 .slide-body {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.slide8 .credits-content,
+.slide9 .credits-content,
+.slide10 .credits-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .credits-content {
