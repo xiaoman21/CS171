@@ -546,6 +546,17 @@ main{
     padding: 8px 0;
 }
 
+.side-text-paragraph {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(14px, 1.5vw, 20px);
+    font-weight: 500;
+    color: var(--text, #EDEFF3);
+    line-height: 1.6;
+    opacity: 0.9;
+    margin: 0;
+    padding: 0;
+}
+
 /* Responsive: Hide side text on smaller screens */
 @media (max-width: 1200px) {
     .iphone-side-text {

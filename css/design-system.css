@@ -47,18 +47,18 @@ p{ margin:0; }
 .navigation_dots li.selected{ background:var(--accent); transform:scale(1.15); }
 .navigation_dots li:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
 
-/* Timeline base container - moved to right side as overlay */
+/* Timeline base container - overlay on left side, doesn't affect layout */
 .timeline-container {
     position: fixed;
     top: 0;
-    right: 0;
-    width: 260px;
+    left: 0;
+    width: 240px;
     height: 100vh;
-    padding: 80px 20px;
+    padding: 80px 16px;
     box-sizing: border-box;
     pointer-events: none;
-    z-index: 999;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.1));
+    z-index: 1000;
+    background: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0));
 }
 
 /* List structure */
