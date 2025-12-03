@@ -10,7 +10,7 @@ function parseNumber(value: string | number): number {
 
 export async function loadAnnualData(): Promise<AnnualChannelSummary[]> {
   try {
-    const response = await fetch('/tbl_AnnualChannelSummary.csv');
+    const response = await fetch('./tbl_AnnualChannelSummary.csv');
     const text = await response.text();
     const lines = text.trim().split('\n');
     const headers = lines[0].split(',');
@@ -65,7 +65,7 @@ export async function loadAnnualData(): Promise<AnnualChannelSummary[]> {
 
 export async function loadMonthlyData(): Promise<MonthlyChannelSummary[]> {
   try {
-    const response = await fetch('/tbl_MonthlyChannelSummary.csv');
+    const response = await fetch('./tbl_MonthlyChannelSummary.csv');
     const text = await response.text();
     const lines = text.trim().split('\n');
     const headers = lines[0].split(',');
@@ -113,7 +113,7 @@ export async function loadMonthlyData(): Promise<MonthlyChannelSummary[]> {
 
 export async function loadShortVsLongData(): Promise<MonthlyShortVsLong[]> {
   try {
-    const response = await fetch('/tbl_MonthlyShortVsLong.csv');
+    const response = await fetch('./tbl_MonthlyShortVsLong.csv');
     const text = await response.text();
     const lines = text.trim().split('\n');
     const headers = lines[0].split(',');
