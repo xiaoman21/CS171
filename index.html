@@ -383,13 +383,22 @@
     <!-- Recharts for Dashboard Charts -->
     <script src="https://unpkg.com/recharts@2.10.3/dist/Recharts.js"></script>
     
+    <!-- Dashboard Styles -->
+    <link rel="stylesheet" href="dashboard-dist/style.css">
+    
     <!-- Dashboard Bundle (will be created after npm run build) -->
     <script src="dashboard-dist/media-dashboard.umd.js"></script>
     
     <!-- Initialize Dashboard -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('Attempting to initialize dashboard...');
             const dashboardRoot = document.getElementById('media-dashboard-root');
+            console.log('Dashboard root element:', dashboardRoot);
+            console.log('React available:', typeof React !== 'undefined');
+            console.log('ReactDOM available:', typeof ReactDOM !== 'undefined');
+            console.log('MediaDashboardSlide available:', typeof MediaDashboardSlide !== 'undefined');
+            
             if (dashboardRoot && typeof MediaDashboardSlide !== 'undefined') {
                 try {
                     const root = ReactDOM.createRoot(dashboardRoot);
@@ -398,6 +407,8 @@
                 } catch (error) {
                     console.error('Error initializing dashboard:', error);
                 }
+            } else {
+                console.error('Dashboard initialization failed - missing requirements');
             }
         });
     </script>
