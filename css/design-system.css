@@ -127,23 +127,13 @@ p{ margin:0; }
     box-sizing: border-box;
 }
 
-/* Each slide container no longer needs large left margin */
+/* Each slide container - NO margins for timeline overlay */
 .slide-section .slide-container {
-    margin-left: 100px;  /* small space for timeline */
+    margin-left: 0;  /* no space - timeline is overlay */
     margin-right: 0;
 }
 
-/* Ensure slides 2, 3, 4, 7, 8, 10 are centered */
-.slide2 .slide-container,
-.slide3 .slide-container,
-.slide4 .slide-container,
-.slide7 .slide-container,
-.slide8 .slide-container,
-.slide10 .slide-container {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 900px;
-}
+/* Timeline doesn't affect slide layout anymore */
 
 /* On smaller screens, remove left spacing entirely */
 @media (max-width: 1400px) {

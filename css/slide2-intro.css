@@ -1,0 +1,67 @@
+/* Slide 2 Intro Animation */
+
+.slide2-intro-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10%;
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}
+
+.slide2-intro-overlay.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.slide2-intro-title {
+    font-family: "Newsreader", serif;
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 800;
+    color: var(--text, #EDEFF3);
+    margin-bottom: clamp(32px, 5vh, 60px);
+    opacity: 0;
+    animation: fadeInTitle 1.5s ease-in forwards;
+}
+
+.slide2-intro-text {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(18px, 2.5vw, 28px);
+    line-height: 1.7;
+    color: var(--muted, #A4ADBD);
+    text-align: center;
+    max-width: 900px;
+    opacity: 0;
+    animation: fadeInText 1.5s ease-in 1s forwards;
+}
+
+@keyframes fadeInTitle {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
