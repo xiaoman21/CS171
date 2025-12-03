@@ -109,12 +109,12 @@
 
 .dashboard-container {
   width: 100%;
-  height: 100%;
-  padding: clamp(20px, 3vh, 40px) clamp(20px, 3vw, 40px) clamp(20px, 3vh, 40px) clamp(40px, 5vw, 60px); /* Less right padding */
+  height: 100vh; /* Full viewport height */
+  padding: clamp(20px, 2vh, 30px) clamp(20px, 3vw, 40px) 0 clamp(40px, 5vw, 60px); /* Remove bottom padding */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: clamp(16px, 2vh, 24px);
+  gap: clamp(8px, 1vh, 16px); /* Reduced gap */
   opacity: 0;
   animation: fadeInDashboard 1s ease-out 0.5s forwards;
   overflow: hidden; /* Prevent overflow */
@@ -146,11 +146,12 @@
 
 /* Main Content Layout */
 .dashboard-content {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: clamp(24px, 3vw, 40px);
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1.5vh, 20px);
+  flex: 1; /* Take remaining space */
   overflow: hidden;
+  min-height: 0; /* Important for flex children */
 }
 
 /* When controls are hidden, use full width */
@@ -341,10 +342,13 @@
 .dashboard-charts {
   background: transparent; /* Remove visible background */
   border-radius: 0;
-  padding: clamp(16px, 2vw, 32px) clamp(16px, 2vw, 32px) clamp(16px, 2vw, 32px) 0; /* Remove right padding to avoid nav overlap */
-  overflow-y: auto;
+  padding: 0;
+  overflow: hidden; /* Changed from overflow-y: auto */
   border: none; /* Remove border */
-  max-width: calc(100vw - 100px); /* Leave space for side nav */
+  flex: 1; /* Take remaining vertical space */
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* Important for flex children */
 }
 
 /* Chart Containers - Larger vertical size */
@@ -552,17 +556,20 @@
 .chart-carousel-container {
   width: 100%;
   height: 100%;
+  flex: 1; /* Take all available space */
   display: flex;
   flex-direction: column;
   position: relative;
   padding: 0;
+  min-height: 0; /* Important */
 }
 
 .chart-carousel-slide {
   flex: 1;
   width: 100%;
   overflow: auto;
-  padding: clamp(20px, 3vh, 40px) 0;
+  padding: clamp(12px, 2vh, 20px) clamp(16px, 2vw, 32px);
+  min-height: 0; /* Important */
 }
 
 .carousel-chart-full {
@@ -578,9 +585,10 @@
   align-items: center;
   justify-content: center;
   gap: clamp(24px, 4vw, 48px);
-  padding: clamp(16px, 2vh, 24px) 0;
+  padding: clamp(12px, 1.5vh, 20px) 0;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 .carousel-button {
@@ -638,16 +646,58 @@
 
 .carousel-counter {
   position: absolute;
-  top: clamp(12px, 1.5vh, 20px);
+  top: clamp(8px, 1vh, 12px);
   right: clamp(16px, 2vw, 32px);
   font-family: "Inter", sans-serif;
-  font-size: clamp(12px, 1.2vw, 14px);
+  font-size: clamp(11px, 1.1vw, 13px);
   font-weight: 600;
   color: #C4CDDD;
   background: rgba(0, 0, 0, 0.6);
-  padding: 6px 12px;
+  padding: 4px 10px;
   border-radius: 20px;
   backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+/* Channel Selector for Drill-down */
+.channel-selector-compact {
+  padding: clamp(12px, 1.5vh, 20px) clamp(16px, 2vw, 24px);
+  background: rgba(15, 15, 20, 0.4);
+  border-radius: 8px;
+  border: 1px solid rgba(68, 136, 255, 0.15);
+  margin-bottom: clamp(8px, 1vh, 12px);
+  flex-shrink: 0; /* Don't shrink */
+}
+
+.channel-select-dropdown {
+  width: 100%;
+  padding: 10px 14px;
+  background: rgba(26, 26, 46, 0.6);
+  border: 1px solid rgba(68, 136, 255, 0.3);
+  border-radius: 8px;
+  color: #EDEFF3;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: all 0.3s ease;
+}
+
+.channel-select-dropdown:hover {
+  border-color: rgba(68, 136, 255, 0.5);
+  background: rgba(26, 26, 46, 0.8);
+}
+
+.channel-select-dropdown:focus {
+  outline: none;
+  border-color: #4488FF;
+  box-shadow: 0 0 0 3px rgba(68, 136, 255, 0.1);
+}
+
+.channel-select-dropdown option {
+  background: #1a1a2e;
+  color: #EDEFF3;
+  padding: 10px;
 }
 
 @media (max-width: 768px) {

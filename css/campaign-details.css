@@ -229,6 +229,11 @@
     animation: campaignFadeIn 1.2s ease-out 0.5s forwards;
 }
 
+/* Ensure chart is visible for debugging */
+.slide8-6 .tiktok-followers-chart {
+    opacity: 1 !important;
+}
+
 .chart-heading {
     font-family: "Inter", sans-serif;
     font-size: clamp(20px, 2.2vw, 28px);
@@ -276,10 +281,9 @@
     border-radius: 12px;
     transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
     width: 0; /* Start at 0, will be animated */
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 16px;
+    display: block;
+    position: relative;
+    min-width: 5px; /* Ensure at least some width is visible for debugging */
 }
 
 .mamdani-bar {
@@ -288,7 +292,7 @@
 }
 
 .mamdani-bar + .bar-label .follower-value,
-.follower-bar-item:nth-child(1) .follower-value {
+.tiktok-followers-chart .follower-bar-item:nth-child(1) .follower-value {
     color: #44FF88;
 }
 
@@ -297,7 +301,7 @@
     box-shadow: 0 0 20px rgba(255, 179, 68, 0.3);
 }
 
-.follower-bar-item:nth-child(2) .follower-value {
+.tiktok-followers-chart .follower-bar-item:nth-child(2) .follower-value {
     color: #FFB344;
 }
 
@@ -306,7 +310,7 @@
     box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
 }
 
-.follower-bar-item:nth-child(3) .follower-value {
+.tiktok-followers-chart .follower-bar-item:nth-child(3) .follower-value {
     color: #FF6B6B;
 }
 
