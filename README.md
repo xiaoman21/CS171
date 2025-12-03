@@ -1,10 +1,55 @@
-# Is Social Media Getting Shorter? (CS171 Final Project)
+# Are Videos Getting Shorter? (CS171 Final Project)
 
-Team: Xiaoman Xu, Lingjie Pan, Paul Jeon
+**Team:** Xiaoman Xu, Lingjie Pan, Paul Jeon
 
-Harvard Fall 2025 CS171 Visualizations
+**Course:** Harvard Fall 2025 CS171 Visualizations
 
-This project investigates how short-form video (YouTube Shorts) factors into channel performance. We collect video-level data from the YouTube Data API, classify uploads as Shorts vs. Normal, and aggregate engagement metrics to compare across top creators and media brands. Our final visualization focuses on total views per channel and the share of those views coming from Shorts.
+This project investigates how short-form video is reshaping media and news consumption. Through interactive visualizations, we explore YouTube Shorts performance, TikTok's global reach, and how social media platforms are becoming primary news sources. We analyze video-level data from the YouTube Data API, classify uploads as Shorts vs. Normal, and compare engagement metrics across top creators and media brands.
+
+## 🚀 Quick Start
+
+**To run this project:**
+
+```bash
+# 1. Navigate to the project directory
+cd /path/to/CS171
+
+# 2. Start a local web server
+python3 -m http.server 8000
+
+# 3. Open in browser
+# Visit: http://localhost:8000
+```
+or you can also use lifeserver to run it
+
+**Requirements:**
+- Modern web browser (Chrome, Firefox, Safari, Edge)
+- Local web server (Python 3, Node.js, or PHP)
+- **No npm install needed** - all libraries loaded via CDN
+
+**Used Technologies:**
+- **D3.js v7** - Data visualization
+- **TopoJSON** - Geographic data
+- **Google Fonts** - Inter & Newsreader
+---
+
+## 📖 Table of Contents
+
+- [Quick Start](#-quick-start)
+- [Data & Scope](#data--scope)
+- [Features](#-features)
+- [Project Structure](#-project-structure)
+- [Libraries & Dependencies](#-libraries--dependencies)
+- [Getting Started](#-getting-started-1)
+- [Design System](#-design-system)
+- [Key Components](#-key-components)
+- [Data Sources & Files](#-data-sources--files)
+- [Development Guide](#-development-guide)
+- [Troubleshooting](#-troubleshooting)
+- [Learning Resources](#-learning-resources)
+- [Technical Details](#-technical-details)
+
+---
 
 ## Data & scope
 Source: YouTube Data API v3
@@ -43,323 +88,368 @@ We also store a check called is_short_by_duration (threshold-only) for sensitivi
 
 ## 🎨 Features
 
-- **Page 1**: Interactive 3D globe showing TikTok users by country (2023-2025)
-  - Draggable/rotatable globe
-  - Year selector
+The project contains 14 interactive slides exploring the shift to short-form content:
+
+- **Slide 1**: The Shift to Short - Embedded YouTube Shorts demonstration
+- **Slide 2**: Global Reach - Interactive 3D globe showing TikTok users by country (2023-2025)
+  - Draggable/rotatable globe using D3.js orthographic projection
+  - Year selector to view temporal changes
   - Top 5 countries info panel
   - Color-coded by user count
-
-- **Page 2**: YouTube channel composition analysis
-  - Floating bubbles representing channels
-  - Click to see Shorts vs Regular content breakdown
+- **Slide 3**: Content Is Getting Shorter - Narrative explanation
+- **Slide 4**: A New Playbook for Brands & Media - Strategic insights
+- **Slide 5**: Channel Performance - YouTube channel composition analysis
+  - Floating bubbles representing channels (force-directed layout)
+  - Click to see Shorts vs Regular content breakdown with animated transitions
   - Interactive drag-and-drop layout
-
-- **Page 3**: Top 5 YouTube Channels (2024)
-  - Animated D3 line chart showing total monthly views per channel
-  - Clear x-axis (Month 2024) and y-axis (Total Views in Billions)
-  - Left-aligned bubble legend with profile avatars and channel names
-  - Moving avatars that travel along each channel’s line to show changing performance
-  - Interactive tooltips on hover displaying channel and view information
-- **Page 4**: Social media news consumption tracker (2020–2025)
-  - Plotly interactive comparing Pew Research Center data across platforms
-  - Toggle between trend lines and percentage-point change summaries
-  - Standalone HTML generated from `build_social_news_interactive.py`
+- **Slide 6**: Monthly View Trends - Top 5 YouTube Channels (2024)
+  - Animated D3 line chart showing total monthly views
+  - Bubble legend with channel profile avatars
+  - Moving avatars that travel along performance lines
+  - Interactive tooltips on hover
+- **Slide 7**: Shorts Ignite Long-Form - Long/Short content interaction
+  - Avatar slider to select creators
+  - Combined view of Shorts and long-form video performance
+  - Promo month and rising slope indicators
+  - Interactive legend toggles
+- **Slide 8**: Where People Get News (2020–2025)
+  - Animated D3 line chart with sequential text reveals
+  - Pew Research Center data visualization
+  - Toggle to show percentage-point changes
+  - Platform-specific text highlights
+- **Slide 9**: Campaigns in the Social Era - NYC campaign case study
+- **Slide 10**: Quote - Ritchie Torres quote on modern communication
+- **Slide 11**: Why This Matters - Media literacy insights
+- **Slide 12**: Conclusion - Key takeaways
+- **Slide 13**: Credits - Team and data sources
 
 ## 📁 Project Structure
 
 ```
 CS171/
-├── index.html                       # Main entry point (Sections 1–3)
-├── README.md                        # Documentation
+├── index.html                                      # Main entry point (all slides)
+├── README.md                                       # Documentation
+├── build_social_news_interactive.py               # Python script to generate Plotly viz
 │
-├── tiktok-users-by-country-2025.csv # TikTok user data
-├── top_channels_2024_monthly_summary.csv  # YouTube Top 5 monthly data
-├── top2024_annual_summary.csv       # YouTube annual data
+├── Data files:
+├── tiktok-users-by-country-2025.csv               # TikTok user data (2023-2025)
+├── top_channels_2024_monthly_summary.csv          # YouTube monthly view data
+├── top2024_annual_summary.csv                     # YouTube annual summary
+├── shortform_youth_audience.csv                   # Young audience data
+├── PJ_2025.09.25_social-media-news_consumption-us-adults-data.csv  # Pew news data
+├── social_news_interactive.html                   # Generated Plotly visualization
 │
-├── css/
-│   ├── main.css                     # Core layout + navigation
-│   ├── globe.css                    # Section 1: TikTok Globe
-│   ├── youtube.css                  # Section 2: Channel composition
-│   ├── youtube-top5.css             # Section 3: Top 5 YouTube Channels
-│   └── social-news.css              # Section 4: Pew social news slide
+├── css/                              # Stylesheets (modular by feature)
+│   ├── design-system.css             # Global design tokens and theme
+│   ├── landing.css                   # Landing page styles
+│   ├── slide-layout.css              # Slide container layouts
+│   ├── globe.css                     # TikTok Globe (Slide 2)
+│   ├── youtube.css                   # Channel composition (Slide 5)
+│   ├── youtube-top5.css              # Monthly trends (Slide 6)
+│   ├── youtube-longshort-combined.css # Long/Short interaction (Slide 7)
+│   ├── youtube-sliding-panels.css    # Sliding panels component
+│   ├── slide6-animation.css          # News consumption slide (Slide 8)
+│   ├── social-news.css               # Social news styles
+│   ├── young-audience.css            # Young audience styles
+│   └── slide7-animation.css          # Campaign slide animations
 │
-└── js/
-    ├── navigation.js                # Scroll + dot navigation
-    ├── tiktok-globe.js              # Section 1 visualization
-    ├── youtube-chart.js             # Section 2 visualization
-    ├── youtube-top5.js              # Section 3 Top 5 chart
-    └── main.js                      # Global data loading + initialization
+├── js/                               # JavaScript modules (one per feature)
+│   ├── landing.js                    # Landing page animations
+│   ├── navigation.js                 # Scroll navigation & dot controls
+│   ├── timeline.js                   # Narrative timeline
+│   ├── animations.js                 # Global animation utilities
+│   ├── tiktok-globe.js              # TikTok Globe visualization (Slide 2)
+│   ├── youtube-chart.js             # Channel composition (Slide 5)
+│   ├── youtube-top5.js              # Monthly trends chart (Slide 6)
+│   ├── youtube-longshort-combined.js # Long/Short interaction (Slide 7)
+│   ├── youtube-sliding-panels.js    # Sliding panels component
+│   ├── slide6-animation.js          # News consumption animation (Slide 8)
+│   ├── young-audience.js            # Young audience visualization
+│   ├── pew-reset.js                 # Pew data reset utilities
+│   ├── explanation-cards.js         # Pop-up explanation cards
+│   └── main.js                      # Data loading + initialization (must load last)
+│
+└── assets/
+    └── profile_pics/                # Channel avatars and campaign images
 ```
 
-### 🔗 File Dependencies
+## 📚 Libraries & Dependencies
 
+### JavaScript Libraries (CDN)
+All external libraries are loaded via CDN - no npm install required:
+
+- **D3.js v7** - Core visualization library
+  - `https://d3js.org/d3.v7.min.js`
+  - `https://d3js.org/d3-scale-chromatic.v1.min.js`
+  - `https://d3js.org/topojson.v2.min.js`
+  - `https://d3js.org/d3-geo.v1.min.js`
+
+### Fonts (Google Fonts CDN)
+- **Inter** (weights: 400, 500, 700, 900) - Body text and UI elements
+- **Newsreader** (weights: 600, 700, 800) - Headlines and titles
+
+### Python Dependencies (for generating Plotly visualization)
+Only needed if regenerating `social_news_interactive.html`:
+
+```bash
+pandas      # Data manipulation
+plotly      # Interactive plotting
 ```
-index.html
-    ├── CSS
-    │   ├── css/main.css           (required – global layout & theme)
-    │   ├── css/globe.css          (for Section 1: TikTok Globe)
-    │   ├── css/youtube.css        (for Section 2: YouTube Composition)
-    │   └── css/youtube-top5.css   (for Section 3: Top 5 YouTube Channels)
-    │
-    └── JavaScript (load order matters!)
-        ├── D3.js libraries (CDN)
-        ├── js/navigation.js        (scroll navigation & section control)
-        ├── js/tiktok-globe.js      (Section 1: TikTok 3D Globe)
-        ├── js/youtube-chart.js     (Section 2: Channel Composition)
-        ├── js/youtube-top5.js      (Section 3: Top 5 YouTube Channels)
-        └── js/main.js              (data loading & initialization – must be last)
+
+**Installation:**
+```bash
+python3 -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+pip install pandas plotly
 ```
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- A modern web browser (Chrome, Firefox, Safari, Edge)
-- Local web server (optional but recommended)
+- **Modern web browser** (Chrome, Firefox, Safari, or Edge)
+- **Local web server** (required for loading CSV files)
+- **Python 3.7+** (optional, only needed to regenerate Plotly visualization)
 
 ### Quick Start
 
-1. **Direct Open** (may have CORS issues):
-   ```
-   Simply open index.html in your browser
-   ```
+**Option 1: Using Python HTTP Server** (recommended)
+```bash
+cd /path/to/CS171
+python3 -m http.server 8000
+```
+Then open http://localhost:8000 in your browser
 
-2. **Using Python Server** (recommended):
-   ```bash
-   # Python 3
-   cd /path/to/CS171
-   python -m http.server 8000
-   # Then open http://localhost:8000
-   ```
+**Option 2: Using Node.js HTTP Server**
+```bash
+cd /path/to/CS171
+npx http-server -p 8000
+```
+Then open http://localhost:8000 in your browser
 
-3. **Using Node.js Server**:
-   ```bash
-   npx http-server -p 8000
-   # Then open http://localhost:8000
-   ```
+**Option 3: Using PHP Server**
+```bash
+cd /path/to/CS171
+php -S localhost:8000
+```
+Then open http://localhost:8000 in your browser
 
-## 📂 File Details
+### Why You Need a Local Server
+Opening `index.html` directly (`file://`) will cause CORS errors when loading CSV files. The browser's security policy prevents JavaScript from loading local files without a web server.
 
-### CSS Files
+### Navigation
+- **Scroll**: Use mouse wheel, trackpad, or arrow keys to navigate between slides
+- **Navigation Dots**: Click dots on the right side to jump to specific slides
+- **Progress Bar**: View your position in the presentation at the top of the page
 
-- **main.css**: Core styling including:
-  - Body and layout styles
-  - Hand-drawn border effects
-  - Navigation dots
-  - Responsive design
-  - Loading animations
+## 🎨 Design System
 
-- **globe.css**: TikTok globe specific styles:
-  - Country path styling
-  - Tooltip design
+The project uses a modern, professional design system defined in [design-system.css](css/design-system.css):
+
+### Color Palette
+- **Background**: `#0E0F12` (dark charcoal) - Main background
+- **Surface**: `#15171B` (dark gray) - Card/container backgrounds
+- **Text Primary**: `#EDEFF3` (off-white) - Main text
+- **Text Secondary**: `#A4ADBD` (light gray) - Secondary text
+- **Accent Colors**: Platform-specific (YouTube red, Instagram gradient, TikTok cyan, etc.)
+
+### Typography
+- **Headlines**: `'Newsreader', serif` (weights: 600, 700, 800)
+- **Body & UI**: `'Inter', sans-serif` (weights: 400, 500, 700, 900)
+- **Scale**: Responsive fluid typography using clamp()
+
+### Design Principles
+- **Modular CSS**: Each slide has its own stylesheet
+- **Smooth animations**: CSS transitions and D3 animations
+- **Accessibility**: ARIA labels, semantic HTML
+- **Responsive**: Adapts to different screen sizes
+
+## 📂 Key Components
+
+### JavaScript Modules
+
+- **[main.js](js/main.js)**: Core initialization
+  - Loads all CSV data files using D3.csv()
+  - Initializes visualizations in correct order
+  - Error handling and loading states
+
+- **[navigation.js](js/navigation.js)**: Scroll navigation
+  - Tracks scroll position
+  - Updates navigation dots
+  - Handles smooth scrolling between slides
+
+- **[landing.js](js/landing.js)**: Landing page
+  - Animated title reveal
+  - Scroll-down indicator
+  - Transition to main content
+
+- **[tiktok-globe.js](js/tiktok-globe.js)**: 3D Globe (Slide 2)
+  - D3 orthographic projection
+  - TopoJSON for country boundaries
+  - Interactive drag rotation
   - Year selector
-  - Legend and info panel
 
-- **youtube.css**: YouTube chart specific styles:
-  - Circle/bubble styling
-  - Pie chart slices
-  - Label formatting
-  - Hover effects
-
-### JavaScript Files
-
-- **navigation.js**: Handles scroll-based navigation:
-  - Updates navigation dots based on scroll position
-  - Smooth scrolling between sections
-  - Click handlers for dot navigation
-
-- **tiktok-globe.js**: TikTok globe visualization:
-  - `TikTokGlobeVis` class
-  - D3.js orthographic projection
-  - Data wrangling and color scales
-  - Interactive features (drag, hover, year selection)
-
-- **youtube-chart.js**: YouTube channel visualization:
-  - `initYouTubeVis` function
-  - Force-directed layout
+- **[youtube-chart.js](js/youtube-chart.js)**: Channel bubbles (Slide 5)
+  - D3 force simulation for layout
   - Circle-to-pie chart transitions
-  - Drag interactions
+  - Click interactions
 
-- **main.js**: Application initialization:
-  - Loads all data files
-  - Initializes both visualizations
-  - Error handling
+- **[youtube-top5.js](js/youtube-top5.js)**: Monthly trends (Slide 6)
+  - Animated line chart
+  - Moving avatars along trend lines
+  - Interactive tooltips
 
-## 🎯 Navigation
+- **[youtube-longshort-combined.js](js/youtube-longshort-combined.js)**: Long/Short interaction (Slide 7)
+  - Creator avatar slider
+  - Combined bar/line charts
+  - Legend toggles for promo months and slope indicators
 
-- **Scroll**: Use mouse wheel or trackpad to navigate between pages
-- **Navigation Dots**: Click the dots on the right side to jump to specific pages
-- **Keyboard**: Use arrow keys or Page Up/Down (browser default)
+- **[slide6-animation.js](js/slide6-animation.js)**: News consumption (Slide 8)
+  - Animated line chart with sequential reveals
+  - Intersection Observer for scroll-triggered animations
+  - Toggle between trend lines and change bars
 
-## 🎨 Design Theme
+- **[timeline.js](js/timeline.js)**: Narrative timeline
+  - Progress indicator
+  - Section titles
+  - Click navigation
 
-The project follows a cohesive design inspired by hand-drawn aesthetics:
+## 📊 Data Sources & Files
 
-### Colors
-- Background: `#393A4C` (dark blue-gray)
-- Accent: `#fff4d6` (cream/beige)
-- Primary: `#ff6b6b` (coral red)
-- Secondary: `#4ecdc4` (turquoise)
-- Container: `#2F2F4C` (slightly lighter blue-gray)
+### Data Files
 
-### Fonts
-- Primary: `'Architects Daughter', cursive` (Google Fonts)
+1. **`tiktok-users-by-country-2025.csv`**
+   - TikTok user counts by country for 2023, 2024, and 2025
+   - Includes country codes and names
+   - Used in Slide 2 (Global Reach)
 
-### Effects
-- Hand-drawn style borders with irregular corners
-- Smooth transitions
-- Drop shadows
+2. **`top2024_annual_summary.csv`**
+   - Annual YouTube channel statistics for 2024
+   - Metrics: total uploads, shorts count, regular videos, total views
+   - Used in Slide 5 (Channel Performance)
 
-## 📊 Data Sources
+3. **`top_channels_2024_monthly_summary.csv`**
+   - Monthly view data for top YouTube channels throughout 2024
+   - Used in Slide 6 (Monthly View Trends)
 
-- **TikTok Data**: `tiktok-users-by-country-2025.csv`
-  - Contains user counts for 2023, 2024, and 2025
-  - Includes country codes and names
+4. **`shortform_youth_audience.csv`**
+   - Young audience engagement data
+   - Used for youth-focused visualizations
 
-- **YouTube Data**: `top2024_annual_summary.csv`, `top_channels_2024_monthly_summary.csv`
-  - Top YouTube channels in 2024
-  - Metrics: total uploads, shorts, regular videos, views
-- **Pew Social News Data**: `PJ_2025.09.25_social-media-news_consumption-us-adults-data.csv`
-  - Percent of U.S. adults regularly getting news on each social platform (2020–2025)
-  - Used to generate `social_news_interactive.html` via `build_social_news_interactive.py`
+5. **`PJ_2025.09.25_social-media-news_consumption-us-adults-data.csv`**
+   - Pew Research Center data
+   - Percentage of U.S. adults regularly getting news on social platforms (2020-2025)
+   - Platforms: YouTube, Instagram, TikTok, X/Twitter, Facebook, etc.
+   - Used in Slide 8 (Where People Get News)
 
-### Generating the social news slide
 
+## 🔧 Development Guide
+
+### Code Organization Principles
+
+The project follows a **modular architecture**:
+
+1. **One feature = One CSS file + One JS file**
+   - Example: `youtube-top5.css` + `youtube-top5.js` for the monthly trends chart
+   - Makes it easy to locate and modify specific features
+
+2. **Separation of Concerns**
+   - `navigation.js`: Only scroll navigation logic
+   - `landing.js`: Only landing page behavior
+   - `main.js`: Only data loading and initialization (must load last)
+   - Visualization files: Only their specific D3 visualizations
+
+3. **CSS Cascade**
+   - `design-system.css`: Global design tokens (colors, fonts, spacing)
+   - `slide-layout.css`: Reusable slide layouts
+   - Feature-specific CSS: Overrides for specific components
+
+### Adding a New Slide
+
+1. **Add HTML section** in `index.html`:
+```html
+<section class="slide-section slideN" id="slideN">
+    <div class="slide-container">
+        <h2 class="slide-title">Your Title</h2>
+        <div class="slide-body">
+            <p>Your content</p>
+        </div>
+        <div id="yourViz" class="viz-placeholder"></div>
+    </div>
+</section>
 ```
-cd /Users/pauljeon/CS171
-python3 -m venv .venv
-source .venv/bin/activate
-pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org pandas plotly
-python build_social_news_interactive.py --csv PJ_2025.09.25_social-media-news_consumption-us-adults-data.csv --out social_news_interactive.html
+
+2. **Add navigation dot** in `index.html`:
+```html
+<ul class="navigation_dots">
+    <!-- Existing dots -->
+    <li aria-label="Slide N: Your Title"></li>
+</ul>
 ```
 
-The resulting `social_news_interactive.html` is embedded in `index.html` (Section 4) via an `<iframe>`.
+3. **Create CSS file** `css/your-feature.css`:
+```css
+#yourViz {
+    /* Your styles */
+}
+```
 
-## 🔧 Customization
+4. **Create JS file** `js/your-feature.js`:
+```javascript
+function initYourViz(data) {
+    // Your D3 visualization code
+}
+```
 
-### Adding More Pages
+5. **Link in `index.html`** (before `</head>`):
+```html
+<link rel="stylesheet" href="css/your-feature.css">
+```
 
-1. **HTML** (index.html):
-   ```html
-   <!-- Add after section2 -->
-   <div class="row full-height">
-       <div class="section-container section3">
-           <h3>New Section Title</h3>
-           <div id="newVis" class="placeholder"></div>
-       </div>
-   </div>
-   ```
+6. **Link in `index.html`** (before `main.js` script tag):
+```html
+<script src="js/your-feature.js"></script>
+```
 
-2. **Add Navigation Dot**:
-   ```html
-   <ul class="navigation_dots">
-       <li class="selected"></li>
-       <li></li>
-       <li></li> <!-- Add this -->
-   </ul>
-   ```
+7. **Initialize in `main.js`**:
+```javascript
+Promise.all([...]).then(results => {
+    // Existing initializations
+    initYourViz(yourData);
+});
+```
 
-3. **CSS** (create css/new-section.css):
-   ```css
-   #newVis {
-       /* Your styles */
-   }
-   ```
 
-4. **JavaScript** (create js/new-section.js):
-   ```javascript
-   function initNewVis(data) {
-       // Your visualization code
-   }
-   ```
 
-5. **Update navigation.js**:
-   ```javascript
-   const sections = document.querySelectorAll('.section1, .section2, .section3');
-   ```
+### Browser Compatibility
 
-6. **Link in HTML**:
-   ```html
-   <link rel="stylesheet" href="css/new-section.css">
-   <script src="js/new-section.js"></script>
-   ```
+**Recommended browsers:**
+- Chrome 90+
+- Firefox 88+
+- Safari 14+
+- Edge 90+
 
-### Changing Colors
 
-Edit the CSS files:
-- Background: Change `#393A4C` in `main.css`
-- Accent color: Change `#fff4d6` throughout
-- Visualization colors: Update in respective CSS files
+## 💡 Development Tips
 
-## 🔍 Code Organization Principles
+- **Always use a local server** - Required for loading CSV files
+- **Check browser console** - F12 → Console shows errors and warnings
+- **Load order matters** - `main.js` must load last
+- **Keep data files in root** - CSV files should be in the project root
+- **Use modular files** - One feature per CSS/JS file pair
+- **Test across browsers** - Chrome, Firefox, Safari have different behaviors
+- **Optimize for performance** - Limit DOM manipulations, use CSS transforms
 
-### CSS Organization
-- **main.css**: Shared styles used across all sections
-- **[section].css**: Section-specific styles
-- Use clear class names with prefixes (e.g., `.globe-tooltip`, `.channel-circle`)
-
-### JavaScript Organization
-- **navigation.js**: Pure navigation logic, no visualization code
-- **[section].js**: Complete visualization logic for one section
-- **main.js**: Only data loading and initialization
-- Each file has a clear, single responsibility
-
-### Benefits
-- Easy to find specific code
-- Easy to add new sections
-- Easy to modify individual sections
-- Clear dependencies
-- Modular and maintainable
-
-## 🐛 Troubleshooting
-
-### Data Not Loading
-- Make sure you're using a local server (not file://)
-- Check that CSV files are in the correct location
-- Open browser console (F12) to see error messages
-
-### Navigation Dots Not Working
-- Ensure section classes match in HTML and navigation.js
-- Check browser console for JavaScript errors
-
-### Visualization Not Appearing
-- Verify D3.js libraries are loaded
-- Check that data files exist and are accessible
-- Ensure all JS files are loaded in the correct order
-
-## 🎓 Learning Resources
-
-### D3.js
-- [D3.js Documentation](https://d3js.org/)
-- [D3 Graph Gallery](https://d3-graph-gallery.com/)
-
-### TopoJSON
-- [TopoJSON Documentation](https://github.com/topojson/topojson)
-
-### Force Layout
-- [D3 Force Layout](https://d3js.org/d3-force)
-
-## 💡 Tips
-
-- Always test with a local server, not file://
-- Check browser console for errors
-- Keep data files in the correct relative paths
-- Maintain consistent naming conventions
-- Comment complex D3 code
-- Test on different screen sizes
 
 ## 📝 License
 
-This project is for educational purposes.
+This project is for educational purposes as part of Harvard CS171.
 
 ## 🙏 Acknowledgments
 
-- Design inspired by MBTI-Music project
-- Built with D3.js
-- Uses TopoJSON for geographic data
+- **Data Sources**: YouTube Data API v3, Pew Research Center, WORLD POPULATION REVIEW
+- **Built With**: D3.js v7, TopoJSON, Plotly
+- **Fonts**: Google Fonts (Inter, Newsreader)
+- **Course**: Harvard CS171 - Visualization (Fall 2025)
 
----
 
-**Last Updated**: 2025-11-05
-
-**Version**: 1.1
 

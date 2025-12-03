@@ -19,6 +19,32 @@ main{
   position:relative;
   overflow:hidden;              /* prevent content from spilling to next slide */
   box-sizing:border-box;
+  isolation: isolate;           /* Create new stacking context to prevent overlap */
+}
+
+/* Slide 7 needs visible overflow for pie chart */
+.slide7 {
+  overflow: visible !important;
+  z-index: 50 !important;
+  padding-bottom: 60px; /* gives breathing room */
+}
+
+.slide7 .slide-container {
+  overflow: visible !important;
+}
+
+/* Slide 5.6 needs overflow visible for chart */
+.slide5-6 {
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 100svh;
+}
+
+.slide5-6 .slide-container {
+  max-height: none !important;
+  overflow: visible !important;
+  overflow-y: visible !important;
+  height: auto !important;
 }
 
 /* Slide 1 needs overflow visible for iPhone */
@@ -86,6 +112,15 @@ main{
   position: relative;
 }
 
+/* Slide 5.5 - Monthly Trends in own container */
+.slide5-5 {
+  min-height: 100svh;
+  height: 100svh;
+  overflow-y: auto;
+  overflow-x: visible;
+  position: relative;
+}
+
 /* Allow visualization to extend beyond container */
 .slide5 #youtubeChart {
   position: absolute;
@@ -111,21 +146,77 @@ main{
 /* Slide 5.5 - Monthly Trends in own container */
 .slide5-5 .slide-container{
   max-width: 1600px;
-  max-height: 95vh;
-  padding: 2vh 24px;
+  width: 100%;
+  padding: 0 24px 3vh 24px;
+  overflow-y: auto;
+  overflow-x: visible;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 100vh;
+}
+
+.slide5-5 .slide-title {
+  font-size: clamp(26px, 4.2vw, 48px);
+  margin-bottom: 2px;
+  flex-shrink: 0;
+  line-height: 1.05;
+}
+
+.slide5-5 .slide-body {
+  margin-bottom: 2px;
+  flex-shrink: 0;
+  font-size: clamp(14px, 1.6vw, 17px);
+  gap: 1px;
+  line-height: 1.3;
+}
+
+.slide5-5 .viz-caption-above {
+  margin-bottom: 2px;
+  font-size: clamp(13px, 1.4vw, 15px);
+}
+
+.slide5-5 .viz-caption {
+  margin-top: 0;
+  flex-shrink: 0;
+  font-size: 11px;
+  line-height: 1.4;
+  padding-top: 0;
+  margin-bottom: 0;
+}
+
+.viz-caption-above {
+  color: var(--muted, #A4ADBD);
+  font-size: clamp(14px, 1.5vw, 16px);
+  line-height: 1.6;
+  font-family: "Inter", sans-serif;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.slide5-5 .slide-title {
+  margin-bottom: 12px;
+}
+
+.slide5-5 .slide-body {
+  margin-bottom: 16px;
 }
 
 .youtube-monthly-container {
   width: 100%;
-  margin-top: 32px;
-  height: 70vh;
-  max-height: 70vh;
+  margin-top: -8px;
+  margin-bottom: 24px;
+  flex: 1 1 0;
+  min-height: 0;
   background: var(--panel);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
-  padding: 32px;
+  padding: 16px 20px 90px 20px;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
 }
 
 .youtube-flex-monthly {
@@ -134,7 +225,8 @@ main{
   align-items: flex-start;
   gap: 40px;
   width: 100%;
-  height: 100%;
+  flex: 1;
+  min-height: 0;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -145,8 +237,11 @@ main{
 
 .youtube-flex-monthly #youtubeTop5 {
   flex: 1;
-  height: 100%;
   min-height: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Large, elegant titles */
@@ -237,9 +332,21 @@ main{
 
 /* Slide 2 (TikTok Globe) needs proper sizing */
 .slide2 .slide-container{
-  max-height: 95vh;
-  padding: 2vh 24px;
-  overflow: hidden; /* Prevent scrollbar on slide 2 */
+  max-width: 900px;
+  max-height: 100vh;
+  padding: 1vh 24px;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.slide2 .slide-title{
+  margin-bottom: 12px;
+}
+
+.slide2 .slide-body{
+  margin-bottom: 12px;
+  gap: 8px;
 }
 
 .slide2 .viz-placeholder{
