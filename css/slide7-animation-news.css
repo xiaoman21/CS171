@@ -11,8 +11,8 @@
     display: grid;
     grid-template-columns: 30% 70%;
     grid-template-rows: auto auto 1fr;
-    gap: clamp(16px, 2vh, 28px) clamp(50px, 5vw, 80px);
-    padding: clamp(30px, 4vh, 50px) clamp(60px, 6vw, 120px);
+    gap: clamp(12px, 1.5vh, 20px) clamp(50px, 5vw, 80px);
+    padding: clamp(20px, 3vh, 40px) clamp(60px, 6vw, 120px);
     max-height: 100vh !important;
     height: 100vh !important;
     max-width: none !important;
@@ -31,7 +31,7 @@
     text-align: left;
     margin-bottom: 0;
     align-self: start;
-    font-size: clamp(24px, 4.5vw, 58px);
+    font-size: clamp(22px, 4vw, 52px);
     line-height: 1.1;
 }
 
@@ -44,7 +44,7 @@
     grid-row: 2 / 4;
     display: flex;
     flex-direction: column;
-    gap: clamp(20px, 3vh, 32px);
+    gap: clamp(16px, 2.5vh, 28px);
     text-align: left;
     align-self: start;
     justify-content: flex-start;
@@ -56,8 +56,8 @@
     grid-column: 2;
     grid-row: 1 / 4;
     display: grid;
-    grid-template-rows: 4.5fr 0.8fr;
-    gap: clamp(8px, 1.5vh, 16px);
+    grid-template-rows: 6fr 0.5fr;
+    gap: clamp(4px, 1vh, 10px);
     align-items: start;
     justify-content: stretch;
     width: 100%;
@@ -71,7 +71,7 @@
     width: 100%;
     max-width: none;
     height: 100%;
-    min-height: 400px;
+    min-height: 450px;
     max-height: 100%;
     position: relative;
     grid-row: 1;
@@ -131,32 +131,33 @@
 .slide7-bottom-section {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
     align-items: center;
     text-align: center;
     width: 100%;
     grid-row: 2;
     align-self: start;
+    justify-content: flex-start;
 }
 
 /* Controls section */
 .slide7-controls {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
     align-items: center;
     width: 100%;
 }
 
 .slide7-toggle-btn {
-    padding: 10px 20px;
+    padding: 8px 16px;
     font-family: "Inter", sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     background-color: var(--accent, #7C9CFF);
     color: var(--text, #EDEFF3);
     border: none;
-    border-radius: var(--radius-lg, 16px);
+    border-radius: var(--radius-lg, 12px);
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -177,7 +178,7 @@
 
 .slide7-source {
     font-family: "Inter", sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     color: var(--muted, #A4ADBD);
     margin: 0;
     font-style: italic;
