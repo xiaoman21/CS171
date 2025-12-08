@@ -3,6 +3,8 @@
 
     console.log('TikTok bar animation script loaded');
 
+    let animationTriggered = false;
+
     function animateTikTokBars() {
         console.log('Initializing TikTok bar animation');
         const slide8_6 = document.getElementById('slide8-6');
@@ -23,27 +25,26 @@
             return;
         }
 
-        // Set initial width immediately to ensure bars are visible
+        // Ensure all bars start at width 0
         bars.forEach((bar, index) => {
             const targetWidth = bar.getAttribute('data-width');
-            console.log(`Bar ${index} initial setup: ${targetWidth}%`);
-            // Set initial width to ensure bar is visible
-            bar.style.width = targetWidth + '%';
+            console.log(`Bar ${index} initialized at 0%, will animate to ${targetWidth}%`);
+            bar.style.width = '0%';
         });
 
-        // Also animate on scroll
+        // Animate when slide becomes visible
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    console.log('Slide 8-6 is visible, re-animating bars');
-                    bars.forEach((bar, index) => {
-                        bar.style.width = '0%';
-                        setTimeout(() => {
+                if (entry.isIntersecting && !animationTriggered) {
+                    animationTriggered = true;
+                    console.log('Slide 8-6 is visible, animating bars');
+                    setTimeout(() => {
+                        bars.forEach((bar, index) => {
                             const targetWidth = bar.getAttribute('data-width');
                             console.log(`Animating bar ${index} to ${targetWidth}%`);
                             bar.style.width = targetWidth + '%';
-                        }, 300);
-                    });
+                        });
+                    }, 300);
                     observer.unobserve(entry.target);
                 }
             });
