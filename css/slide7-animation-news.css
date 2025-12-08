@@ -1,23 +1,24 @@
 /* Slide 7 Animated News Consumption Chart */
 
 .slide7 {
-    overflow: visible !important;
+    overflow: hidden !important;
     height: 100vh !important;
     min-height: 100vh !important;
+    max-height: 100vh !important;
 }
 
 .slide7 .slide-container {
     display: grid;
     grid-template-columns: 30% 70%;
     grid-template-rows: auto auto 1fr;
-    gap: clamp(20px, 3vh, 40px) clamp(60px, 6vw, 100px);
-    padding: clamp(40px, 5vh, 60px) clamp(80px, 8vw, 140px);
-    max-height: none !important;
+    gap: clamp(16px, 2vh, 28px) clamp(50px, 5vw, 80px);
+    padding: clamp(30px, 4vh, 50px) clamp(60px, 6vw, 120px);
+    max-height: 100vh !important;
     height: 100vh !important;
     max-width: none !important;
     width: 100%;
     margin: 0 auto;
-    overflow: visible;
+    overflow: hidden;
     align-items: start;
     box-sizing: border-box;
 }
@@ -30,7 +31,8 @@
     text-align: left;
     margin-bottom: 0;
     align-self: start;
-    font-size: clamp(26px, 5vw, 72px);
+    font-size: clamp(24px, 4.5vw, 58px);
+    line-height: 1.1;
 }
 
 .slide7-title.visible {
@@ -42,7 +44,7 @@
     grid-row: 2 / 4;
     display: flex;
     flex-direction: column;
-    gap: clamp(24px, 4vh, 40px);
+    gap: clamp(20px, 3vh, 32px);
     text-align: left;
     align-self: start;
     justify-content: flex-start;
@@ -54,25 +56,29 @@
     grid-column: 2;
     grid-row: 1 / 4;
     display: grid;
-    grid-template-rows: 3fr 1fr;
-    gap: clamp(20px, 3vh, 30px);
+    grid-template-rows: 3.5fr 1fr;
+    gap: clamp(12px, 2vh, 20px);
     align-items: start;
     justify-content: stretch;
     width: 100%;
     max-width: 100%;
     align-self: start;
+    max-height: 100%;
+    overflow: hidden;
 }
 
 .slide7-chart-container {
     width: 100%;
     max-width: none;
     height: 100%;
-    min-height: 350px;
+    min-height: 300px;
+    max-height: 100%;
     position: relative;
     grid-row: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 #slide7Chart {
@@ -83,8 +89,8 @@
 
 .slide7-text {
     font-family: "Inter", sans-serif;
-    font-size: clamp(16px, 1.8vw, 22px);
-    line-height: 1.8;
+    font-size: clamp(15px, 1.6vw, 20px);
+    line-height: 1.6;
     color: var(--muted, #A4ADBD);
     margin: 0;
     opacity: 0;
@@ -125,7 +131,7 @@
 .slide7-bottom-section {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 10px;
     align-items: center;
     text-align: center;
     width: 100%;
@@ -137,7 +143,7 @@
 .slide7-controls {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
     align-items: center;
     width: 100%;
 }
