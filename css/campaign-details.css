@@ -450,7 +450,6 @@
     height: 100%;
     background: linear-gradient(90deg, #4488FF 0%, #6BA3FF 100%);
     transition: width 1.5s cubic-bezier(0.65, 0, 0.35, 1);
-    animation: fillBar 1.5s ease-out 0.5s both;
 }
 
 @keyframes fillBar {
